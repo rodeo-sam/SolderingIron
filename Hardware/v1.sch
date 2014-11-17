@@ -16539,7 +16539,7 @@ Source: www.kingbright.com</description>
 <part name="R5" library="rcl" deviceset="R-EU_" device="R0402" value="10k"/>
 <part name="R6" library="rcl" deviceset="R-EU_" device="R0402" value="10k"/>
 <part name="R7" library="rcl" deviceset="R-EU_" device="R0402" value="10k"/>
-<part name="U$3" library="rcl" deviceset="CPOL-EU" device="E2-5" value="330u"/>
+<part name="C15" library="rcl" deviceset="CPOL-EU" device="E2-5" value="330u"/>
 <part name="TP1" library="testpad" deviceset="PTR1" device="B1,27"/>
 <part name="TP2" library="testpad" deviceset="PTR1" device="B1,27"/>
 <part name="TP3" library="testpad" deviceset="PTR1" device="B1,27"/>
@@ -16591,7 +16591,7 @@ Source: www.kingbright.com</description>
 <part name="C13" library="rcl" deviceset="C-EU" device="C0603" value="100n"/>
 <part name="J5" library="con-molex" deviceset="22-?-04" device="27-2041"/>
 <part name="J2" library="con-molex" deviceset="22-?-02" device="27-2021"/>
-<part name="U$4" library="rcl" deviceset="CPOL-EU" device="E3.5-8" value="330u"/>
+<part name="C14" library="rcl" deviceset="CPOL-EU" device="E3.5-8" value="330u"/>
 </parts>
 <sheets>
 <sheet>
@@ -16681,7 +16681,7 @@ element im Loetkolben</text>
 <instance part="R5" gate="G$1" x="251.46" y="157.48" rot="R270"/>
 <instance part="R6" gate="G$1" x="256.54" y="154.94" rot="R270"/>
 <instance part="R7" gate="G$1" x="261.62" y="152.4" rot="R270"/>
-<instance part="U$3" gate="G$1" x="83.82" y="195.58"/>
+<instance part="C15" gate="G$1" x="83.82" y="195.58"/>
 <instance part="TP1" gate="G$1" x="233.68" y="160.02" rot="R180"/>
 <instance part="TP2" gate="G$1" x="238.76" y="162.56" rot="R180"/>
 <instance part="TP3" gate="G$1" x="243.84" y="165.1" rot="R180"/>
@@ -16714,7 +16714,7 @@ element im Loetkolben</text>
 <instance part="LED1" gate="G$1" x="203.2" y="233.68" rot="R180"/>
 <instance part="R26" gate="G$1" x="208.28" y="238.76" rot="R180"/>
 <instance part="GND18" gate="1" x="213.36" y="236.22"/>
-<instance part="J1" gate="-1" x="205.74" y="152.4"/>
+<instance part="J1" gate="-1" x="215.9" y="152.4"/>
 <instance part="J1" gate="-2" x="220.98" y="223.52"/>
 <instance part="J1" gate="-3" x="220.98" y="220.98"/>
 <instance part="J1" gate="-4" x="220.98" y="218.44"/>
@@ -16746,7 +16746,7 @@ element im Loetkolben</text>
 <instance part="J5" gate="-4" x="66.04" y="223.52" rot="R90"/>
 <instance part="J2" gate="-1" x="241.3" y="147.32"/>
 <instance part="J2" gate="-2" x="241.3" y="144.78"/>
-<instance part="U$4" gate="G$1" x="48.26" y="200.66"/>
+<instance part="C14" gate="G$1" x="48.26" y="200.66"/>
 </instances>
 <busses>
 </busses>
@@ -16789,7 +16789,7 @@ element im Loetkolben</text>
 <wire x1="76.2" y1="203.2" x2="76.2" y2="198.12" width="0.1524" layer="91"/>
 <pinref part="P+5" gate="VCC" pin="VCC"/>
 <junction x="76.2" y="203.2"/>
-<pinref part="U$3" gate="G$1" pin="+"/>
+<pinref part="C15" gate="G$1" pin="+"/>
 <wire x1="76.2" y1="203.2" x2="83.82" y2="203.2" width="0.1524" layer="91"/>
 <wire x1="83.82" y1="203.2" x2="83.82" y2="198.12" width="0.1524" layer="91"/>
 </segment>
@@ -16860,13 +16860,13 @@ element im Loetkolben</text>
 <wire x1="63.5" y1="190.5" x2="76.2" y2="190.5" width="0.1524" layer="91"/>
 <junction x="63.5" y="190.5"/>
 <pinref part="GND15" gate="1" pin="GND"/>
-<pinref part="U$3" gate="G$1" pin="-"/>
+<pinref part="C15" gate="G$1" pin="-"/>
 <wire x1="83.82" y1="190.5" x2="76.2" y2="190.5" width="0.1524" layer="91"/>
 <junction x="76.2" y="190.5"/>
 <pinref part="C13" gate="G$1" pin="1"/>
 <wire x1="43.18" y1="190.5" x2="48.26" y2="190.5" width="0.1524" layer="91"/>
 <junction x="50.8" y="190.5"/>
-<pinref part="U$4" gate="G$1" pin="-"/>
+<pinref part="C14" gate="G$1" pin="-"/>
 <wire x1="48.26" y1="190.5" x2="50.8" y2="190.5" width="0.1524" layer="91"/>
 <wire x1="48.26" y1="195.58" x2="48.26" y2="190.5" width="0.1524" layer="91"/>
 <junction x="48.26" y="190.5"/>
@@ -17157,7 +17157,7 @@ element im Loetkolben</text>
 <junction x="43.18" y="203.2"/>
 <pinref part="J5" gate="-1" pin="S"/>
 <pinref part="J5" gate="-2" pin="S"/>
-<pinref part="U$4" gate="G$1" pin="+"/>
+<pinref part="C14" gate="G$1" pin="+"/>
 <junction x="48.26" y="203.2"/>
 </segment>
 <segment>
@@ -17530,13 +17530,14 @@ element im Loetkolben</text>
 <pinref part="R26" gate="G$1" pin="2"/>
 </segment>
 </net>
-<net name="N$27" class="0">
+<net name="ADC7" class="0">
 <segment>
 <pinref part="IC2" gate="G$1" pin="ADC7"/>
 <pinref part="J1" gate="-1" pin="S"/>
+<wire x1="213.36" y1="152.4" x2="203.2" y2="152.4" width="0.1524" layer="91"/>
 </segment>
 </net>
-<net name="N$28" class="0">
+<net name="ADC1" class="0">
 <segment>
 <pinref part="IC2" gate="G$1" pin="PC1(ADC1)"/>
 <pinref part="J3" gate="-1" pin="S"/>
@@ -17544,7 +17545,7 @@ element im Loetkolben</text>
 <wire x1="223.52" y1="167.64" x2="223.52" y2="170.18" width="0.1524" layer="91"/>
 </segment>
 </net>
-<net name="N$29" class="0">
+<net name="ADC2" class="0">
 <segment>
 <pinref part="J3" gate="-2" pin="S"/>
 <pinref part="IC2" gate="G$1" pin="PC2(ADC2)"/>
