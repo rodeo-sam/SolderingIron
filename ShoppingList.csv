@@ -1,40 +1,37 @@
-Reichelt shopping list,,,
-,,,
-LIYY 1014-5,1,,wire
-X7R-G0603 10N,2,,
-X7R-G0603 100N,10,,
-HEBL 21,1,,power connector
-PSS 254/2G,2,,
-PSS 254/3G,1,,
-PSS 254/4G,1,,
-PSS 254/6G,1,,
-WIPPE 1801.1146,1,,On-off-switch
-SMD-0603 100,6,,
-SMD-0603 330,8,,
-"SMD-0603 1,2K",2,,
-SMD-0603 10K,8,,
-SMD-0603 160K,2,,
-SMD-0603 750K,2,,
-IRF 7424,1,,P-fet
-SKS M3X16-50,1,,
-LM 324 D SMD,1,,Op-amp
-KKKGS 35,1,,
-TLE 4905L,1,,Hall-sensor
-MAB 5W,1,,
-MAS 50W,1,,
-TASTER 9319,2,,button switch for temperatur
-PSK 254/5W,1,,
-SK M3,1,,
-PSK 254/4W,1,,
-MW GS60A12,1,,12V6A power supply
-"SL 2X10G 2,54",1,,break down pin header
-L-0805F 10µ,2,,coil for op-amp and avcc
-BSS 123 SMD,4,,
-RAD FR 1.000/25,1,,C9
-RAD FC 100/10,1,,c at lowdrop out
-RAD FC 330/16,1,,c at lowdrop in
-"LM 1117 MP5,0",1,,LowDrop to 5V - or - AliExpress
-,,,
-,,,
-Farnell shopping list,,,
-8809860,1,,soldering iron tip
+Reichelt shopping list,,,,,,
+,,,,,,
+LIYY 1014-5,1,,wire,,,
+X7R-G0603 10N,2,,,,,
+X7R-G0603 100N,10,,,,,
+HEBL 21,1,,power connector,,,
+PSS 254/2G,2,,,,,
+PSS 254/3G,1,,,,,
+PSS 254/4G,1,,,,,
+PSS 254/6G,1,,,,,
+WIPPE 1801.1146,1,,On-off-switch,,,
+SMD-0603 100,6,,,,,
+SMD-0603 330,8,,,,,
+"SMD-0603 1,2K",2,,,,,
+SMD-0603 10K,8,,,,,
+SMD-0603 160K,2,,,,,
+SMD-0603 750K,2,,,,,
+IRF 7424,1,,P-fet,,,
+SKS M3X16-50,1,,,,,
+LM 324 D SMD,1,,Op-amp,,,
+KKKGS 35,1,,,,,
+TLE 4905L,1,,Hall-sensor,,,
+MAB 5W,1,,,,,
+MAS 50W,1,,,,,
+TASTER 9319,2,,button switch for temperatur,,,
+PSK 254/5W,1,,,,,
+SK M3,1,,,,,
+PSK 254/4W,1,,,,,
+MW GS60A12,1,,12V6A power supply,,,
+"SL 2X10G 2,54",1,,break down pin header,,,
+L-0805F 10µ,2,,coil for op-amp and avcc,,,
+BSS 123 SMD,4,,,,,
+RAD FR 1.000/25,1,,C9 (1000u 25V),,,
+RAD FC 100/10,1,,c (100u 10V) at lowdrop out,,,
+RAD FC 330/16,1,,c (330u 16V) at lowdrop in,,,
+"LM 1117 MP5,0",1,,LowDrop to 5V - or - AliExpress,,,
+WELLER RT 1,1,,soldering iron tip,,,Alternative Farnell 8809860
