@@ -1,0 +1,4 @@
+# Eagle backup files
+*.b#*
+*.s#*
+*.l#*
