@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE eagle SYSTEM "eagle.dtd">
-<eagle version="6.6.0">
+<eagle version="6.5.0">
 <drawing>
 <settings>
 <setting alwaysvectorfont="no"/>
@@ -14818,38 +14818,77 @@ Based on the following sources:&lt;p&gt;
 </library>
 <library name="MyLib">
 <packages>
-<package name="ELKO-1,27-4,5">
-<circle x="0" y="0" radius="2.2" width="0.127" layer="21"/>
-<pad name="P$1" x="0.635" y="0" drill="0.5"/>
-<pad name="P$2" x="-0.635" y="0" drill="0.5"/>
-<wire x1="1.27" y1="1.27" x2="1.27" y2="0.762" width="0.127" layer="21"/>
-<wire x1="1.016" y1="1.016" x2="1.524" y2="1.016" width="0.127" layer="21"/>
+<package name="SO-08">
+<description>&lt;B&gt;Small Outline Narrow Plastic Gull Wing&lt;/B&gt;&lt;p&gt;
+150-mil body, package type SN</description>
+<wire x1="-2.9" y1="3.9" x2="2.9" y2="3.9" width="0.1998" layer="39"/>
+<wire x1="2.9" y1="3.9" x2="2.9" y2="-3.9" width="0.1998" layer="39"/>
+<wire x1="2.9" y1="-3.9" x2="-2.9" y2="-3.9" width="0.1998" layer="39"/>
+<wire x1="-2.9" y1="-3.9" x2="-2.9" y2="3.9" width="0.1998" layer="39"/>
+<wire x1="2.4" y1="1.9" x2="2.4" y2="-1.4" width="0.2032" layer="51"/>
+<wire x1="2.4" y1="-1.4" x2="2.4" y2="-1.9" width="0.2032" layer="51"/>
+<wire x1="2.4" y1="-1.9" x2="-2.4" y2="-1.9" width="0.2032" layer="51"/>
+<wire x1="-2.4" y1="-1.9" x2="-2.4" y2="-1.4" width="0.2032" layer="51"/>
+<wire x1="-2.4" y1="-1.4" x2="-2.4" y2="1.9" width="0.2032" layer="51"/>
+<wire x1="-2.4" y1="1.9" x2="2.4" y2="1.9" width="0.2032" layer="51"/>
+<wire x1="2.4" y1="-1.4" x2="-2.4" y2="-1.4" width="0.2032" layer="51"/>
+<smd name="2" x="-0.635" y="-2.6" dx="0.6" dy="2.2" layer="1"/>
+<smd name="7" x="-0.635" y="2.6" dx="0.6" dy="2.2" layer="1"/>
+<smd name="1" x="-1.905" y="-2.6" dx="0.6" dy="2.2" layer="1"/>
+<smd name="3" x="0.635" y="-2.6" dx="0.6" dy="2.2" layer="1"/>
+<smd name="4" x="1.905" y="-2.6" dx="0.6" dy="2.2" layer="1"/>
+<smd name="8" x="-1.905" y="2.6" dx="0.6" dy="2.2" layer="1"/>
+<smd name="6" x="0.635" y="2.6" dx="0.6" dy="2.2" layer="1"/>
+<smd name="5" x="1.905" y="2.6" dx="0.6" dy="2.2" layer="1"/>
+<text x="-2.667" y="-1.905" size="1.27" layer="25" rot="R90">&gt;NAME</text>
+<text x="3.937" y="-1.905" size="1.27" layer="27" rot="R90">&gt;VALUE</text>
+<text x="-1.905" y="-0.635" size="0.4064" layer="48">IPC SO8</text>
+<text x="-1.905" y="0.365" size="0.3048" layer="48">JEDEC MS-012 AA</text>
+<rectangle x1="-2.1501" y1="-3.1001" x2="-1.6599" y2="-2" layer="51"/>
+<rectangle x1="-0.8801" y1="-3.1001" x2="-0.3899" y2="-2" layer="51"/>
+<rectangle x1="0.3899" y1="-3.1001" x2="0.8801" y2="-2" layer="51"/>
+<rectangle x1="1.6599" y1="-3.1001" x2="2.1501" y2="-2" layer="51"/>
+<rectangle x1="1.6599" y1="2" x2="2.1501" y2="3.1001" layer="51"/>
+<rectangle x1="0.3899" y1="2" x2="0.8801" y2="3.1001" layer="51"/>
+<rectangle x1="-0.8801" y1="2" x2="-0.3899" y2="3.1001" layer="51"/>
+<rectangle x1="-2.1501" y1="2" x2="-1.6599" y2="3.1001" layer="51"/>
+<rectangle x1="-1" y1="-1" x2="1" y2="1" layer="35"/>
 </package>
 </packages>
 <symbols>
-<symbol name="CPOL">
-<wire x1="-1.524" y1="-0.889" x2="1.524" y2="-0.889" width="0.254" layer="94"/>
-<wire x1="1.524" y1="-0.889" x2="1.524" y2="0" width="0.254" layer="94"/>
-<wire x1="-1.524" y1="0" x2="-1.524" y2="-0.889" width="0.254" layer="94"/>
-<wire x1="-1.524" y1="0" x2="1.524" y2="0" width="0.254" layer="94"/>
-<text x="1.143" y="0.4826" size="1.778" layer="95">&gt;NAME</text>
-<text x="-0.5842" y="0.4064" size="1.27" layer="94" rot="R90">+</text>
-<text x="1.143" y="-4.5974" size="1.778" layer="96">&gt;VALUE</text>
-<rectangle x1="-1.651" y1="-2.54" x2="1.651" y2="-1.651" layer="94"/>
-<pin name="-" x="0" y="-5.08" visible="off" length="short" direction="pas" rot="R90"/>
-<pin name="+" x="0" y="2.54" visible="off" length="short" direction="pas" rot="R270"/>
+<symbol name="IRF7424">
+<wire x1="15.24" y1="5.08" x2="27.94" y2="5.08" width="0.254" layer="94"/>
+<wire x1="27.94" y1="5.08" x2="27.94" y2="25.4" width="0.254" layer="94"/>
+<wire x1="27.94" y1="25.4" x2="15.24" y2="25.4" width="0.254" layer="94"/>
+<wire x1="15.24" y1="25.4" x2="15.24" y2="5.08" width="0.254" layer="94"/>
+<pin name="S1" x="10.16" y="22.86" length="middle"/>
+<pin name="S2" x="10.16" y="17.78" length="middle"/>
+<pin name="S3" x="10.16" y="12.7" length="middle"/>
+<pin name="G" x="10.16" y="7.62" length="middle"/>
+<pin name="D4" x="33.02" y="7.62" length="middle" rot="R180"/>
+<pin name="D3" x="33.02" y="12.7" length="middle" rot="R180"/>
+<pin name="D2" x="33.02" y="17.78" length="middle" rot="R180"/>
+<pin name="D1" x="33.02" y="22.86" length="middle" rot="R180"/>
+<text x="17.78" y="25.4" size="1.27" layer="95">&gt;NAME</text>
+<text x="17.78" y="2.54" size="1.27" layer="95">&gt;VALUE</text>
 </symbol>
 </symbols>
 <devicesets>
-<deviceset name="ELKO-1,27-4,2">
+<deviceset name="IRF7424">
 <gates>
-<gate name="G$1" symbol="CPOL" x="0" y="2.54"/>
+<gate name="G$1" symbol="IRF7424" x="-20.32" y="-15.24"/>
 </gates>
 <devices>
-<device name="" package="ELKO-1,27-4,5">
+<device name="" package="SO-08">
 <connects>
-<connect gate="G$1" pin="+" pad="P$1"/>
-<connect gate="G$1" pin="-" pad="P$2"/>
+<connect gate="G$1" pin="D1" pad="8"/>
+<connect gate="G$1" pin="D2" pad="7"/>
+<connect gate="G$1" pin="D3" pad="6"/>
+<connect gate="G$1" pin="D4" pad="5"/>
+<connect gate="G$1" pin="G" pad="4"/>
+<connect gate="G$1" pin="S1" pad="1"/>
+<connect gate="G$1" pin="S2" pad="2"/>
+<connect gate="G$1" pin="S3" pad="3"/>
 </connects>
 <technologies>
 <technology name=""/>
@@ -16444,88 +16483,6 @@ Source: www.kingbright.com</description>
 </deviceset>
 </devicesets>
 </library>
-<library name="IRF7424">
-<packages>
-<package name="SO-08">
-<description>&lt;B&gt;Small Outline Narrow Plastic Gull Wing&lt;/B&gt;&lt;p&gt;
-150-mil body, package type SN</description>
-<wire x1="-2.9" y1="3.9" x2="2.9" y2="3.9" width="0.1998" layer="39"/>
-<wire x1="2.9" y1="3.9" x2="2.9" y2="-3.9" width="0.1998" layer="39"/>
-<wire x1="2.9" y1="-3.9" x2="-2.9" y2="-3.9" width="0.1998" layer="39"/>
-<wire x1="-2.9" y1="-3.9" x2="-2.9" y2="3.9" width="0.1998" layer="39"/>
-<wire x1="2.4" y1="1.9" x2="2.4" y2="-1.4" width="0.2032" layer="51"/>
-<wire x1="2.4" y1="-1.4" x2="2.4" y2="-1.9" width="0.2032" layer="51"/>
-<wire x1="2.4" y1="-1.9" x2="-2.4" y2="-1.9" width="0.2032" layer="51"/>
-<wire x1="-2.4" y1="-1.9" x2="-2.4" y2="-1.4" width="0.2032" layer="51"/>
-<wire x1="-2.4" y1="-1.4" x2="-2.4" y2="1.9" width="0.2032" layer="51"/>
-<wire x1="-2.4" y1="1.9" x2="2.4" y2="1.9" width="0.2032" layer="51"/>
-<wire x1="2.4" y1="-1.4" x2="-2.4" y2="-1.4" width="0.2032" layer="51"/>
-<smd name="2" x="-0.635" y="-2.6" dx="0.6" dy="2.2" layer="1"/>
-<smd name="7" x="-0.635" y="2.6" dx="0.6" dy="2.2" layer="1"/>
-<smd name="1" x="-1.905" y="-2.6" dx="0.6" dy="2.2" layer="1"/>
-<smd name="3" x="0.635" y="-2.6" dx="0.6" dy="2.2" layer="1"/>
-<smd name="4" x="1.905" y="-2.6" dx="0.6" dy="2.2" layer="1"/>
-<smd name="8" x="-1.905" y="2.6" dx="0.6" dy="2.2" layer="1"/>
-<smd name="6" x="0.635" y="2.6" dx="0.6" dy="2.2" layer="1"/>
-<smd name="5" x="1.905" y="2.6" dx="0.6" dy="2.2" layer="1"/>
-<text x="-2.667" y="-1.905" size="1.27" layer="25" rot="R90">&gt;NAME</text>
-<text x="3.937" y="-1.905" size="1.27" layer="27" rot="R90">&gt;VALUE</text>
-<text x="-1.905" y="-0.635" size="0.4064" layer="48">IPC SO8</text>
-<text x="-1.905" y="0.365" size="0.3048" layer="48">JEDEC MS-012 AA</text>
-<rectangle x1="-2.1501" y1="-3.1001" x2="-1.6599" y2="-2" layer="51"/>
-<rectangle x1="-0.8801" y1="-3.1001" x2="-0.3899" y2="-2" layer="51"/>
-<rectangle x1="0.3899" y1="-3.1001" x2="0.8801" y2="-2" layer="51"/>
-<rectangle x1="1.6599" y1="-3.1001" x2="2.1501" y2="-2" layer="51"/>
-<rectangle x1="1.6599" y1="2" x2="2.1501" y2="3.1001" layer="51"/>
-<rectangle x1="0.3899" y1="2" x2="0.8801" y2="3.1001" layer="51"/>
-<rectangle x1="-0.8801" y1="2" x2="-0.3899" y2="3.1001" layer="51"/>
-<rectangle x1="-2.1501" y1="2" x2="-1.6599" y2="3.1001" layer="51"/>
-<rectangle x1="-1" y1="-1" x2="1" y2="1" layer="35"/>
-</package>
-</packages>
-<symbols>
-<symbol name="IRF7424">
-<wire x1="-7.62" y1="-10.16" x2="7.62" y2="-10.16" width="0.254" layer="94"/>
-<wire x1="7.62" y1="-10.16" x2="7.62" y2="10.16" width="0.254" layer="94"/>
-<wire x1="7.62" y1="10.16" x2="-7.62" y2="10.16" width="0.254" layer="94"/>
-<wire x1="-7.62" y1="10.16" x2="-7.62" y2="-10.16" width="0.254" layer="94"/>
-<pin name="S1" x="-12.7" y="7.62" length="middle"/>
-<pin name="S2" x="-12.7" y="2.54" length="middle"/>
-<pin name="S3" x="-12.7" y="-2.54" length="middle"/>
-<pin name="G" x="-12.7" y="-7.62" length="middle"/>
-<pin name="D4" x="12.7" y="-7.62" length="middle" rot="R180"/>
-<pin name="D3" x="12.7" y="-2.54" length="middle" rot="R180"/>
-<pin name="D2" x="12.7" y="2.54" length="middle" rot="R180"/>
-<pin name="D1" x="12.7" y="7.62" length="middle" rot="R180"/>
-<text x="-5.08" y="10.16" size="1.27" layer="95">&gt;NAME</text>
-<text x="-5.08" y="-12.7" size="1.27" layer="95">&gt;VALUE</text>
-</symbol>
-</symbols>
-<devicesets>
-<deviceset name="IRF7424">
-<gates>
-<gate name="G$1" symbol="IRF7424" x="-20.32" y="-15.24"/>
-</gates>
-<devices>
-<device name="" package="SO-08">
-<connects>
-<connect gate="G$1" pin="D1" pad="8"/>
-<connect gate="G$1" pin="D2" pad="7"/>
-<connect gate="G$1" pin="D3" pad="6"/>
-<connect gate="G$1" pin="D4" pad="5"/>
-<connect gate="G$1" pin="G" pad="4"/>
-<connect gate="G$1" pin="S1" pad="1"/>
-<connect gate="G$1" pin="S2" pad="2"/>
-<connect gate="G$1" pin="S3" pad="3"/>
-</connects>
-<technologies>
-<technology name=""/>
-</technologies>
-</device>
-</devices>
-</deviceset>
-</devicesets>
-</library>
 </libraries>
 <attributes>
 </attributes>
@@ -16572,7 +16529,7 @@ Source: www.kingbright.com</description>
 <part name="S3" library="switch-omron" deviceset="10-XX" device=""/>
 <part name="S4" library="switch-omron" deviceset="10-XX" device=""/>
 <part name="GND4" library="supply1" deviceset="GND" device=""/>
-<part name="U$1" library="IRF7424" deviceset="IRF7424" device=""/>
+<part name="U$1" library="MyLib" deviceset="IRF7424" device=""/>
 <part name="U$2" library="3x7segCC" deviceset="3X7SEG" device=""/>
 <part name="GND5" library="supply1" deviceset="GND" device=""/>
 <part name="Q1" library="transistor-small-signal" deviceset="BSS123" device=""/>
@@ -16582,15 +16539,15 @@ Source: www.kingbright.com</description>
 <part name="R5" library="rcl" deviceset="R-EU_" device="R0402" value="10k"/>
 <part name="R6" library="rcl" deviceset="R-EU_" device="R0402" value="10k"/>
 <part name="R7" library="rcl" deviceset="R-EU_" device="R0402" value="10k"/>
-<part name="U$3" library="MyLib" deviceset="ELKO-1,27-4,2" device=""/>
+<part name="U$3" library="rcl" deviceset="CPOL-EU" device="E2-5" value="330u"/>
 <part name="TP1" library="testpad" deviceset="PTR1" device="B1,27"/>
 <part name="TP2" library="testpad" deviceset="PTR1" device="B1,27"/>
 <part name="TP3" library="testpad" deviceset="PTR1" device="B1,27"/>
 <part name="TP4" library="testpad" deviceset="PTR1" device="B1,27"/>
 <part name="TP5" library="testpad" deviceset="PTR1" device="B1,27"/>
 <part name="GND3" library="supply1" deviceset="GND" device=""/>
-<part name="L1" library="rcl" deviceset="L-EU" device="L2012C" value="10u"/>
-<part name="L2" library="rcl" deviceset="L-EU" device="L2012C" value="10u"/>
+<part name="L1" library="rcl" deviceset="L-EU" device="L2825P" value="10u"/>
+<part name="L2" library="rcl" deviceset="L-EU" device="L2825P" value="10u"/>
 <part name="C2" library="rcl" deviceset="C-EU" device="C0603" value="100n"/>
 <part name="GND12" library="supply1" deviceset="GND" device=""/>
 <part name="R3" library="rcl" deviceset="R-EU_" device="R0603" value="330"/>
@@ -16622,7 +16579,7 @@ Source: www.kingbright.com</description>
 <part name="TP8" library="testpad" deviceset="PTR1" device="B1,27"/>
 <part name="TP9" library="testpad" deviceset="PTR1" device="B1,27"/>
 <part name="TP10" library="testpad" deviceset="PTR1" device="B1,27"/>
-<part name="C9" library="rcl" deviceset="CPOL-EU" device="E5-13"/>
+<part name="C9" library="rcl" deviceset="CPOL-EU" device="E5-13" value="1000u"/>
 <part name="R24" library="rcl" deviceset="R-EU_" device="R0603" value="750k"/>
 <part name="R25" library="rcl" deviceset="R-EU_" device="R0603" value="1k2"/>
 <part name="GND16" library="supply1" deviceset="GND" device=""/>
@@ -16634,7 +16591,7 @@ Source: www.kingbright.com</description>
 <part name="C13" library="rcl" deviceset="C-EU" device="C0603" value="100n"/>
 <part name="J5" library="con-molex" deviceset="22-?-04" device="27-2041"/>
 <part name="J2" library="con-molex" deviceset="22-?-02" device="27-2021"/>
-<part name="U$4" library="MyLib" deviceset="ELKO-1,27-4,2" device=""/>
+<part name="U$4" library="rcl" deviceset="CPOL-EU" device="E3.5-8" value="330u"/>
 </parts>
 <sheets>
 <sheet>
@@ -16714,7 +16671,7 @@ element im Loetkolben</text>
 <instance part="S3" gate="1" x="276.86" y="238.76" rot="R270"/>
 <instance part="S4" gate="1" x="304.8" y="238.76" rot="R270"/>
 <instance part="GND4" gate="1" x="210.82" y="200.66"/>
-<instance part="U$1" gate="G$1" x="190.5" y="223.52"/>
+<instance part="U$1" gate="G$1" x="167.64" y="208.28"/>
 <instance part="U$2" gate="G$1" x="223.52" y="48.26"/>
 <instance part="GND5" gate="1" x="76.2" y="218.44"/>
 <instance part="Q1" gate="G$1" x="271.78" y="165.1"/>
@@ -16772,7 +16729,7 @@ element im Loetkolben</text>
 <instance part="TP8" gate="G$1" x="129.54" y="116.84" rot="R90"/>
 <instance part="TP9" gate="G$1" x="124.46" y="114.3" rot="R270"/>
 <instance part="TP10" gate="G$1" x="124.46" y="116.84" rot="R270"/>
-<instance part="C9" gate="G$1" x="180.34" y="210.82"/>
+<instance part="C9" gate="G$1" x="177.8" y="210.82"/>
 <instance part="IC1" gate="B" x="58.42" y="5.08"/>
 <instance part="R24" gate="G$1" x="55.88" y="-7.62"/>
 <instance part="R25" gate="G$1" x="50.8" y="-2.54" rot="R90"/>
@@ -16938,11 +16895,11 @@ element im Loetkolben</text>
 <junction x="218.44" y="218.44"/>
 <pinref part="J1" gate="-3" pin="S"/>
 <pinref part="C9" gate="G$1" pin="-"/>
-<wire x1="180.34" y1="205.74" x2="210.82" y2="205.74" width="0.1524" layer="91"/>
+<wire x1="177.8" y1="205.74" x2="210.82" y2="205.74" width="0.1524" layer="91"/>
 <junction x="210.82" y="205.74"/>
 <pinref part="C12" gate="G$1" pin="2"/>
-<wire x1="180.34" y1="205.74" x2="172.72" y2="205.74" width="0.1524" layer="91"/>
-<junction x="180.34" y="205.74"/>
+<wire x1="177.8" y1="205.74" x2="172.72" y2="205.74" width="0.1524" layer="91"/>
+<junction x="177.8" y="205.74"/>
 </segment>
 <segment>
 <pinref part="GND5" gate="1" pin="GND"/>
@@ -17217,10 +17174,13 @@ element im Loetkolben</text>
 <pinref part="C9" gate="G$1" pin="+"/>
 <wire x1="177.8" y1="226.06" x2="177.8" y2="220.98" width="0.1524" layer="91"/>
 <junction x="177.8" y="220.98"/>
-<wire x1="177.8" y1="220.98" x2="180.34" y2="213.36" width="0.1524" layer="91"/>
+<wire x1="177.8" y1="220.98" x2="177.8" y2="218.44" width="0.1524" layer="91"/>
 <pinref part="C12" gate="G$1" pin="1"/>
-<wire x1="172.72" y1="213.36" x2="180.34" y2="213.36" width="0.1524" layer="91"/>
-<junction x="180.34" y="213.36"/>
+<wire x1="172.72" y1="213.36" x2="177.8" y2="213.36" width="0.1524" layer="91"/>
+<junction x="177.8" y="213.36"/>
+<wire x1="177.8" y1="218.44" x2="180.34" y2="218.44" width="0.1524" layer="91"/>
+<wire x1="180.34" y1="218.44" x2="180.34" y2="213.36" width="0.1524" layer="91"/>
+<wire x1="180.34" y1="213.36" x2="177.8" y2="213.36" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="BUTTON_+" class="0">
@@ -17269,11 +17229,15 @@ element im Loetkolben</text>
 <wire x1="203.2" y1="220.98" x2="203.2" y2="215.9" width="0.1524" layer="91"/>
 <wire x1="208.28" y1="213.36" x2="218.44" y2="213.36" width="0.1524" layer="91"/>
 <pinref part="U$1" gate="G$1" pin="D1"/>
+<wire x1="200.66" y1="231.14" x2="203.2" y2="231.14" width="0.1524" layer="91"/>
 <pinref part="U$1" gate="G$1" pin="D2"/>
+<wire x1="200.66" y1="226.06" x2="203.2" y2="226.06" width="0.1524" layer="91"/>
 <junction x="203.2" y="226.06"/>
 <pinref part="U$1" gate="G$1" pin="D3"/>
+<wire x1="200.66" y1="220.98" x2="203.2" y2="220.98" width="0.1524" layer="91"/>
 <junction x="203.2" y="220.98"/>
 <pinref part="U$1" gate="G$1" pin="D4"/>
+<wire x1="200.66" y1="215.9" x2="203.2" y2="215.9" width="0.1524" layer="91"/>
 <wire x1="218.44" y1="215.9" x2="218.44" y2="213.36" width="0.1524" layer="91"/>
 <pinref part="LED1" gate="G$1" pin="A"/>
 <junction x="203.2" y="231.14"/>
