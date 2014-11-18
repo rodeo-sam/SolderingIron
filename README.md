@@ -5,6 +5,16 @@ Idea for an OpenSource Soldering Iron
 
 This project is just another avr based soldering iron. Since professional equipment is quite pricy and not very complicated this projects takes a good, changeable soldering iron tip like the Weller RT1 and provides all the electronics behind that.
 
+### How does it work
+Vcc=5V
+#### Temperature measure
+the thermo-voltage Signal is amplified by an op-amp with a gain
+	`g = 1 + R1/R2 = 1 + 43k/100 = 431`
+this signal is converted by ADC0 using 2.56V as internal voltage reference
+#### Solder tip detection
+solved by a hall sensor connected to a ADC2
+
+
 ##References:
 * [arduino uno shield](http://www.martin-kumm.de/wiki/doku.php?id=Projects:SMD_Solderstation)
   * Forum discussion + group order coordination [Thema: DIY SMD - Lötstation Ersatz für (WELLER)](http://fpv-community.de/showthread.php?41335-DIY-SMD-Lötstation-Ersatz-für-(WELLER))
@@ -18,3 +28,4 @@ This project is just another avr based soldering iron. Since professional equipm
 * uC [ATmega328P](http://www.atmel.com/devices/atmega328p.aspx)
 * Quad OP-Amp [LM324D](http://pdf1.alldatasheet.com/datasheet-pdf/view/22759/STMICROELECTRONICS/LM324D.html)
 * Solder Tip [Weller RT1](http://datasheet.octopart.com/RT1-Cooper-Tools-datasheet-13539183.pdf)
+* Solder Tip detector [Hallsensor unipolar](http://www.reichelt.de/index.html?&ACTION=7&LA=3&OPEN=0&INDEX=0&FILENAME=B400%252FTLE4905L_TLE4935L_TLE4945L_TLE4935-2L%2523SIE.pdf)
