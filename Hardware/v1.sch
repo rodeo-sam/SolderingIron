@@ -17835,7 +17835,7 @@ Source: www.kingbright.com</description>
 <part name="IC2" library="atmel" deviceset="MEGA8" device="-AI" value="m328p"/>
 <part name="GND6" library="supply1" deviceset="GND" device=""/>
 <part name="GND7" library="supply1" deviceset="GND" device=""/>
-<part name="R9" library="rcl" deviceset="R-EU_" device="R0402" value="10k"/>
+<part name="R9" library="rcl" deviceset="R-EU_" device="R0603" value="10k"/>
 <part name="P+2" library="supply1" deviceset="VCC" device=""/>
 <part name="C5" library="rcl" deviceset="C-EU" device="C0603" value="100n"/>
 <part name="P+3" library="supply1" deviceset="VCC" device=""/>
@@ -17848,13 +17848,13 @@ Source: www.kingbright.com</description>
 <part name="P+5" library="supply1" deviceset="VCC" device=""/>
 <part name="C8" library="rcl" deviceset="C-EU" device="C0603" value="100n"/>
 <part name="Q5" library="transistor-small-signal" deviceset="BSS123" device=""/>
-<part name="R36" library="rcl" deviceset="R-EU_" device="R0402" value="10k"/>
-<part name="R37" library="rcl" deviceset="R-EU_" device="R0402" value="10k"/>
+<part name="R36" library="rcl" deviceset="R-EU_" device="R0603" value="10k"/>
+<part name="R37" library="rcl" deviceset="R-EU_" device="R0603" value="10k"/>
 <part name="GND13" library="supply1" deviceset="GND" device=""/>
 <part name="GND15" library="supply1" deviceset="GND" device=""/>
-<part name="R18" library="rcl" deviceset="R-EU_" device="R0402" value="10k"/>
+<part name="R18" library="rcl" deviceset="R-EU_" device="R0603" value="10k"/>
 <part name="P+6" library="supply1" deviceset="VCC" device=""/>
-<part name="R19" library="rcl" deviceset="R-EU_" device="R0402" value="10k"/>
+<part name="R19" library="rcl" deviceset="R-EU_" device="R0603" value="10k"/>
 <part name="P+7" library="supply1" deviceset="VCC" device=""/>
 <part name="GND8" library="supply1" deviceset="GND" device=""/>
 <part name="GND9" library="supply1" deviceset="GND" device=""/>
@@ -17868,9 +17868,9 @@ Source: www.kingbright.com</description>
 <part name="Q2" library="transistor-small-signal" deviceset="BSS123" device=""/>
 <part name="Q3" library="transistor-small-signal" deviceset="BSS123" device=""/>
 <part name="GND10" library="supply1" deviceset="GND" device=""/>
-<part name="R5" library="rcl" deviceset="R-EU_" device="R0402" value="10k"/>
-<part name="R6" library="rcl" deviceset="R-EU_" device="R0402" value="10k"/>
-<part name="R7" library="rcl" deviceset="R-EU_" device="R0402" value="10k"/>
+<part name="R5" library="rcl" deviceset="R-EU_" device="R0603" value="10k"/>
+<part name="R6" library="rcl" deviceset="R-EU_" device="R0603" value="10k"/>
+<part name="R7" library="rcl" deviceset="R-EU_" device="R0603" value="10k"/>
 <part name="C15" library="rcl" deviceset="CPOL-EU" device="E2-5" value="330u"/>
 <part name="TP1" library="testpad" deviceset="PTR1" device="B1,27"/>
 <part name="TP2" library="testpad" deviceset="PTR1" device="B1,27"/>
@@ -17926,7 +17926,7 @@ Source: www.kingbright.com</description>
 <part name="C14" library="rcl" deviceset="CPOL-EU" device="E3.5-8" value="330u"/>
 <part name="C16" library="rcl" deviceset="C-EU" device="C0603" value="10n"/>
 <part name="GND17" library="supply1" deviceset="GND" device=""/>
-<part name="R27" library="rcl" deviceset="R-EU_" device="R0603" value="5k6"/>
+<part name="R27" library="rcl" deviceset="R-EU_" device="R0603" value="10k"/>
 <part name="TP7" library="testpad" deviceset="PTR1" device="B1,27"/>
 <part name="R28" library="rcl" deviceset="R-EU_" device="R0603" value="n.m."/>
 </parts>
