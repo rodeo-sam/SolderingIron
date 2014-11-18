@@ -18,3 +18,4 @@ This project is just another avr based soldering iron. Since professional equipm
 * uC [ATmega328P](http://www.atmel.com/devices/atmega328p.aspx)
 * Quad OP-Amp [LM324D](http://pdf1.alldatasheet.com/datasheet-pdf/view/22759/STMICROELECTRONICS/LM324D.html)
 * Solder Tip [Weller RT1](http://datasheet.octopart.com/RT1-Cooper-Tools-datasheet-13539183.pdf)
+* Solder Tip detector [Hallsensor unipolar](http://www.reichelt.de/index.html?&ACTION=7&LA=3&OPEN=0&INDEX=0&FILENAME=B400%252FTLE4905L_TLE4935L_TLE4945L_TLE4935-2L%2523SIE.pdf)
