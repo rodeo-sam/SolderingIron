@@ -7,7 +7,7 @@ This project is just another avr based soldering iron. Since professional equipm
 
 ##References:
 * [arduino uno shield](http://www.martin-kumm.de/wiki/doku.php?id=Projects:SMD_Solderstation)
-** Forum discussion + group order coordination [Thema: DIY SMD - Lötstation Ersatz für (WELLER)](http://fpv-community.de/showthread.php?41335-DIY-SMD-Lötstation-Ersatz-für-(WELLER))
+  * Forum discussion + group order coordination [Thema: DIY SMD - Lötstation Ersatz für (WELLER)](http://fpv-community.de/showthread.php?41335-DIY-SMD-Lötstation-Ersatz-für-(WELLER))
 * [original Weller cable](http://www.pewa.de/cgi-bin/cosmoshop/lshop.cgi?action=showdetail&wkid=1415179514-14110&ls=d&nc=1415179711-29852&rubnum=&artnum=C-51042699&file=&gesamt_zeilen=0Tsuche--silikon)
 * unfinished project [Custom Weller WSM 1 style controller for RT series tips](http://dangerousprototypes.com/forum/viewtopic.php?f=19&t=3583)
 * [Thermoelement im Weller WMRP.](http://www.mikrocontroller.net/topic/175412#1686071)
