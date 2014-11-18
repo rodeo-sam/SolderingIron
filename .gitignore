@@ -2,3 +2,6 @@
 *.b#*
 *.s#*
 *.l#*
+
+# Libre Office Lock Files
+*.csv#
