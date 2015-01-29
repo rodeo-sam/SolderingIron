@@ -1,0 +1,27 @@
+# Put your own config here!
+#
+# This file is not under version control, and your settings
+# will not be modified when upgrading the repository
+
+###################################################################
+# PROGRAMMER
+#
+# avrdude programmer protocol
+#PROGRAMMER_TYPE_TINY=jtag2isp
+#PROGRAMMER_TYPE_MEGA=jtag2isp
+
+# avrdude programmer device
+#PROGRAMMER_PORT_TINY=usb
+#PROGRAMMER_PORT_MEGA=usb
+
+###################################################################
+# controller
+#
+
+# use more debug-flags when compiling
+#DEBUG = 1
+
+###################################################################
+# FIRMWARE CONFIGURATION
+#
+
