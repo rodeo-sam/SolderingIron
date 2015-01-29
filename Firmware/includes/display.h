@@ -9,8 +9,10 @@
 #pragma once
 
 #include <stdint.h>
+#include "pinout.h"
 
 
 void display_init();
 void display_update();
 void display_digit(uint8_t led_idx, uint8_t digit);
+void display_custom(uint8_t led_idx, uint8_t segments);

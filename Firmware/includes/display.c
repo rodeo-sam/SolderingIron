@@ -2,50 +2,31 @@
 #include "display.h"
 #include <avr/io.h>
 
-#define LED0 (1<<PC3)
-#define LED1 (1<<PC4)
-#define LED2 (1<<PC5)
-
-//dot
-#define DOT 1
-//right bottom
-#define RB 	2
-//middle
-#define M 	4
-//right top
-#define RT 	8
-//left top
-#define LT 	16
-//top
-#define T 	32
-//left bottom
-#define LB 	64
-//bottom
-#define B 	128
-
 typedef enum {
-	SIGN_0=250,
-	SIGN_1=10 ,
-	SIGN_2=236,
-	SIGN_3=174,
-	SIGN_4=30 ,
-	SIGN_5=182,
-	SIGN_6=246,
-	SIGN_7=42 ,
-	SIGN_8=254,
-	SIGN_9=190,
-	SIGN_A=126,
-	SIGN_B=214,
-	SIGN_C=196,
-	SIGN_D=206,
-	SIGN_E=244,
-	SIGN_F=116,
-	SIGN_DOT=1
+	SIGN_0=(DISP_BOT|DISP_UL|DISP_UR|DISP_UP|DISP_BL|DISP_BR),
+	SIGN_1=(DISP_BR|DISP_UR),
+	SIGN_2=(DISP_UP|DISP_UR|DISP_MID|DISP_BL|DISP_BOT),
+	SIGN_3=(DISP_UP|DISP_UR|DISP_MID|DISP_BR|DISP_BOT),
+	SIGN_4=(DISP_UL|DISP_MID|DISP_UR|DISP_BR) ,
+	SIGN_5=(DISP_UP|DISP_UL|DISP_MID|DISP_BR|DISP_BOT),
+	SIGN_6=(DISP_UP|DISP_UL|DISP_MID|DISP_BL|DISP_BOT|DISP_BR),
+	SIGN_7=(DISP_UP|DISP_UR|DISP_BR) ,
+	SIGN_8=(DISP_UP|DISP_UR|DISP_BR|DISP_UL|DISP_BL|DISP_MID|DISP_BOT),
+	SIGN_9=(DISP_UP|DISP_UR|DISP_BR|DISP_UL|DISP_MID|DISP_BOT),
+	SIGN_A=(DISP_UP|DISP_UR|DISP_BR|DISP_UL|DISP_BL|DISP_MID),
+	SIGN_B=(DISP_BR|DISP_UL|DISP_MID|DISP_BL|DISP_BOT),
+	SIGN_C=(DISP_UP|DISP_UL|DISP_BL|DISP_BOT),
+	SIGN_D=(DISP_UR|DISP_BR|DISP_BL|DISP_MID|DISP_BOT),
+	SIGN_E=(DISP_UP|DISP_UL|DISP_BL|DISP_MID|DISP_BOT),
+	SIGN_F=(DISP_UP|DISP_UL|DISP_BL|DISP_MID),
+	SIGN_DOT=(DISP_DOT)
 } sign_t;
 
 static uint8_t framebuffer[3];
 //extern uint16_t g_temperature;
 
+
+// initializing the DDRs and ports for the LED display
 void display_init() {
 	DDRB = 0xff;
 	PORTB= 0;
@@ -55,14 +36,15 @@ void display_init() {
 	framebuffer[0] = 0;
 }
 
+// put a specific character up on a specific area of the seven segment display
 void display_digit(uint8_t led_idx, uint8_t digit) {
 	PORTC &= ~(LED0|LED1|LED2); //all off
 
-	if (digit>15) {
-		//error
-		framebuffer[led_idx] = SIGN_DOT;
+	if (digit>16) {
+		//error in case digit was too high
+		framebuffer[led_idx] = 0;
 	} else {
-		sign_t sign[16] = {SIGN_0, SIGN_1, SIGN_2, SIGN_3, SIGN_4, SIGN_5, SIGN_6, SIGN_7, SIGN_8, SIGN_9, SIGN_A, SIGN_B, SIGN_C, SIGN_D,SIGN_E, SIGN_F};
+		sign_t sign[17] = {SIGN_0, SIGN_1, SIGN_2, SIGN_3, SIGN_4, SIGN_5, SIGN_6, SIGN_7, SIGN_8, SIGN_9, SIGN_A, SIGN_B, SIGN_C, SIGN_D,SIGN_E, SIGN_F, SIGN_DOT};
 		framebuffer[led_idx] = (uint8_t) sign[digit];
 	}
 }
@@ -76,4 +58,9 @@ void display_update() {
 	PORTC |= (1<<3+led_idx);
 
 	if (led_idx++ >2) led_idx = 0;
+}
+
+// setting up custom characters on the seven segment displays
+void display_custom(uint8_t led_idx, uint8_t segments) {
+	framebuffer[led_idx] = (uint8_t) segments;
 }

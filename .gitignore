@@ -5,3 +5,12 @@
 
 # Libre Office Lock Files
 *.csv#
+
+*.mk
+*.d
+*.bin
+*.elf
+*.hex
+*.c~
+*.h~
+*.o
