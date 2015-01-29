@@ -10,9 +10,7 @@
 
 #include <stdint.h>
 
-#define LED0 (1<<PC3)
-#define LED1 (1<<PC4)
-#define LED2 (1<<PC5)
 
 void display_init();
-void display_digit(uint8_t led, uint8_t digit);
+void display_update();
+void display_digit(uint8_t led_idx, uint8_t digit);

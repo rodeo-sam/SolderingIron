@@ -27,22 +27,16 @@ int main(void)
 	display_init();
 	PORTC |= LED0;
 
-		PORTB = 1;//punkt
-		PORTB = 2;//rechts unten
-		PORTB = 4;//-
-		PORTB = 8;//ro
-		PORTB = 16;//lo
-		PORTB = 32;//o
-		PORTB = 64;//lu
-		PORTB = 128;//u
 
-		_delay_ms(100);
+	display_digit(0, 4);
+	display_digit(1, 5);
+	display_digit(2, 6);
 
-		int i = 0;
+	_delay_ms(100);
+
 	while(1)
 	{
-		display_digit(LED1, i++);
-
-		_delay_ms(1000);
+		display_update();
+		_delay_ms(2);
 	}
 }
