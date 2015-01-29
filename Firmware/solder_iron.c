@@ -14,12 +14,10 @@
 #include <avr/eeprom.h>
 #include "includes/display.h"
 #include <avr/io.h>
+#include "config.h"
 
-#define LED0 (1<<PC3)
-#define LED1 (1<<PC4)
-#define LED2 (1<<PC5)
 
-uint16_t last_temperature EEMEM = 350;//default
+uint16_t last_temperature EEMEM = 350; //default
 
 
 int main(void)
@@ -27,7 +25,7 @@ int main(void)
 	display_init();
 	PORTC |= LED0;
 
-		PORTB = 1;//punkt
+/*		PORTB = 1;//punkt
 		PORTB = 2;//rechts unten
 		PORTB = 4;//-
 		PORTB = 8;//ro
@@ -35,6 +33,7 @@ int main(void)
 		PORTB = 32;//o
 		PORTB = 64;//lu
 		PORTB = 128;//u
+*/
 
 		_delay_ms(100);
 
