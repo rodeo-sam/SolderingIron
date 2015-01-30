@@ -15,4 +15,4 @@
 void display_init();
 void display_update();
 void display_digit(uint8_t led_idx, uint8_t digit);
-void display_custom(uint8_t led_idx, uint8_t segments);
+void display_number(int16_t number);

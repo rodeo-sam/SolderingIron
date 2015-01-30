@@ -24,9 +24,8 @@ int main(void)
 {
 	display_init();
 
-	display_digit(0, 1);
-	display_digit(1, 2);
-	display_digit(2, 3);
+	display_number(-120);
+	//display_digit(1,3);
 
 	_delay_ms(100);
 
