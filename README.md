@@ -7,14 +7,14 @@ This project is just another avr based soldering iron. Since professional equipm
 
 ![View on PCB Layout](https://github.com/debaal/SolderingIron/raw/master/pcb_draft.png)
 ## Features
-* open Hardware (schematic and Layout made in Eagle 7.1)
+* open Hardware (schematic and layout made in Eagle 7.2 freeware license)
 * open Firmware written in C (not ready to use right now)
 * fast heatup (TODO estimate time)
 * automatic temperature control
-* Solder tip detection (optional)
+* solder tip rest detection via hall sensor (optional)
 
 ## How does it work
-* Vcc=3V3
+* Vcc=5V
 * ATmega328p
 
 ### Temperature measure
