@@ -39,7 +39,7 @@ HEADERS = $(wildcard ../*.h) $(wildcard ../includes/*.h)
 
 # include directories (used for both, c and asm)
 # eg '. usbdrv/'
-INCLUDES =
+INCLUDES = ../ . ../includes/ ../tests/
 
 
 # use more debug-flags when compiling
