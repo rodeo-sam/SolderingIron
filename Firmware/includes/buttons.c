@@ -35,6 +35,6 @@ ISR(INT0_vect) {
 }
 
 ISR(INT1_vect) {
-	if (desired_temperature != -99)
+	if (desired_temperature != TEMP_MIN)
 		desired_temperature--;
 }
