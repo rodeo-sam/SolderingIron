@@ -25,13 +25,8 @@
 
 	#define PWR0      PD4
 
-	#define BUTTON_TRIGGER_TYPE ISR
-	#define BUTTON_DDR DDRD
-	#define BUTTON_PORT PORTD
-	#define BUTTON_UP (1<<PD2) // INT0
-	#define BUTTON_DN (1<<PD3) // INT1
-	#define BUTTON_UP_ISR INT0_vect
-	#define BUTTON_DN_ISR INT1_vect
+//	#define BUTTON_UP (1<<PD2) // INT0
+//	#define BUTTON_DN (1<<PD3) // INT1
 
 // not used
 //	#define J11       ADC7
