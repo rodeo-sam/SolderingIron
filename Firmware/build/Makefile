@@ -19,11 +19,14 @@ F_CPU = 8000000UL
 
 # main application name (without .hex)
 # eg 'test' when the main function is defined in 'test.c'
+ifndef TARGET
 TARGET = solder_iron
+endif
+
 
 # c sourcecode files
 # eg. 'test.c foo.c foobar/baz.c'
-SRC = $(wildcard ../*.c) $(wildcard ../includes/*.c)
+SRC = ../$(TARGET).c $(wildcard ../includes/*.c)
 
 # asm sourcecode files
 # eg. 'interrupts.S foobar/another.S'
@@ -160,7 +163,7 @@ AVRDUDE_FLAGS += -p $(AVRDUDE_MCU)
 .PHONY: hardware-check clean distclean avrdude-terminal avrdude-test
 
 $(TARGET).elf: hardware-check $(OBJECTS)
-	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $(OBJECTS)
+	$(CC) $(CFLAGS) $(LDFLAGS) -o $(notdir $@) $(OBJECTS)
 
 # all objects (.o files) and config.mk
 $(OBJECTS): $(HEADERS) config.mk
@@ -192,22 +195,22 @@ program-eeprom-%: %.eep.hex
 
 # special programming targets
 %.hex: %.elf
-	$(OBJCOPY) -O ihex -R .eeprom $< $@
+	$(OBJCOPY) -O ihex -R .eeprom $(notdir $<) $(notdir $@)
 	@echo "===================================================="
 	@echo "using controller $(MCU)"
-	@echo -n "size for $< is "
-	@$(SIZE) -A $@ | grep '\.sec1' | tr -s ' ' | cut -d" " -f2
+	@echo -n "size for $(notdir $<) is "
+	@$(SIZE) -A $(notdir $@) | grep '\.sec1' | tr -s ' ' | cut -d" " -f2
 	@echo "===================================================="
 
 # special programming targets
 %.bin: %.elf
-	$(OBJCOPY) -O binary -R .eeprom $< $@
+	$(OBJCOPY) -O binary -R .eeprom $(notdir $<) $(notdir $@)
 
 %.eep.hex: %.elf
-	$(OBJCOPY) --set-section-flags=.eeprom="alloc,load" --change-section-lma .eeprom=0 -O ihex -j .eeprom $< $@
+	$(OBJCOPY) --set-section-flags=.eeprom="alloc,load" --change-section-lma .eeprom=0 -O ihex -j .eeprom $(notdir $<) $(notdir $@)
 
 %.lss: %.elf
-	$(OBJDUMP) -h -S $< > $@
+	$(OBJDUMP) -h -S $(notdir $<) > $(notdir $@)
 
 .PHONY: fuses
 
