@@ -179,7 +179,7 @@ distclean: clean
 	$(RM) config.mk
 
 # avrdude-related targets
-install program: program-$(notdir $(TARGET)) program-eeprom-$(notdir $(TARGET))
+install program: program-$(notdir $(TARGET)) 
 
 avrdude-test:
 	$(AVRDUDE) $(AVRDUDE_FLAGS) -c $(PROG) -P $(DEV)
@@ -215,6 +215,6 @@ program-eeprom-%: %.eep.hex
 .PHONY: fuses
 
 fuses:
-	$(AVRDUDE) $(AVRDUDE_FLAGS) -c $(PROG) -P $(DEV) -U lfuse:w:0xe2:m -U hfuse:w:0xd9:m -U efuse:w:0xff:m 
+	$(AVRDUDE) $(AVRDUDE_FLAGS) -c $(PROG) -P $(DEV) -U lfuse:w:0xe2:m -U hfuse:w:0xd1:m -U efuse:w:0xff:m 
 
 -include $(shell $(MKDIR) .dep 2>/dev/null) $(wildcard .dep/*)
