@@ -1,6 +1,11 @@
 
 #include "display.h"
 #include <avr/io.h>
+#include <avr/interrupt.h>
+
+#include "timer0.h"
+
+#define DISPLAY_REFRESH_INTERVAL 64 // 0.5ms 
 
 static uint16_t i2bcd(uint16_t i);
 static void display_custom(uint8_t led_idx, uint8_t segments);
@@ -40,6 +45,10 @@ void display_init() {
 	framebuffer[2] = 0;
 	framebuffer[1] = 0;
 	framebuffer[0] = 0;
+
+	timer0_init();
+	TIMSK0 |=  (1 << OCIE0B);
+	OCR0B = DISPLAY_REFRESH_INTERVAL;
 }
 
 // source http://www.expertcore.org/viewtopic.php?f=8&t=3742
@@ -124,4 +133,10 @@ void display_update() {
 // setting up custom characters on the seven segment displays
 static void display_custom(uint8_t led_idx, uint8_t segments) {
 	framebuffer[led_idx] = (uint8_t) segments;
+}
+
+ISR(TIMER0_COMPB_vect)
+{
+	OCR0B += DISPLAY_REFRESH_INTERVAL; 
+	display_update();
 }
