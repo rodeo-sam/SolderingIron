@@ -26,6 +26,7 @@ void conrol_set_temp(uint16_t temp)
 void control_init(void)
 {
 	timer0_init();
+	TIMSK0 |= (1 << TOIE0) | (1 << OCIE0A);
 	DDRD |= (1<< PD4);
 }
 
