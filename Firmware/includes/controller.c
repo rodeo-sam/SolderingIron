@@ -10,6 +10,7 @@
 
 #include "eeprom-config.h"
 #include "tip.h" //TODO maybe rename
+#include "timer0.h"
 
 #define Ta 2 //ms
 
@@ -24,15 +25,8 @@ void conrol_set_temp(uint16_t temp)
 
 void control_init(void)
 {
-	TCCR0A = 0;
-	TCCR0A |= (1 << COM0A1); //Clear OC0B on Compare Match
-	TCCR0A |= (1 << WGM00) | (1 << WGM01) ; //Fast pwm
-	TCCR0B = 0;
-	TCCR0B |= (1 << WGM02); //Fast pwm
-	TCCR0B |= (1 << CS01) | (1 << CS00); // prescaler = 64 => ~2ms to overflow
-	TIMSK0 = 0;
-	TIMSK0 |= (1 << TOIE0);
-	sei();
+	timer0_init();
+	DDRD |= (1<< PD4);
 }
 
 void control(void)
@@ -63,5 +57,9 @@ void control(void)
 }
 
 ISR(TIMER1_OVF_vect) {
+	PORTD |= (1<<PD4); //set pwm pin high, only needed in rev 0.1
+}
+ISR(TIMER1_OCA0_vect) {
+	PORTD &= ~(1<<PD4); //set pwm pin low, only needed in rev 0.1
 	control();
 }
