@@ -8,29 +8,33 @@
  
 #include "buttons.h"
  
-#if BUTTON_TRIGGER_TYPE == ISR
 
 static void buttons_init() {
-	BUTTON_DDR |= BUTTON_UP | BUTTON_DN; // set as input
-	BUTTON_PORT |= BUTTON_UP | BUTTON_DN; // enable internal pullups
+
+	#if (HW_VERSION == 1)
+		// Button Up is connected to PD2 (INT0)
+		// Button Down is connected to PD3 (INT1)
+		DDRD  &= ~((1<<PD2) | (1<<PD3)); // set as input
+		PORTD |= (1<<PD2) | (1<<PD3); // enable internal pullups
 	
-	EICRA |= (1<<ISC01); // enable falling edge interrupt for int0
-	EICRA |= (1<<ISC11); // enable falling edge interrupt for int1
+		EICRA |= (1<<ISC01); // enable falling edge interrupt for int0
+		EICRA |= (1<<ISC11); // enable falling edge interrupt for int1
 	
-	// TODO: Edit more important registers
+		EIMSK |= (1<<INT0); // enable int0
+		EIMSK |= (1<<INT1); // enable int1
 	
-	sei();
+		sei();
+	#else
+		#error "buttons.c: buttons are not implemented for this hw_version"
+	#endif
 }
 
-ISR(BUTTON_UP_ISR) {
-	// TODO: Button_up
+ISR(INT0_vect) {
+	if (desired_temperature != TEMP_MAX)
+		desired_temperature++;
 }
 
-ISR(BUTTON_DN_ISR) {
-	// TODO: Button_dn
+ISR(INT1_vect) {
+	if (desired_temperature != -99)
+		desired_temperature--;
 }
-
- 
-#else
-	#error "buttons.c: buttons are implemented with an ISR only"
-#endif
