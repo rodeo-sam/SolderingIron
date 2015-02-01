@@ -179,7 +179,7 @@ distclean: clean
 	$(RM) config.mk
 
 # avrdude-related targets
-install program: program-$(TARGET) program-eeprom-$(TARGET)
+install program: program-$(notdir $(TARGET)) program-eeprom-$(notdir $(TARGET))
 
 avrdude-test:
 	$(AVRDUDE) $(AVRDUDE_FLAGS) -c $(PROG) -P $(DEV)
