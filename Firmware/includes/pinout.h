@@ -3,10 +3,14 @@
 #include "../config.h"
 
 #if (HW_VERSION == 1)
+	#define LED_DDR   DDRC
+	#define LED_PORT  PORTC
 	#define LED0      (1<<PC3)
 	#define LED1      (1<<PC4)
 	#define LED2      (1<<PC5)
-
+	
+	#define DISP_DDR  DDRB
+	#define DISP_PORT PORTB
 	#define DISP_DOT  (1<<PB0)
 	#define DISP_BR   (1<<PB1)
 	#define DISP_BL   (1<<PB6)
