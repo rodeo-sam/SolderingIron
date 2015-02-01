@@ -39,9 +39,9 @@ static uint8_t framebuffer[3];
 
 // initializing the DDRs and ports for the LED display
 void display_init() {
-	DDRB = 0xff;
-	PORTB= 0;
-	DDRC |= LED0|LED1|LED2;
+	DISP_DDR = 0xff;
+	DISP_PORT = 0;
+	LED_DDR |= LED0|LED1|LED2;
 	framebuffer[2] = 0;
 	framebuffer[1] = 0;
 	framebuffer[0] = 0;
@@ -108,7 +108,7 @@ void display_number(int16_t number) {
 
 // put a specific character up on a specific area of the seven segment display
 void display_digit(uint8_t led_idx, uint8_t digit) {
-	PORTC &= ~(LED0|LED1|LED2); //all off
+	LED_PORT &= ~(LED0|LED1|LED2); //all off
 
 	if (digit>16) {
 		//error in case digit was too high
@@ -123,9 +123,9 @@ void display_digit(uint8_t led_idx, uint8_t digit) {
 void display_update() {
 	static uint8_t led_idx = 0;
 
-	PORTC &= ~(LED0|LED1|LED2); //all off
-	PORTB = framebuffer[led_idx];
-	PORTC |= (1<<3+led_idx);
+	LED_PORT &= ~(LED0|LED1|LED2); //all off
+	DISP_PORT = framebuffer[led_idx];
+	LED_PORT |= (1<<3+led_idx);
 
 	if (led_idx++ >2) led_idx = 0;
 }
