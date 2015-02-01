@@ -35,7 +35,6 @@ int main(void)
 	}
 	if(!initialized){
 		display_number(1000); //to display ERR
-		display_update();
 		conf->pid_d = 0.1;
 		conf->pid_i = 0.1;
 		conf->pid_p = 0.1;
@@ -45,26 +44,20 @@ int main(void)
 	}
 	uint16_t num = config_save();
 	display_number(num);
-	display_update();
 	_delay_ms(200);
 
 
 	while(1)
 	{
 		display_number((uint16_t)(conf->pid_p * 10));
-		display_update();	
-		_delay_us(300);		
+		_delay_ms(300);		
 		display_number((uint16_t)(conf->pid_i * 10));
-		display_update();	
-		_delay_us(300);		
+		_delay_ms(300);		
 		display_number((uint16_t)(conf->pid_d * 10));
-		display_update();
-		_delay_us(300);
+		_delay_ms(300);
 		display_number(conf->default_temp);
-		display_update();
-		_delay_us(300);
+		_delay_ms(300);
 		display_number(conf->temp_offset);
-		display_update();
-		_delay_us(300);
+		_delay_ms(300);
 	}
 }
