@@ -170,7 +170,7 @@ $(OBJECTS): $(HEADERS) config.mk
 
 # remove all compiled files
 clean:
-	$(RM) $(foreach ext,elf hex eep.hex bin map,$(TARGET).$(ext)) \
+	$(RM) $(foreach ext,elf hex eep.hex bin map,$(notdir $(TARGET)).$(ext)) \
 		$(foreach file,$(patsubst %.o,%,$(OBJECTS)),$(foreach ext,o lst lss,$(file).$(ext)))
 
 # additionally remove the dependency makefile and config.mk
@@ -179,7 +179,7 @@ distclean: clean
 	$(RM) config.mk
 
 # avrdude-related targets
-install program: program-$(TARGET) program-eeprom-$(TARGET)
+install program: program-$(notdir $(TARGET)) 
 
 avrdude-test:
 	$(AVRDUDE) $(AVRDUDE_FLAGS) -c $(PROG) -P $(DEV)
@@ -187,11 +187,11 @@ avrdude-test:
 avrdude-terminal:
 	$(AVRDUDE) $(AVRDUDE_FLAGS) -c $(PROG) -P $(DEV) -t
 
-program-%: %.hex
-	$(AVRDUDE) $(AVRDUDE_FLAGS) -c $(PROG) -P $(DEV) -U flash:w:$<
+program-%: $(TARGET).hex
+	$(AVRDUDE) $(AVRDUDE_FLAGS) -c $(PROG) -P $(DEV) -U flash:w:$(notdir $<)
 
 program-eeprom-%: %.eep.hex
-	$(AVRDUDE) $(AVRDUDE_FLAGS) -c $(PROG) -P $(DEV) -U eeprom:w:$<
+	$(AVRDUDE) $(AVRDUDE_FLAGS) -c $(PROG) -P $(DEV) -U eeprom:w:$(notdir $<)
 
 # special programming targets
 %.hex: %.elf
@@ -215,6 +215,6 @@ program-eeprom-%: %.eep.hex
 .PHONY: fuses
 
 fuses:
-	$(AVRDUDE) $(AVRDUDE_FLAGS) -c $(PROG) -P $(DEV) -U lfuse:w:0xe2:m -U hfuse:w:0xd9:m -U efuse:w:0xff:m 
+	$(AVRDUDE) $(AVRDUDE_FLAGS) -c $(PROG) -P $(DEV) -U lfuse:w:0xe2:m -U hfuse:w:0xd1:m -U efuse:w:0xff:m 
 
 -include $(shell $(MKDIR) .dep 2>/dev/null) $(wildcard .dep/*)
