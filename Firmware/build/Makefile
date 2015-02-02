@@ -170,7 +170,7 @@ $(OBJECTS): $(HEADERS) config.mk
 
 # remove all compiled files
 clean:
-	$(RM) $(foreach ext,elf hex eep.hex bin map,$(TARGET).$(ext)) \
+	$(RM) $(foreach ext,elf hex eep.hex bin map,$(notdir $(TARGET)).$(ext)) \
 		$(foreach file,$(patsubst %.o,%,$(OBJECTS)),$(foreach ext,o lst lss,$(file).$(ext)))
 
 # additionally remove the dependency makefile and config.mk
@@ -187,11 +187,11 @@ avrdude-test:
 avrdude-terminal:
 	$(AVRDUDE) $(AVRDUDE_FLAGS) -c $(PROG) -P $(DEV) -t
 
-program-%: %.hex
-	$(AVRDUDE) $(AVRDUDE_FLAGS) -c $(PROG) -P $(DEV) -U flash:w:$<
+program-%: $(TARGET).hex
+	$(AVRDUDE) $(AVRDUDE_FLAGS) -c $(PROG) -P $(DEV) -U flash:w:$(notdir $<)
 
 program-eeprom-%: %.eep.hex
-	$(AVRDUDE) $(AVRDUDE_FLAGS) -c $(PROG) -P $(DEV) -U eeprom:w:$<
+	$(AVRDUDE) $(AVRDUDE_FLAGS) -c $(PROG) -P $(DEV) -U eeprom:w:$(notdir $<)
 
 # special programming targets
 %.hex: %.elf
