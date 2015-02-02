@@ -1,15 +1,14 @@
 /*
- * buttons.h
+ * buttons.h 
  *
- * Created: Su 1. Feb 18:07:02 CET 2015
- * Author: Johannes van Balen <j.van-balen tu-bs.de>
- */
- 
+ * Created:  Mon Feb  2 00:10:01 2015
+ * Author: Georg von Zengen <oni303@gmail.com>
+ */ 
+
 #pragma once
 
-#include <avr/io.h>
-#include <avr/interrupt.h>
 
-#include "global_vars.h"
+extern void *(plus_callback)(void);
+extern void *(minus_callback)(void);
 
-#include "pinout.h"
+void buttons_init(void (*p_callback)(void), void (*m_callback)(void));
