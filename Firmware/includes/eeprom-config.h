@@ -9,9 +9,9 @@
 #define CONFIG_OFFSET 0
 
 typedef struct {
-	float pid_p;
-	float pid_i;
-	float pid_d;
+	uint16_t pid_p;
+	uint16_t pid_i;
+	uint16_t pid_d;
 	uint16_t default_temp;
 	uint16_t temp_offset;
 } config_t;

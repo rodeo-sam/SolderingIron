@@ -35,9 +35,9 @@ int main(void)
 	}
 	if(!initialized){
 		display_number(1000); //to display ERR
-		conf->pid_d = 0.1;
-		conf->pid_i = 0.1;
-		conf->pid_p = 0.1;
+		conf->pid_d = 12;
+		conf->pid_i = 12;
+		conf->pid_p = 12;
 		conf->default_temp = 350;
 		conf->temp_offset = 50;
 		_delay_ms(1000);
@@ -49,11 +49,11 @@ int main(void)
 
 	while(1)
 	{
-		display_fixed_point((uint16_t)(conf->pid_p * 10),-1);
+		display_number(conf->pid_p);
 		_delay_ms(300);		
-		display_fixed_point((uint16_t)(conf->pid_i * 10),-1);
+		display_number(conf->pid_i);
 		_delay_ms(300);		
-		display_fixed_point((uint16_t)(conf->pid_d * 10),-1);
+		display_number(conf->pid_d);
 		_delay_ms(300);
 		display_number(conf->default_temp);
 		_delay_ms(300);
