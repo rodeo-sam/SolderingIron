@@ -7,18 +7,28 @@
 
 #include <util/delay.h>
 #include "display.h"
-#include "config.h"
+#include "../config.h"
+#include <avr/io.h>
+#include <avr/interrupt.h>
 #include "buttons.h"
 
-int count = 0;
+static int count = 0;
 void plus(void)
 {
-	count++;
+  if (count != TEMP_MAX) {
+  	count++;
+    
+  }
 }
+
 void minus(void)
 {
-	count--;
+  if (count != TEMP_MIN) {
+    count--;
+  }
 }
+
+
 
 int main(void)
 {
