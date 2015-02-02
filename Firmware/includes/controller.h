@@ -7,4 +7,4 @@
  */ 
 
 void control_init(void);
-void conrol_set_temp(uint16_t temp);
+void control_set_temp(int16_t temp);
