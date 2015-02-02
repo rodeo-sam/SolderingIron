@@ -65,21 +65,58 @@ static uint16_t i2bcd(uint16_t i) {
 	return bcd;
 }
 
+void display_error() {
+	framebuffer[2] = SIGN_E;
+	framebuffer[1] = SIGN_R;
+	framebuffer[0] = SIGN_R;
+}
+
+
+// converts a fixed point number into framebuffer
+void display_fixed_point(int16_t number, int8_t exp) {
+	if ((exp <- 2) || (exp > 2)) {
+		display_error();
+		return;
+	}
+
+	switch(exp) {
+		case 2:
+			display_number(number*100);
+			break;
+		case 1:
+			display_number(number*10);
+			break;
+		case 0:
+			display_number(number);
+			break;
+		case -1: 
+			display_number(number);
+			if (framebuffer[1] == 0) {
+				framebuffer[1] = SIGN_0;
+			}
+			framebuffer[1] |= (SIGN_DOT);
+			break;
+		case -2: 
+			display_number(number);
+			if (framebuffer[1] == 0) {
+				framebuffer[1] = SIGN_0;
+			}
+			if (framebuffer[2] == 0) {
+				framebuffer[2] = SIGN_0;
+			}
+			framebuffer[2] |= (SIGN_DOT);
+			break;
+	}
+}
+
 // converts a binary number to BCD and copys into framebuffer
 void display_number(int16_t number) {
 
 	uint8_t digits[3] = {0,0,0};
 
 	// check for valid data
-	if (number < -99) {
-		framebuffer[2] = SIGN_E;
-		framebuffer[1] = SIGN_R;
-		framebuffer[0] = SIGN_R;
-		return;
-	} else if (number > 999) {
-		framebuffer[2] = SIGN_E;
-		framebuffer[1] = SIGN_R;
-		framebuffer[0] = SIGN_R;
+	if ((number < -99) || (number > 999)) {
+		display_error();
 		return;
 	}
 

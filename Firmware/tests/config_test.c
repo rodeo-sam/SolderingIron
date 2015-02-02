@@ -49,11 +49,11 @@ int main(void)
 
 	while(1)
 	{
-		display_number((uint16_t)(conf->pid_p * 10));
+		display_fixed_point((uint16_t)(conf->pid_p * 10),-1);
 		_delay_ms(300);		
-		display_number((uint16_t)(conf->pid_i * 10));
+		display_fixed_point((uint16_t)(conf->pid_i * 10),-1);
 		_delay_ms(300);		
-		display_number((uint16_t)(conf->pid_d * 10));
+		display_fixed_point((uint16_t)(conf->pid_d * 10),-1);
 		_delay_ms(300);
 		display_number(conf->default_temp);
 		_delay_ms(300);
