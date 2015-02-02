@@ -10,5 +10,7 @@
 
 extern void *(plus_callback)(void);
 extern void *(minus_callback)(void);
+extern void (*third_callback)(void);
+extern void (*third_long_callback)(void);
 
-void buttons_init(void (*p_callback)(void), void (*m_callback)(void));
+void buttons_init(void (*p_callback)(void), void (*m_callback)(void), void (*t_callback)(void), void (*tl_callback)(void));
