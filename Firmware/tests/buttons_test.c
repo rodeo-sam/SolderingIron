@@ -28,13 +28,21 @@ void minus(void)
   }
 }
 
+void zero(void)
+{
+	count=0;
+}
+void one(void)
+{
+	count=1;
+}
 
 
 int main(void)
 {
 	display_init();
 
-	buttons_init(&plus, &minus);
+	buttons_init(&plus, &minus, &zero, &one);
 
 	while(1)
 	{
