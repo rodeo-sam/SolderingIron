@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE eagle SYSTEM "eagle.dtd">
-<eagle version="7.2.0">
+<eagle version="6.6.0">
 <drawing>
 <settings>
 <setting alwaysvectorfont="no"/>
@@ -17936,6 +17936,7 @@ Source: www.kingbright.com</description>
 <part name="R29" library="rcl" deviceset="R-EU_" device="R0603" value="280"/>
 <part name="GND20" library="supply1" deviceset="GND" device=""/>
 <part name="P+9" library="supply1" deviceset="VCC" device=""/>
+<part name="R30" library="rcl" deviceset="R-EU_" device="R0603" value="1k"/>
 </parts>
 <sheets>
 <sheet>
@@ -18109,6 +18110,7 @@ Verstaerkung 431</text>
 <instance part="R29" gate="G$1" x="373.38" y="119.38" rot="R90"/>
 <instance part="GND20" gate="1" x="373.38" y="109.22"/>
 <instance part="P+9" gate="VCC" x="373.38" y="139.7"/>
+<instance part="R30" gate="G$1" x="40.64" y="68.58"/>
 </instances>
 <busses>
 </busses>
@@ -18388,22 +18390,16 @@ Verstaerkung 431</text>
 </net>
 <net name="SENSOR0" class="0">
 <segment>
-<label x="38.1" y="68.58" size="1.778" layer="95" rot="R270" xref="yes"/>
-<pinref part="IC1" gate="A" pin="+IN"/>
-<pinref part="C1" gate="G$1" pin="1"/>
-<pinref part="TP4" gate="G$1" pin="TP"/>
-<wire x1="38.1" y1="68.58" x2="48.26" y2="68.58" width="0.1524" layer="91"/>
-<wire x1="48.26" y1="68.58" x2="55.88" y2="68.58" width="0.1524" layer="91"/>
-<wire x1="48.26" y1="76.2" x2="48.26" y2="68.58" width="0.1524" layer="91"/>
-<junction x="48.26" y="68.58"/>
-<wire x1="48.26" y1="68.58" x2="48.26" y2="50.8" width="0.1524" layer="91"/>
-</segment>
-<segment>
 <wire x1="218.44" y1="223.52" x2="208.28" y2="223.52" width="0.1524" layer="91"/>
 <wire x1="208.28" y1="223.52" x2="208.28" y2="228.6" width="0.1524" layer="91"/>
 <wire x1="208.28" y1="228.6" x2="220.98" y2="228.6" width="0.1524" layer="91"/>
 <label x="220.98" y="228.6" size="1.778" layer="95" xref="yes"/>
 <pinref part="J1" gate="-2" pin="S"/>
+</segment>
+<segment>
+<pinref part="R30" gate="G$1" pin="1"/>
+<wire x1="30.48" y1="68.58" x2="35.56" y2="68.58" width="0.1524" layer="91"/>
+<label x="30.48" y="68.58" size="1.778" layer="95" rot="R270" xref="yes"/>
 </segment>
 </net>
 <net name="ENABLE_LED_1" class="0">
@@ -19005,6 +19001,19 @@ Verstaerkung 431</text>
 <pinref part="LED2" gate="G$1" pin="C"/>
 <pinref part="R29" gate="G$1" pin="2"/>
 <wire x1="373.38" y1="124.46" x2="373.38" y2="127" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$27" class="0">
+<segment>
+<pinref part="TP4" gate="G$1" pin="TP"/>
+<wire x1="48.26" y1="76.2" x2="48.26" y2="68.58" width="0.1524" layer="91"/>
+<pinref part="IC1" gate="A" pin="+IN"/>
+<wire x1="48.26" y1="68.58" x2="55.88" y2="68.58" width="0.1524" layer="91"/>
+<pinref part="C1" gate="G$1" pin="1"/>
+<wire x1="48.26" y1="50.8" x2="48.26" y2="68.58" width="0.1524" layer="91"/>
+<junction x="48.26" y="68.58"/>
+<pinref part="R30" gate="G$1" pin="2"/>
+<wire x1="45.72" y1="68.58" x2="48.26" y2="68.58" width="0.1524" layer="91"/>
 </segment>
 </net>
 </nets>
