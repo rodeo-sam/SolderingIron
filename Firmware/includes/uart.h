@@ -36,18 +36,7 @@ uint8_t uart_hasByte( void );
 uint8_t uart_getByte( void );
 
 void uart_sendByte(uint8_t);
-//sends a string stored in PROGMEM
-void uart_sendString_P(PGM_P s);
-
-//sends a string from ram
-void uart_sendString (const char *s);
-
-// send as bin string
-void uart_sendByte_as_bin(uint8_t data);
-void uart_sendByte_as_hex(uint8_t data);
-
-void uart_sendInt(int16_t i);
-void uart_sendDouble(double d);
-//void putRX_FiFO_test(uint8_t);
-//uint8_t popTX_FIFO_test(void);
 //----------------------------------------//
+int put(char, FILE*);
+char get(FILE*);
+

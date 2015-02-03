@@ -8,110 +8,18 @@
 #include <avr/io.h>
 #include <avr/interrupt.h>
 #include <stdlib.h>
+#include <stdio.h>
 #include "uart.h"
+#include "uart_register_map.h"
 
 // USART lib for USART0 on Atmega328
 
 //---------------------------------------------//
 //-Configure this:-----------------------------//
-#define USE_UART0 1
 // to disable in/out FIFOs and interrupts set this flag
 //#define BLOCKING 1
 //---------------------------------------------//
 
-#ifdef USE_UART0
-
-#define UDRn UDR0
-#define UBRRnH UBRR0H
-#define UBRRnL UBRR0L
-
-#define UCSRnA UCSR0A
-#define UCSRnB UCSR0B
-#define UCSRnC UCSR0C
-#define UCSRnD UCSR0D
-//bits in UCSRnA
-#define RXCn RXC0
-#define TXCn TXC0
-#define UDREn UDRE0
-#define FEn FE0
-#define DORn DOR0
-#define UPEn UPE0
-#define U2Xn U2X0
-#define MPCMn MPCM0
-//bits in UCSRnB
-#define RXCIEn RXCIE0
-#define TXCIEn TXCIE0
-#define UDRIEn UDRIE0
-#define RXENn RXEN0
-#define TXENn TXEN0
-#define UCSZn2 UCSZ02
-#define RXB8n RXB80
-#define TXB8n TXB80
-//bits in UCSRnC
-#define UMSELn1 UMSEL01
-#define UMSELn0 UMSEL00
-#define UPMn1 UPM01
-#define UPMn0 UPM00
-#define USBSn USBS0
-#define UCSZn1 UCSZ01
-#define UCSZn0 UCSZ00
-#define UCPOLn UCPOL0
-//bits in UCSRnD
-#define RXSIEn RXSIE0
-#define RXSn RXS0
-#define SFDEn SFDE0
-
-//interrupts
-#define USARTn_RX_vect USART_RX_vect
-#define USARTn_TX_vect USART_TX_vect
-
-#else // USE_UART1
-
-#define UDRn UDR1
-#define UBRRnH UBRR1H
-#define UBRRnL UBRR1L
-
-#define UCSRnA UCSR1A
-#define UCSRnB UCSR1B
-#define UCSRnC UCSR1C
-#define UCSRnD UCSR1D
-//bits in UCSR0A
-#define RXCn RXC1
-#define TXCn TXC1
-#define UDREn UDRE1
-#define FEn FE1
-#define DORn DOR1
-#define UPEn UPE1
-#define U2Xn U2X1
-#define MPCMn MPCM1
-//bits in UCSRnB
-#define RXCIEn RXCIE1
-#define TXCIEn TXCIE1
-#define UDRIEn UDRIE1
-#define RXENn RXEN1
-#define TXENn TXEN1
-#define UCSZn2 UCSZ12
-#define RXB8n RXB81
-#define TXB8n TXB81
-//bits in UCSRnC
-#define UMSELn1 UMSEL11
-#define UMSELn0 UMSEL10
-#define UPMn1 UPM11
-#define UPMn0 UPM10
-#define USBSn USBS1
-#define UCSZn1 UCSZ11
-#define UCSZn0 UCSZ10
-#define UCPOLn UCPOL1
-//bits in UCSRnD
-#define RXSIEn RXSIE1
-#define RXSn RXS1
-#define SFDEn SFDE1
-
-//interrupts
-#define USARTn_RX_vect USART1_RX_vect
-#define USARTn_TX_vect USART1_TX_vect
-
-#endif // USE_UART1 
 
 typedef enum{
 	normal_e,
@@ -348,81 +256,23 @@ void uart_sendByte( uint8_t data ) {
 	
 }
 
-
-// FIFO TEST
-void putRX_FiFO_test(uint8_t data){
-	/* write data register to RX_FIFO */
-	if(rx_rd_ptr == rx_wr_ptr+1) {
-		//skip input if no space left
-		return;
-	}
-	
-	RX_buffer[rx_wr_ptr] = data;
-	rx_wr_ptr++;
-	rx_wr_ptr &= RX_BUFFER_SIZE-1; //to allow a dynamic buffer size - Overflow
-}
-//-------------------------------------------------------------//
-uint8_t popTX_FIFO_test(void){
-	/*read from TX_FIFO and write to Hardware register*/
-	
-	while (tx_rd_ptr == tx_wr_ptr); //wait until data
-	
-	uint8_t data = TX_buffer[tx_rd_ptr]; //write value to hardware
-	tx_rd_ptr++;
-	tx_rd_ptr &= TX_BUFFER_SIZE-1; //to allow a dynamic buffer size - Overflow
-	
-	return data;
-}
 #endif //end ifnDef BLOCKING
-//-------------------------------------------------------------//
-// Higher-level sending
-//-------------------------------------------------------------//
-void uart_sendString_P(PGM_P s) {
-	unsigned char c = pgm_read_byte(s++);
-	while (c) {
-		uart_sendByte(c);
-		c = pgm_read_byte(s++);
-	}
-}
 
-void uart_sendString (const char *s)
-{
-	// no empty strings allowed!
-	if (*s)
-	{
-		do
-		{
-			uart_sendByte(*s);
-		}
-		while (*(++s));
-	}
+//----------------------------------------//
+// Wrapper for sendByte
+// takes at argument the input character, which should be sent
+// (c) and the file stream (s).
+int put(char c, FILE *s){
+  // Put your code here
+  uart_sendByte((uint8_t) c);
+  return 0;
 }
+//----------------------------------------//
+// Wrapper for getByte
+// get a character out of the file stream (s)
+char get(FILE *s){
+  // Put your code here
+  return (char) uart_getByte();
+}
+//----------------------------------------//
 
-void uart_sendByte_as_bin(uint8_t data) {
-	for (uint8_t i=8;i>0; i--) {
-		uint8_t bit = (data & 0x80)>>7;
-		data <<= 1;
-		uart_sendByte(('0'+bit));
-	}
-}
-
-void uart_sendByte_as_hex(uint8_t data) {
-	for (uint8_t i=2;i>0; i--) {
-		uint8_t digit = (data & 0xf0)>>4;
-		data <<= 4;
-		digit = (digit>9)?'A'+digit-10:'0'+digit;
-		uart_sendByte(digit);
-	}
-}
-
-void uart_sendInt(int16_t i) {
-	char buf[7];// sign + 5 digits + terminator
-	itoa(i,buf, 10);
-	uart_sendString(buf);
-}
-
-void uart_sendDouble(double d) {
-	char buf[11]; //sign + d.ddd + e+dd + terminator
-	dtostre(d,buf,3,0);
-	uart_sendString(buf);
-}
