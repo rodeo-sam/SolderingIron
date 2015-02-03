@@ -41,7 +41,7 @@ ISR(INT0_vect)
 			TIFR1 |= (1<<OCF1A); // clear interrupt flag
 			TIMSK1 |= (1<<OCIE1A); // enable timer compare match interrupt
 			pin = PD2;
-		} else if (pin == PD3){
+		} else if ((pin == PD3) && (!(PIND & (1 << PD3)))){
 			pin += PD2; 
 			OCR1A = TCNT1 + 65000; // pause of 2 second
 			third_pending = 1;
@@ -67,7 +67,7 @@ ISR(INT1_vect)
 			TIFR1 |= (1<<OCF1A); // clear interrupt flag
 			TIMSK1 |= (1<<OCIE1A); // enable timer compare match interrupt
 			pin = PD3;
-		} else if (pin == PD2){
+		} else if ((pin == PD2) && (!(PIND & (1 << PD2)))){
 			pin += PD3; 
 			OCR1A = TCNT1 + 65000; // pause of 2 second
 			third_pending = 1;
