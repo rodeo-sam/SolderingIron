@@ -35,7 +35,7 @@ void buttons_init(void (*p_callback)(void), void (*m_callback)(void), void (*t_c
 ISR(INT0_vect)
 {
 	if (!third_pending){
-		if (pin != PD3) {
+		if (pin != PD3 || (PIND & (1 << PD3))) {
 			plus_callback() ;
 			OCR1A = TCNT1 + 15000; // pause of 0.5 second
 			TIFR1 |= (1<<OCF1A); // clear interrupt flag
@@ -61,7 +61,7 @@ ISR(INT0_vect)
 ISR(INT1_vect)
 {
 	if (!third_pending){
-		if (pin != PD2) {
+		if (pin != PD2 || (PIND & (1 << PD2))) {
 			minus_callback();
 			OCR1A = TCNT1 + 15000; // pause of 0.5 second
 			TIFR1 |= (1<<OCF1A); // clear interrupt flag
