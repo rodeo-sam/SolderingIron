@@ -51,7 +51,7 @@ void buttons_init(void (*p_callback)(void), void (*m_callback)(void), void (*t_c
 	sei();
 }
 
-ISR(INT0_vect)
+ISR(PLUS_INTERRUPT_VECT)
 {
 	if (!third_pending){
 		if (pin != MINUS_PIN || (PIND & (1 << MINUS_PIN))) {
@@ -84,7 +84,7 @@ ISR(INT0_vect)
 }
 
 
-ISR(INT1_vect)
+ISR(MINUS_INTERRUPT_VECT)
 {
 	if (!third_pending){
 		if (pin != PLUS_PIN || (PIND & (1 << PLUS_PIN))) {
