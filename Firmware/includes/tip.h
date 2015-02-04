@@ -7,3 +7,4 @@
 
 void tip_init(void);
 int16_t get_tip_temp(void);
+void tip_start_conversion(void);

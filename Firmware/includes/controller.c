@@ -19,6 +19,8 @@
 volatile int16_t w = 0;
 int16_t esum = 0;
 int16_t eold = 0;
+volatile int16_t y_buffer = 0;
+
 void control_set_temp(int16_t temp)
 {
 	w = temp;
@@ -60,21 +62,18 @@ void control(void)
 	} else if (y < 0){
 		y = 0;
 	}
-	display_number(y);
-   
 
-
-	OCR0A = y;
+	y_buffer = y;
 }
 
+ISR(ADC_vect){
+	PORTD |= (1<<PD4); //set pwm pin high
+	control();
+}
 ISR(TIMER0_OVF_vect) {
-	if(OCR0A){ //prevent form setting pin high if high-time is 0
- 		PORTD |= (1<<PD4); //set pwm pin high
-	}
+	OCR0A = y_buffer;
+	tip_start_conversion();
 }
 ISR(TIMER0_COMPA_vect) {
-	if(OCR0A!=255){ //prevent form setting pin low if low-time is 0
 		PORTD &= ~(1<<PD4); //set pwm pin low
-	}
-	control();
 }
