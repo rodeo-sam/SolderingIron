@@ -20,7 +20,7 @@ volatile int16_t w = 0;
 int16_t esum = 0;
 int16_t eold = 0;
 volatile int16_t y_buffer = 0;
-void adc_callback(void);
+void adc_callback(uint16_t);
 void control_set_temp(int16_t temp)
 {
 	w = temp;
@@ -37,9 +37,9 @@ void control_init(void)
 
 void control(void)
 {
-	//TODO get temperature
-	
-	int16_t e = w - 350; //get_tip_temp(); //TODO maybe rename
+	// XXX test this
+	int16_t temp = tip_get_temp();
+	int16_t e = w - temp; 
 	//display_fixed_point((uint16_t)(config.pid_p * 10),-1);
 	   //guarding preventing esum over/underflows
 	if(esum >= (int32_t)(0x3fff - e)){
@@ -66,7 +66,8 @@ void control(void)
 	y_buffer = y;
 }
 
-void adc_callback(void){
+void adc_callback(uint16_t raw){
+	tip_temperature_from_adc(raw);//convert it and let it remember
 	PORTD |= (1<<PD4); //set pwm pin high
 	control();
 }

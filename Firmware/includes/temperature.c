@@ -7,12 +7,12 @@
 
 #include "adc.h"
 #include <avr/eeprom.h>
-extern int8_t temperature_offset EEMEM;
+#include <stdbool.h>
 
 /** reads the temperature value from the internal sensor
  * uses free running?
  */
-static void temperature_init(void) {
+static void temperature_internal_init(void) {
 	adc_configuration_t conf = {
 		.channel = CH_TEMPERATURE,
 		.reference = REF_1V1_NC,
@@ -23,10 +23,10 @@ static void temperature_init(void) {
 
 /* calc temperature in celsius degree*/
 int8_t measure_get_internal_temperature() {
-	temperature_init();
+	temperature_internal_init();
 
 	uint8_t k = 1;
-	int8_t offset =  eeprom_read_byte((uint8_t*)&temperature_offset);
+	int8_t offset = 0;// eeprom_read_byte((uint8_t*)&temperature_offset);
 	int16_t Tos = -290;
 	Tos += offset;
 	//T = k * [(ADCH << 8) | ADCL] + T OS
@@ -40,5 +40,4 @@ int8_t measure_get_internal_temperature() {
 	return (int8_t) T;
 }
 
-//TODO 
-//int16_t measure_get_tip_temperature()
+

@@ -9,6 +9,7 @@
 #include <avr/io.h>
 #include <util/delay.h>
 #include "adc.h"
+#include "display.h"
 
 #ifndef F_CPU
 #error F_CPU needs to be defined for the AD Keypad to work
@@ -33,6 +34,11 @@
 #error Unsupported system clock
 #endif
 
+static void (*adc_complete_callback)(uint16_t);
+
+/* Attention: if using (auto) trigger aka interrupt based
+ * convertion - pass a function pointer to adc_complete_callback 
+ */
 void adc_init(adc_configuration_t conf)	{
 
 	// set input
@@ -68,9 +74,10 @@ void adc_init(adc_configuration_t conf)	{
 	// set Prescaler
 	ADCSRA &= ~((1<<ADPS2)|(1<<ADPS1)|(1<<ADPS0));
 	ADCSRA |= (ADC_PRESCALER);
+}
 
-	// enable ADC - extern
-	//ADCSRA |= (1<<ADEN);
+bool adc_is_busy() {
+	return (ADCSRA & (1<<ADSC));
 }
 
 uint16_t adc_read_blocking() {
@@ -88,10 +95,23 @@ void adc_stop() {
 	ADCSRA |= (1<<ADIF);
 }
 
+void adc_trigger() {
+	// enable ADC
+	ADCSRA |= (1<<ADEN);
+	//start 
+	ADCSRA |= (1<<ADSC); 
+}
+
 void adc_run() {
 	// enable ADC
 	ADCSRA |= (1<<ADEN);
 }
+
+void adc_set_conversion_complete_callback(void (*adc_callback)(uint16_t)) {
+	adc_complete_callback = adc_callback;
+}
+
+//-------------------------------------------------
 
 // number of measurements to average
 #define ADC_AVERAGE_SIZE 8
@@ -107,24 +127,20 @@ uint16_t adc_average_hi(uint8_t r_in_M_ohm) {
 		for (;r_in_M_ohm>0; r_in_M_ohm--)
 			_delay_us(80);
 		uint16_t value = adc_read_blocking();
+		//_delay_ms(2);//XXX
 		sum += value;
 	}
 	adc_stop();
 	uint16_t av = sum / ADC_AVERAGE_SIZE;
-	return av;	
+	return av;
 }
-//-------------------------------------------------
 
-// should return about 230
-uint16_t adc_test() {
-	adc_configuration_t conf = {
-		.channel = CH_1V1,
-		.reference = REF_VCC,
-		.trigger = TRGR_NO_TRIGGER
-	};
-	adc_init(conf);
-	adc_run();
-	uint16_t value = adc_read_blocking();
+//-------------------------------------------------------------//
+void ADC_vect (void )
+__attribute__ (( used, externally_visible, signal ));
+//-------------------------------------------------------------//
+void ADC_vect() {
 	adc_stop();
-	return value;
+	// calls the callback an passes the new measure
+	adc_complete_callback(ADC);
 }

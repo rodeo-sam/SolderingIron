@@ -52,7 +52,10 @@ typedef struct
 
 void adc_init(adc_configuration_t conf);
 uint16_t adc_read_blocking();
-uint16_t adc_test();
 uint16_t adc_average();
 uint16_t adc_average_hi(uint8_t r_in_M_ohm);
+void adc_trigger();
+bool adc_is_busy();
+// that function is called if interrupts are enabled
+void adc_set_conversion_complete_callback(void (*adc_callback)(uint16_t));
 
