@@ -3,10 +3,16 @@
  *
  * Created:  Mon Feb  2 00:10:01 2015
  * Author: Georg von Zengen <oni303@gmail.com>
+ * 		   Keno Garlichs <k.garlichs@tu-braunschweig.de>
  */ 
 
 #pragma once
 
+#define BUTTON_PORT PORTD
+#define BUTTON_PORT_DDR DDRD
+#define BUTTON_PIN PIND
+#define PLUS_PIN PD2
+#define MINUS_PIN PD3
 
 extern void *(plus_callback)(void);
 extern void *(minus_callback)(void);
