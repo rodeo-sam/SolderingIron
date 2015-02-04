@@ -9,7 +9,7 @@
 
 //TODO fill with usefull code
 
-void tip_init((void)(*callback)(void))
+void tip_init(void(*callback)(void))
 {
 	//TODO call adc initialization
 	return;
