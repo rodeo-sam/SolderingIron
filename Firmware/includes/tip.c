@@ -11,7 +11,7 @@ static int16_t tip_temperature = 25; //off on startup
 
 //TODO fill with usefull code
 
-void tip_init((void)(*callback)(void))
+void tip_init(void(*callback)(void))
 {
 	//TODO remove it
 	return;
