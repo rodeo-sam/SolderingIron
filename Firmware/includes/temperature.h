@@ -8,5 +8,4 @@
 #pragma once
 
 int8_t measure_get_internal_temperature();
-//TODO
-//int16_t measure_get_tip_temperature();
+int16_t measure_get_soldertip_temperature();
