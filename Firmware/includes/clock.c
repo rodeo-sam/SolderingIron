@@ -63,7 +63,7 @@ uint8_t clock_get_subsubsec(void)
 	return tmp;
 }
 
-ISR (TIMER2_COMP_vect)
+ISR (TIMER2_COMPA_vect)
 {
 	subsubsec++;
 	if (subsubsec == 4) {
