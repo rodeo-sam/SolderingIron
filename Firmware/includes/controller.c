@@ -19,6 +19,8 @@
 volatile int16_t w = 0;
 int16_t esum = 0;
 int16_t eold = 0;
+volatile int16_t y_buffer = 0;
+void adc_callback(void);
 void control_set_temp(int16_t temp)
 {
 	w = temp;
@@ -27,7 +29,7 @@ void control_set_temp(int16_t temp)
 void control_init(void)
 {
 	timer0_init();
-	tip_init();
+	tip_init(&adc_callback);
 	TIMSK0 |= (1 << TOIE0) | (1 << OCIE0A);
 	DDRD |= (1<< PD4);
 	w = config.default_temp;
@@ -60,21 +62,18 @@ void control(void)
 	} else if (y < 0){
 		y = 0;
 	}
-	display_number(y);
-   
 
-
-	OCR0A = y;
+	y_buffer = y;
 }
 
+void adc_callback(void){
+	PORTD |= (1<<PD4); //set pwm pin high
+	control();
+}
 ISR(TIMER0_OVF_vect) {
-	if(OCR0A){ //prevent form setting pin high if high-time is 0
- 		PORTD |= (1<<PD4); //set pwm pin high
-	}
+	OCR0A = y_buffer;
+	tip_start_conversion();
 }
 ISR(TIMER0_COMPA_vect) {
-	if(OCR0A!=255){ //prevent form setting pin low if low-time is 0
 		PORTD &= ~(1<<PD4); //set pwm pin low
-	}
-	control();
 }

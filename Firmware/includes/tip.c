@@ -9,12 +9,20 @@
 
 //TODO fill with usefull code
 
-void tip_init(void)
+void tip_init((void)(*callback)(void))
 {
+	//TODO call adc initialization
 	return;
 }
 
 int16_t get_tip_temp(void)
 {
+	//TODO return result of the last conversion
 	return 350;
+}
+
+void tip_start_conversion(void)
+{
+	//TODO start adc conversion
+	return;
 }
