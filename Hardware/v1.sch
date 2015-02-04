@@ -17922,7 +17922,6 @@ Source: www.kingbright.com</description>
 <part name="C12" library="rcl" deviceset="C-EU" device="C0603" value="100n"/>
 <part name="C13" library="rcl" deviceset="C-EU" device="C0603" value="100n"/>
 <part name="J5" library="con-molex" deviceset="22-?-04" device="27-2041"/>
-<part name="J2" library="con-molex" deviceset="22-?-02" device="27-2021"/>
 <part name="C14" library="rcl" deviceset="CPOL-EU" device="E3.5-8" value="330u"/>
 <part name="C16" library="rcl" deviceset="C-EU" device="C0603" value="10n"/>
 <part name="GND17" library="supply1" deviceset="GND" device=""/>
@@ -17937,6 +17936,8 @@ Source: www.kingbright.com</description>
 <part name="GND20" library="supply1" deviceset="GND" device=""/>
 <part name="P+9" library="supply1" deviceset="VCC" device=""/>
 <part name="R30" library="rcl" deviceset="R-EU_" device="R0603" value="1k"/>
+<part name="J2" library="con-molex" deviceset="22-?-03" device="27-2031"/>
+<part name="GND21" library="supply1" deviceset="GND" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -18095,8 +18096,6 @@ Verstaerkung 431</text>
 <instance part="J5" gate="-2" x="60.96" y="223.52" rot="R90"/>
 <instance part="J5" gate="-3" x="63.5" y="223.52" rot="R90"/>
 <instance part="J5" gate="-4" x="66.04" y="223.52" rot="R90"/>
-<instance part="J2" gate="-1" x="241.3" y="147.32"/>
-<instance part="J2" gate="-2" x="241.3" y="144.78"/>
 <instance part="C14" gate="G$1" x="48.26" y="200.66"/>
 <instance part="C16" gate="G$1" x="88.9" y="60.96"/>
 <instance part="GND17" gate="1" x="88.9" y="50.8"/>
@@ -18111,6 +18110,10 @@ Verstaerkung 431</text>
 <instance part="GND20" gate="1" x="373.38" y="109.22"/>
 <instance part="P+9" gate="VCC" x="373.38" y="139.7"/>
 <instance part="R30" gate="G$1" x="40.64" y="68.58"/>
+<instance part="J2" gate="-1" x="236.22" y="147.32"/>
+<instance part="J2" gate="-2" x="236.22" y="144.78"/>
+<instance part="J2" gate="-3" x="236.22" y="142.24"/>
+<instance part="GND21" gate="1" x="231.14" y="139.7"/>
 </instances>
 <busses>
 </busses>
@@ -18359,6 +18362,11 @@ Verstaerkung 431</text>
 <pinref part="R29" gate="G$1" pin="1"/>
 <pinref part="GND20" gate="1" pin="GND"/>
 <wire x1="373.38" y1="111.76" x2="373.38" y2="114.3" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="GND21" gate="1" pin="GND"/>
+<pinref part="J2" gate="-3" pin="S"/>
+<wire x1="233.68" y1="142.24" x2="231.14" y2="142.24" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$1" class="0">
@@ -18741,20 +18749,6 @@ Verstaerkung 431</text>
 <pinref part="R17" gate="G$1" pin="2"/>
 </segment>
 </net>
-<net name="PD0" class="0">
-<segment>
-<pinref part="IC2" gate="G$1" pin="PD0(RXD)"/>
-<wire x1="203.2" y1="147.32" x2="238.76" y2="147.32" width="0.1524" layer="91"/>
-<pinref part="J2" gate="-1" pin="S"/>
-</segment>
-</net>
-<net name="PD1" class="0">
-<segment>
-<pinref part="IC2" gate="G$1" pin="PD1(TXD)"/>
-<wire x1="238.76" y1="144.78" x2="203.2" y2="144.78" width="0.1524" layer="91"/>
-<pinref part="J2" gate="-2" pin="S"/>
-</segment>
-</net>
 <net name="PD5" class="0">
 <segment>
 <pinref part="IC2" gate="G$1" pin="PD5(T1)"/>
@@ -19014,6 +19008,20 @@ Verstaerkung 431</text>
 <junction x="48.26" y="68.58"/>
 <pinref part="R30" gate="G$1" pin="2"/>
 <wire x1="45.72" y1="68.58" x2="48.26" y2="68.58" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$28" class="0">
+<segment>
+<pinref part="IC2" gate="G$1" pin="PD1(TXD)"/>
+<pinref part="J2" gate="-2" pin="S"/>
+<wire x1="233.68" y1="144.78" x2="203.2" y2="144.78" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$29" class="0">
+<segment>
+<pinref part="IC2" gate="G$1" pin="PD0(RXD)"/>
+<pinref part="J2" gate="-1" pin="S"/>
+<wire x1="233.68" y1="147.32" x2="203.2" y2="147.32" width="0.1524" layer="91"/>
 </segment>
 </net>
 </nets>
