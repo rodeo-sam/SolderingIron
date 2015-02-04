@@ -5,6 +5,6 @@
  * Author: Georg von Zengen <oni303@gmail.com>
  */ 
 
-void tip_init(void);
+void tip_init((void)(*callback)(void));
 int16_t get_tip_temp(void);
 void tip_start_conversion(void);

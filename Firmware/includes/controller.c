@@ -20,7 +20,7 @@ volatile int16_t w = 0;
 int16_t esum = 0;
 int16_t eold = 0;
 volatile int16_t y_buffer = 0;
-
+void adc_callback(void);
 void control_set_temp(int16_t temp)
 {
 	w = temp;
@@ -29,7 +29,7 @@ void control_set_temp(int16_t temp)
 void control_init(void)
 {
 	timer0_init();
-	tip_init();
+	tip_init(&adc_callback);
 	TIMSK0 |= (1 << TOIE0) | (1 << OCIE0A);
 	DDRD |= (1<< PD4);
 	w = config.default_temp;
@@ -66,7 +66,7 @@ void control(void)
 	y_buffer = y;
 }
 
-ISR(ADC_vect){
+void adc_callback(void){
 	PORTD |= (1<<PD4); //set pwm pin high
 	control();
 }
