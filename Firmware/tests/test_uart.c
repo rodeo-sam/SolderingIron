@@ -12,14 +12,10 @@
 #include <stdio.h>
 #include "uart.h"
 
-// a. redirect stdout (part 1)
-static FILE mystream = FDEV_SETUP_STREAM( put, get, _FDEV_SETUP_RW );
 
 int main(void)
 {
 	uart_init(19200, one_stop_bit_e, no_parity_e);
-    // b. redirect stdout (part 2)
-    stdin=stdout = &mystream;
 	display_init();
 
 	display_digit(1,3);

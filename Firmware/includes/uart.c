@@ -3,6 +3,7 @@
  *
  * Created: Di 3. Feb 13:13:27 CET 2015
  * Author: Karsten Hinz <k.hinz tu-bs.de>
+ *         Georg von Zengen <oni303@gmail.com>
  */ 
 
 #include <avr/io.h>
@@ -172,6 +173,7 @@ uint8_t uart_init(uint16_t baudrate, stop_bits_t st, parity_t par){
 			//error
 			return 1;
 	}
+	stdin=stdout = &mystream;
 
 #ifndef BLOCKING
 	//FIFO init

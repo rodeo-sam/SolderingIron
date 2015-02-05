@@ -40,3 +40,5 @@ void uart_sendByte(uint8_t);
 int put(char, FILE*);
 char get(FILE*);
 
+
+static FILE mystream = FDEV_SETUP_STREAM( put, get, _FDEV_SETUP_RW );
