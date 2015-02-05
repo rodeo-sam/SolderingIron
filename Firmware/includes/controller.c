@@ -19,11 +19,13 @@
 
 
 volatile int16_t w = 0;
-int16_t esum = 0;
-int16_t eold = 0;
+
+volatile int16_t esum = 0;
+volatile int16_t eold = 0;
 volatile int16_t y_buffer = 255;
 volatile uint8_t Trand = 255; 
 void new_temperature_ready_callback(int16_t);
+
 void control_set_temp(int16_t temp)
 {
 	w = temp;
