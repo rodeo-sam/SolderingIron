@@ -2,8 +2,8 @@
 #include "display.h"
 #include <avr/io.h>
 #include <avr/interrupt.h>
+#include "timing.h"
 
-#include "timer0.h"
 
 #define DISPLAY_REFRESH_INTERVAL 16 // 0.5ms 
 
@@ -34,6 +34,7 @@ typedef enum {
 } sign_t;
 
 static uint8_t framebuffer[3];
+next_time_t display_timer;
 //extern uint16_t g_temperature;
 
 
@@ -46,9 +47,10 @@ void display_init() {
 	framebuffer[1] = 0;
 	framebuffer[0] = 0;
 
-	timer0_init();
-	TIMSK0 |=  (1 << OCIE0B);
-	OCR0B = DISPLAY_REFRESH_INTERVAL;
+	
+	timer_init(&display_timer,0,0,2); // 10ms
+	timer_prepare();
+	timer_set(&display_timer);
 }
 
 // source http://www.expertcore.org/viewtopic.php?f=8&t=3742
@@ -166,14 +168,20 @@ void display_update() {
 
 	if (led_idx++ >2) led_idx = 0;
 }
-
+void display_updater(void)
+{
+	if(timer_past(&display_timer)){ 
+		timer_set(&display_timer); 
+		display_update();
+	}
+}
 // setting up custom characters on the seven segment displays
 static void display_custom(uint8_t led_idx, uint8_t segments) {
 	framebuffer[led_idx] = (uint8_t) segments;
 }
 
-ISR(TIMER0_COMPB_vect)
-{
-	OCR0B += DISPLAY_REFRESH_INTERVAL; 
-	display_update();
-}
+//ISR(TIMER0_COMPB_vect)
+//{
+//	OCR0B += DISPLAY_REFRESH_INTERVAL; 
+//	display_update();
+//}
