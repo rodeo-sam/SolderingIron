@@ -15,8 +15,10 @@
 #include "uart.h"
 #include "random.h"
 #include "clock.h"
+#include "timing.h"
+#include "tip.h"
 
-static int16_t count = 27;
+static int16_t count = 100;
 void plus(void)
 {
   if (count != TEMP_MAX) {
@@ -44,6 +46,10 @@ int main(void)
 	control_set_temp(count);
 	printf("hallo\r\n");
 
+	next_time_t timer;
+	timer_init(&timer,1,0,0); // 1s
+	timer_prepare();
+	timer_set(&timer);
 
 	int16_t countt = count;
 	while(1)
@@ -54,6 +60,11 @@ int main(void)
 			display_number(count);
 			countt = count;
 			control_set_temp(count);
+		}
+		if(timer_past(&timer)){ //every 1s
+			timer_set(&timer); 
+			display_number(tip_get_temp());
+			printf("temp: %d\r\n",tip_get_temp());
 		}
 	}
 }
