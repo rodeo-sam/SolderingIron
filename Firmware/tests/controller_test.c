@@ -12,8 +12,11 @@
 #include <avr/interrupt.h>
 #include "buttons.h"
 #include "controller.h"
+#include "uart.h"
+#include "random.h"
+#include "clock.h"
 
-static int16_t count = 350;
+static int16_t count = 27;
 void plus(void)
 {
   if (count != TEMP_MAX) {
@@ -35,18 +38,22 @@ int main(void)
 	display_init();
 
 	buttons_init(&plus, &minus,0,0);
-
+	clock_init();
+	uart_init(19200, one_stop_bit_e, no_parity_e);
 	control_init();
+	control_set_temp(count);
+	printf("hallo\r\n");
 
 
 	int16_t countt = count;
 	while(1)
 	{
-		//	display_number(count);
+		display_updater();
+		generate_random();
 		if(count != countt){
+			display_number(count);
 			countt = count;
 			control_set_temp(count);
 		}
-		_delay_ms(20);
 	}
 }
