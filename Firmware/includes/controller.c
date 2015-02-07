@@ -95,12 +95,12 @@ void new_temperature_ready_callback(int16_t temp){
 ISR(TIMER0_COMPA_vect) {
 	//set pwm pin low
 	PORTD &= ~(1 << PD4);
-	Trand = 128 + (get_random() % 128);
+	Trand = 16 + (get_random() % (255-16));
 	OCR0A = Trand; //set OCR0A to next pin low time
 	compb_state = 0;
 	TIFR0 |= (1 << OCIE0B);
 	TIMSK0 |= (1 << OCIE0B);
-	OCR0B = TCNT0 + 1; // wait until PWM caused offset voltate has faded from temperature sensor
+	OCR0B = TCNT0 + 3; // wait until PWM caused offset voltate has faded from temperature sensor
 }
 
 ISR(TIMER0_COMPB_vect) {
