@@ -135,11 +135,7 @@ uint16_t adc_average_hi(uint8_t r_in_M_ohm) {
 	return av;
 }
 
-//-------------------------------------------------------------//
-void ADC_vect (void )
-__attribute__ (( used, externally_visible, signal ));
-//-------------------------------------------------------------//
-void ADC_vect() {
+ISR(ADC_vect) {
 	adc_stop();
 	// calls the callback an passes the new measure
 	adc_complete_callback(ADC);
