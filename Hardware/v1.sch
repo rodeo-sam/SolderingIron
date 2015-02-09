@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE eagle SYSTEM "eagle.dtd">
-<eagle version="6.6.0">
+<eagle version="7.2.0">
 <drawing>
 <settings>
 <setting alwaysvectorfont="no"/>
@@ -17970,20 +17970,21 @@ Source: www.kingbright.com</description>
 <wire x1="320.04" y1="261.62" x2="320.04" y2="198.12" width="0.1524" layer="97"/>
 <wire x1="320.04" y1="198.12" x2="243.84" y2="198.12" width="0.1524" layer="97"/>
 <wire x1="243.84" y1="198.12" x2="243.84" y2="261.62" width="0.1524" layer="97"/>
-<text x="246.38" y="200.66" size="3.81" layer="97">HEISSER / KAELTER</text>
-<text x="114.3" y="185.42" size="3.81" layer="97">AVR mit allen Ein- und Ausgaengen und Display-NFets</text>
-<text x="106.68" y="254" size="3.81" layer="97">P-Fet zur Schubabschaltung am Loetkolben</text>
-<text x="43.18" y="254" size="3.81" layer="97">Stromversorgung</text>
-<text x="30.48" y="127" size="3.81" layer="97">Programmieradapter</text>
-<text x="30.48" y="96.52" size="3.81" layer="97">OpAmp für das Thermo-
-element im Loetkolben
-Verstaerkung 431</text>
+<text x="246.38" y="200.66" size="3.81" layer="97">two buttons</text>
+<text x="114.3" y="185.42" size="3.81" layer="97">AVR n-Fets for the display</text>
+<text x="106.68" y="254" size="3.81" layer="97">P-Fet to power the soldering iron</text>
+<text x="43.18" y="254" size="3.81" layer="97">5V Power Supply</text>
+<text x="30.48" y="127" size="3.81" layer="97">ISP Header</text>
+<text x="30.48" y="96.52" size="3.81" layer="97">OpAmp for temp
+measurement
+(amp factor 431)</text>
 <text x="109.22" y="30.48" size="3.81" layer="97">Display 3x 7 Segment</text>
 <wire x1="325.12" y1="261.62" x2="398.78" y2="261.62" width="0.1524" layer="97"/>
 <wire x1="398.78" y1="198.12" x2="398.78" y2="261.62" width="0.1524" layer="97"/>
 <wire x1="325.12" y1="198.12" x2="325.12" y2="261.62" width="0.1524" layer="97"/>
 <wire x1="325.12" y1="198.12" x2="398.78" y2="198.12" width="0.1524" layer="97"/>
-<text x="335.28" y="254" size="3.81" layer="97">For Future Use</text>
+<text x="335.28" y="251.46" size="3.81" layer="97">not used pads for another
+circuit at the lm324</text>
 </plain>
 <instances>
 <instance part="IC1" gate="A" x="63.5" y="66.04"/>
