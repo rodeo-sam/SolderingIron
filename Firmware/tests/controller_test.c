@@ -18,7 +18,7 @@
 #include "timing.h"
 #include "tip.h"
 
-static int16_t count = 100;
+static int16_t count = 250;
 void plus(void)
 {
   if (count != TEMP_MAX) {
@@ -47,7 +47,7 @@ int main(void)
 	printf("hallo\r\n");
 
 	next_time_t timer;
-	timer_init(&timer,1,0,0); // 1s
+	timer_init(&timer,0,20,0); // 1s
 	timer_prepare();
 	timer_set(&timer);
 
@@ -64,7 +64,7 @@ int main(void)
 		if(timer_past(&timer)){ //every 1s
 			timer_set(&timer); 
 			display_number(tip_get_temp());
-			printf("temp: %d\r\n",tip_get_temp());
+			printf("soll %d, temp: %d\r\n",count,tip_get_temp());
 		}
 	}
 }
