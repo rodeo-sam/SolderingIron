@@ -7,6 +7,7 @@
 
 #include <avr/eeprom.h>
 
+#include "config.h"
 #include "eeprom-config.h"
 
 
@@ -31,3 +32,22 @@ int config_save(void)
 	return i;
 }
 
+void config_init(void)
+{
+	config_load();
+	uint8_t initialized = 0;
+	uint16_t i = 0;
+	for(; i < sizeof(config_t); i++){
+		if ( ((*((uint8_t*) &config) + i) != 0xff) && (*(((uint8_t*) &config) + i) != 0)){
+			initialized = 1;
+			break;
+		}
+	if(!initialized){
+		config->pid_d = PID_D;
+		config->pid_i = PID_I;
+		config->pid_p = PID_P;
+		config->default_temp = DEFAULT_TEMP;
+	}
+    config_save();
+
+}

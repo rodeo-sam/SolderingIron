@@ -13,7 +13,6 @@ typedef struct {
 	uint16_t pid_i;
 	uint16_t pid_d;
 	uint16_t default_temp;
-	uint16_t temp_offset;
 } config_t;
 
 extern config_t config;
@@ -27,3 +26,5 @@ config_t* config_load(void);
   \return number of saved bytes 
 */
 int config_save(void);
+
+void config_init(void);

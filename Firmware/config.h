@@ -3,7 +3,15 @@
 #define HW_VERSION 1
 
 // the temperature the system is supposed to not exceed
-#define TEMP_MAX 400
+#define TEMP_MAX 420
 
 // lowest temperature allowed
-#define TEMP_MIN -99
+#define TEMP_MIN 0 
+
+// default power on temperature
+#define DEFAULT_TEMP 300
+
+//PID-Controller values
+#define PID_P 170 
+#define PID_I 4 
+#define PID_D 100 
