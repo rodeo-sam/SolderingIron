@@ -21,6 +21,9 @@
 #define Ta 100 //ms
 #define Trand ((Ta*32)/255)
 
+#define MAXESUM 10   // maximum of error integration most not be too high because the tip heats very fast.
+#define MINESUM (-1*MAXESUM)
+
 volatile int16_t w = 0;
 
 volatile int16_t esum = 0;
@@ -46,17 +49,14 @@ void control_init(void)
 	timer0_init();
 	
 }
-
 void control(int16_t temp)
 {
-	// XXX test this
 	int16_t e = w - temp; 
-	//display_fixed_point((uint16_t)(config.pid_p * 10),-1);
-	   //guarding preventing esum over/underflows
-	if(esum >= (int32_t)(0x3fff - e)){
-		esum = 0x3fff;
-	} else if(esum <= (int32_t)(-0x3fff + e)){
-		esum = (-0x3fff);
+	//guarding preventing esum over/underflows
+	if(esum >= (int32_t)(MAXESUM - e)){
+		esum = MAXESUM;
+	} else if(esum <= (int32_t)(MINESUM + e)){
+		esum = (MINESUM);
 	}else{
 		if(((y_buffer > 0) && (y_buffer < 255) ) || ((y_buffer == 255) && (e < 0)) || ( (y_buffer == 0) && (e > 0))){
 			esum += e;
@@ -65,11 +65,11 @@ void control(int16_t temp)
 	
 	int16_t p = ((int32_t)((int32_t)config.pid_p*(int32_t)e))/(int32_t)128;
 	int16_t i = (int32_t)((int32_t)config.pid_i*(int32_t)Ta*(int32_t)esum)/(uint32_t)128;
-	int16_t d = 0;//(int32_t)(config.pid_d/Ta*(e - eold))/(uint32_t)128;
+	int16_t d = (int32_t)(config.pid_d*(e - eold)/Ta)/(uint32_t)128;
 	int16_t y = (int32_t)((int32_t)p + (int32_t)i + (int32_t)d);
 	eold = e;
 
-	   //guarding
+	//guarding values higher then 255 are not possible 
 	if(y > 255){
 		y = 255;
 	} else if (y < 0){
