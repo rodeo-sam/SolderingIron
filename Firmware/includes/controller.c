@@ -75,7 +75,10 @@ void control(int16_t temp)
 	} else if (y < 0){
 		y = 0;
 	}
-	//printf("e: %d y: %d\r\n",esum,y);
+
+	if(temp > MAX_TEMP){ //guard tip form overheating
+		y = 0;
+	}
 
 	y_buffer = y;
 }
