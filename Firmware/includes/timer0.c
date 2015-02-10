@@ -12,7 +12,7 @@ void timer0_init(void)
 	static uint8_t once = 0;
 	if(!once){
 		once = 1;
-		TCCR0B |= (1 << CS02); // prescaler = 256 => ~8ms to overflow
+		TCCR0B |= (1 << CS02); // prescaler = 256 ~8ms 
 		sei();
 	}
 }
