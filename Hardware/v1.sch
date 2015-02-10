@@ -17938,6 +17938,7 @@ Source: www.kingbright.com</description>
 <part name="R30" library="rcl" deviceset="R-EU_" device="R0603" value="1k"/>
 <part name="J2" library="con-molex" deviceset="22-?-03" device="27-2031"/>
 <part name="GND21" library="supply1" deviceset="GND" device=""/>
+<part name="P+10" library="supply1" deviceset="VCC" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -18115,6 +18116,7 @@ circuit at the lm324</text>
 <instance part="J2" gate="-2" x="236.22" y="144.78"/>
 <instance part="J2" gate="-3" x="236.22" y="142.24"/>
 <instance part="GND21" gate="1" x="231.14" y="139.7"/>
+<instance part="P+10" gate="VCC" x="223.52" y="182.88"/>
 </instances>
 <busses>
 </busses>
@@ -18176,6 +18178,11 @@ circuit at the lm324</text>
 <pinref part="P+9" gate="VCC" pin="VCC"/>
 <pinref part="LED2" gate="G$1" pin="A"/>
 <wire x1="373.38" y1="134.62" x2="373.38" y2="137.16" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="J3" gate="-2" pin="S"/>
+<wire x1="223.52" y1="172.72" x2="223.52" y2="180.34" width="0.1524" layer="91"/>
+<pinref part="P+10" gate="VCC" pin="VCC"/>
 </segment>
 </net>
 <net name="GND" class="0">
@@ -18576,12 +18583,6 @@ circuit at the lm324</text>
 <wire x1="177.8" y1="218.44" x2="180.34" y2="218.44" width="0.1524" layer="91"/>
 <wire x1="180.34" y1="218.44" x2="180.34" y2="213.36" width="0.1524" layer="91"/>
 <wire x1="180.34" y1="213.36" x2="177.8" y2="213.36" width="0.1524" layer="91"/>
-</segment>
-<segment>
-<pinref part="J3" gate="-2" pin="S"/>
-<wire x1="223.52" y1="172.72" x2="223.52" y2="177.8" width="0.1524" layer="91"/>
-<wire x1="223.52" y1="177.8" x2="226.06" y2="177.8" width="0.1524" layer="91"/>
-<label x="226.06" y="177.8" size="1.778" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="BUTTON_+" class="0">
