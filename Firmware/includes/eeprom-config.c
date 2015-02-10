@@ -42,11 +42,12 @@ void config_init(void)
 			initialized = 1;
 			break;
 		}
+	}
 	if(!initialized){
-		config->pid_d = PID_D;
-		config->pid_i = PID_I;
-		config->pid_p = PID_P;
-		config->default_temp = DEFAULT_TEMP;
+		config.pid_d = PID_D;
+		config.pid_i = PID_I;
+		config.pid_p = PID_P;
+		config.default_temp = DEFAULT_TEMP;
 	}
     config_save();
 
