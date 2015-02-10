@@ -5,7 +5,7 @@
 #include "timing.h"
 
 
-#define DISPLAY_REFRESH_INTERVAL 16 // 0.5ms 
+#define DISPLAY_REFRESH_INTERVAL 60 // 0.5ms 
 
 static uint16_t i2bcd(uint16_t i);
 static void display_custom(uint8_t led_idx, uint8_t segments);
@@ -46,11 +46,10 @@ void display_init() {
 	framebuffer[2] = 0;
 	framebuffer[1] = 0;
 	framebuffer[0] = 0;
+	TIMSK2 |= (1 << OCIE2B); // enable interrupt when timer2 is 128
+	OCR2A = DISPLAY_REFRESH_INTERVAL; //Timer2 resets after 64 steps
 
 	
-	timer_init(&display_timer,0,0,2); // 10ms
-	timer_prepare();
-	timer_set(&display_timer);
 }
 
 // source http://www.expertcore.org/viewtopic.php?f=8&t=3742
@@ -180,8 +179,8 @@ static void display_custom(uint8_t led_idx, uint8_t segments) {
 	framebuffer[led_idx] = (uint8_t) segments;
 }
 
-//ISR(TIMER0_COMPB_vect)
-//{
-//	OCR0B += DISPLAY_REFRESH_INTERVAL; 
-//	display_update();
-//}
+ISR(TIMER2_COMPB_vect)
+{
+	OCR2B = (OCR2B + DISPLAY_REFRESH_INTERVAL) % OCR2A; 
+	display_update();
+}
