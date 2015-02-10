@@ -14,6 +14,7 @@
 #include <avr/interrupt.h>
 #include <util/delay.h>
 
+#include "config.h"
 #include "eeprom-config.h"
 #include "tip.h" 
 #include "timer0.h"
@@ -79,7 +80,7 @@ void control(int16_t temp)
 		y = 0;
 	}
 
-	if(temp > MAX_TEMP){ //guard tip form overheating
+	if(temp > TEMP_MAX){ //guard tip form overheating
 		y = 0;
 	}
 
