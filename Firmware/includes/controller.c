@@ -20,6 +20,7 @@
 #include "timer0.h"
 #include "uart.h"
 
+#include "config.h"
 
 #define Ta 100 //ms  //controll cycle time
 #define Trand ((Ta*32)/255)

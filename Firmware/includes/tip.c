@@ -37,6 +37,9 @@ int16_t tip_get_temp(void)
 
 void tip_start_conversion(void)
 {
+  // wait if adc is busy
+  while(adc_is_busy());
+
 	//ensure adc init and start is done atomicly
 	uint8_t sreg = SREG;
 	cli();

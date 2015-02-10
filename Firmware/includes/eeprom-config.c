@@ -48,7 +48,6 @@ void config_init(void)
 		config.pid_i = PID_I;
 		config.pid_p = PID_P;
 		config.default_temp = DEFAULT_TEMP;
-	}
     config_save();
-
+	}
 }
