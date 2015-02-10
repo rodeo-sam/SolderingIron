@@ -15,3 +15,8 @@
 #define PID_P 170 
 #define PID_I 4 
 #define PID_D 100 
+
+// threshold at which the hall sensor is supposed to trigger
+// if set to 0 rest detection will be disabled
+#define REST_HALL_THRESHOLD 15
+
