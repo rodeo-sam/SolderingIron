@@ -5,6 +5,9 @@
 // the temperature the system is supposed to not exceed
 #define TEMP_MAX 420
 
+// temperature that should be held when resting
+#define TEMP_REST 150
+
 // lowest temperature allowed
 #define TEMP_MIN 0 
 
