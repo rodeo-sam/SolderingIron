@@ -13,17 +13,19 @@
 #include <avr/io.h>
 
 volatile bool rest_check = false;
-volatile uint16_t rest_check_raw = 14;
+volatile uint16_t rest_check_raw = 0;
+
+// timer to update the rest check periodically
 next_time_t rest_check_timer;
 
-
+// initialize rest check
 void rest_check_init(void) {
   timer_init(&rest_check_timer,0,0,20); // 100ms
   timer_prepare();
   timer_set(&rest_check_timer);
 }
 
-
+// start a conversion
 static void rest_check_start_conversion(void) {
   #if REST_HALL_THRESHOLD != 0
 
@@ -40,15 +42,21 @@ static void rest_check_start_conversion(void) {
       return;
     }
 
+    // configure the adc correctly
     adc_configuration_t conf = {
       .channel = CH_ADC1,
       .reference = REF_VCC,
       .trigger = TRGR_MANUEL,
     };
     adc_init(conf);
+
+    // setup the conversion complete interrupt callback    
     adc_set_conversion_complete_callback(rest_check_conversion_complete_callback);
+    
+    // trigger a conversion
     adc_trigger();
 
+    // reset state of SREG
     SREG = sreg;
   #endif
   return;
