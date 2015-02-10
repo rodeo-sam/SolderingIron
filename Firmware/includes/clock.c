@@ -16,11 +16,9 @@ void clock_init (void)
 {
 	//ASSR = (1<<AS2); //select external 32.768kHz Crystal, must be written before TCCR2A and OCR2A
 	TCNT2 = 0; // start time is 0
-	TCCR2A = 0;
 	TCCR2A |= (1 << WGM21); //CTC mode
 	TCCR2B |= (1 << CS22) | (1 << CS20); // Prescaler 128
 	OCR2A = 122; //Timer2 resets after 122 steps
-	TIMSK2 = 0;
 	TIMSK2 |= (1 << OCIE2A); // enable interrupt when timer2 is 128
 	sei();
 }
