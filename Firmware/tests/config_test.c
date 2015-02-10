@@ -13,18 +13,29 @@
 #include "config.h"
 #include "display.h"
 #include "eeprom-config.h"
+#include "buttons.h"
 
-
+void erase(void){
+	uint16_t i = 0;
+	for(; i < sizeof(config_t); i++){
+		*(((uint8_t*) &config) + i) = 0xff ;
+	}
+	uint16_t num = config_save();
+	display_number(num);
+	_delay_ms(1000);
+}
+	
 
 
 config_t *conf;
 
 int main(void)
 {
+	clock_init();
 	display_init();
-
-	//display_digit(1,3);
 	conf = config_load();
+	buttons_init(0,0,0,&erase);
+	display_number(100);
 	uint8_t initialized = 0;
 	uint16_t i = 0;
 	for(; i < sizeof(config_t); i++){
@@ -35,11 +46,10 @@ int main(void)
 	}
 	if(!initialized){
 		display_number(1000); //to display ERR
-		conf->pid_d = 12;
-		conf->pid_i = 12;
-		conf->pid_p = 12;
-		conf->default_temp = 350;
-		conf->temp_offset = 50;
+		conf->pid_d = PID_D;
+		conf->pid_i = PID_I;
+		conf->pid_p = PID_P;
+		conf->default_temp = 300;
 		_delay_ms(1000);
 	}
 	uint16_t num = config_save();
@@ -56,8 +66,6 @@ int main(void)
 		display_number(conf->pid_d);
 		_delay_ms(300);
 		display_number(conf->default_temp);
-		_delay_ms(300);
-		display_number(conf->temp_offset);
 		_delay_ms(300);
 	}
 }
