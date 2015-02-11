@@ -31,7 +31,7 @@ int main(void)
 	{
 		uint16_t value = measure_get_internal_temperature();
 		//uint16_t value = measure_get_internal_temperature();
-		display_number(value);
+		display_temperature(value);
 		display_update();
 		_delay_us(200);
 	}

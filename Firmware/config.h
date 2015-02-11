@@ -23,3 +23,13 @@
 // if set to 0 rest detection will be disabled
 #define REST_HALL_THRESHOLD 15
 
+// temperature scale
+// if defined the display will work in fahrenheit
+//#define TEMP_KELVIN
+#define TEMP_CELSIUS
+//#define TEMP_FAHRENHEIT
+//#define TEMP_RANKINE
+//#define TEMP_DELISLE
+//#define TEMP_REAMUR
+//#define TEMP_NEWTON
+//#define TEMP_ROMER

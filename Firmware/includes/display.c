@@ -129,6 +129,95 @@ void display_fixed_point(int16_t number, int8_t exp) {
 	}
 }
 
+
+// display a temp in the scale of your choice (see config.h)
+// conversion is not totally correct but very fast
+// should be number*1.8+32, but is approx. number*1.797+32
+// 0.5 + 0.25 + 0.03125 + 0.015625 = 1.796875
+void display_temperature(int16_t number) {
+  #ifdef TEMP_KELVIN
+    #ifndef TEMP_SCALE_DEFINED
+      #define TEMP_SCALE_DEFINED
+      // kelvin = celsius + 273.15
+      number += 273; // celsius + 273
+    #else
+      #error "MORE THAN ONE TEMPERATURE SCALE DEFINED!!"
+    #endif
+  #endif
+
+  #ifdef TEMP_CELSIUS
+    #ifndef TEMP_SCALE_DEFINED
+      #define TEMP_SCALE_DEFINED
+      // nothing to do for celsius
+    #else
+      #error "MORE THAN ONE TEMPERATURE SCALE DEFINED!!"
+    #endif
+  #endif
+
+  #ifdef TEMP_FAHRENHEIT
+    #ifndef TEMP_SCALE_DEFINED
+      #define TEMP_SCALE_DEFINED
+      // fahrenheit = celsius * 1.8 + 32
+      number = number + (number >> 1) + (number >> 2) + (number >> 5) + 32; // celsius * 1.796875 + 32
+    #else
+      #error "MORE THAN ONE TEMPERATURE SCALE DEFINED!!"
+    #endif
+  #endif
+
+  #ifdef TEMP_RANKINE
+    #ifndef TEMP_SCALE_DEFINED
+      #define TEMP_SCALE_DEFINED
+      // rankine = celsius * 1.8 + 491.67
+      number = number + (number >> 1) + (number >> 2) + (number >> 5) + 491; // celsius * 1.796875 + 491
+    #else
+      #error "MORE THAN ONE TEMPERATURE SCALE DEFINED!!"
+    #endif
+  #endif
+
+  #ifdef TEMP_DELISLE
+    #ifndef TEMP_SCALE_DEFINED
+      #define TEMP_SCALE_DEFINED
+      // delisle = (100 - celsius) * 1.5
+      number = (100-number) + ((100-number) >> 1); // exact
+    #else
+      #error "MORE THAN ONE TEMPERATURE SCALE DEFINED!!"
+    #endif
+  #endif
+
+  #ifdef TEMP_REAMUR
+    #ifndef TEMP_SCALE_DEFINED
+      #define TEMP_SCALE_DEFINED
+      // reamur = celsius * 0.8
+      number = (number >> 1) + (number >> 2) + (number >> 5) + (number >> 6); // celsius * 0.796875
+    #else
+      #error "MORE THAN ONE TEMPERATURE SCALE DEFINED!!"
+    #endif
+  #endif
+
+  #ifdef TEMP_NEWTON
+    #ifndef TEMP_SCALE_DEFINED
+      #define TEMP_SCALE_DEFINED
+      // newton = celsius * 0.33
+      number = (number >> 2) + (number >> 4) + (number >> 6) + (number >> 7) - (number >> 8) - (number >> 9) ; // celsius * 0.330078125
+    #else
+      #error "MORE THAN ONE TEMPERATURE SCALE DEFINED!!"
+    #endif
+  #endif
+
+  #ifdef TEMP_ROMER
+    #ifndef TEMP_SCALE_DEFINED
+      #define TEMP_SCALE_DEFINED
+      // romer = celsius * 21/40 + 7.5
+      number = (int)(((double)number * 21) / 40 + 7.5); // exact
+    #else
+      #error "MORE THAN ONE TEMPERATURE SCALE DEFINED!!"
+    #endif
+  #endif
+
+  display_number(number);
+}
+
+
 // converts a binary number to BCD and copys into framebuffer
 void display_number(int16_t number) {
 
