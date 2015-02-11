@@ -18,12 +18,12 @@ This project is just another avr based soldering iron. Since professional equipm
 * ATmega328p
 
 ### Temperature measure
-the thermo-voltage Signal is amplified by an op-amp with a gain
+The thermo-voltage signal is amplified by an op-amp with a gain
 	`g = 1 + R1/R2 = 1 + 43k/100 = 431`
-this signal is converted by ADC0 using 2.56V as internal voltage reference
+this signal is converted by ADC0 using Vcc=5V as voltage reference
 
 ### Solder tip detection
-solved by a hall sensor connected to a ADC2. This sensor is powered by 12V
+Solved by a hall sensor connected to ADC2. This sensor is powered by 5V
 
 
 ## References
