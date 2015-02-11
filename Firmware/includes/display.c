@@ -131,9 +131,6 @@ void display_fixed_point(int16_t number, int8_t exp) {
 
 
 // display a temp in the scale of your choice (see config.h)
-// conversion is not totally correct but very fast
-// should be number*1.8+32, but is approx. number*1.797+32
-// 0.5 + 0.25 + 0.03125 + 0.015625 = 1.796875
 void display_temperature(int16_t number) {
   #ifdef TEMP_KELVIN
     #ifndef TEMP_SCALE_DEFINED
