@@ -27,6 +27,26 @@ typedef enum {
 	SIGN_D=(DISP_UR|DISP_BR|DISP_BL|DISP_MID|DISP_BOT),
 	SIGN_E=(DISP_UP|DISP_UL|DISP_BL|DISP_MID|DISP_BOT),
 	SIGN_F=(DISP_UP|DISP_UL|DISP_BL|DISP_MID),
+  SIGN_G=(DISP_UP|DISP_UL|DISP_BL|DISP_BOT|DISP_BR),
+  SIGN_H=(DISP_UL|DISP_BL|DISP_MID|DISP_UR|DISP_BR),
+  SIGN_I=(DISP_UL|DISP_BL),
+  SIGN_J=(DISP_BOT|DISP_UR|DISP_UP|DISP_BL|DISP_BR),
+  SIGN_K=0, // not possible with this display
+  SIGN_L=(DISP_UL|DISP_BL|DISP_BOT),
+  SIGN_M=0, // not possible with this display
+  SIGN_N=(DISP_BL|DISP_MID|DISP_BR),
+  SIGN_O=(DISP_BL|DISP_MID|DISP_BR|DISP_BOT),
+  SIGN_P=(DISP_BL|DISP_TOP|DISP_UL|DISP_MID|DISP_UR|),
+  SIGN_Q=0, // not possible with this display
+  SIGN_R=0, // not possible with this display
+  SIGN_S=SIGN_5,
+  SIGN_T=(DISP_BL|DISP_BOT|DISP_MID|BOTUL),
+  SIGN_U=(DISP_BOT|DISP_UL|DISP_UR|DISP_BL|DISP_BR),
+  SIGN_V=0, // not possible with this display
+  SIGN_W=0, // not possible with this display
+  SIGN_X=0, // not possible with this display
+  SIGN_Y(DISP_UR|DISP_BR|DISP_UL|DISP_MID|DISP_BOT),
+  SIGN_Z=0, // not possible with this display
 	SIGN_DOT=(DISP_DOT),
 	SIGN_R=(DISP_BL|DISP_MID),
 	SIGN_MINUS=(DISP_MID),
