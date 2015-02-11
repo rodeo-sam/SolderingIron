@@ -17,7 +17,7 @@
 #include <avr/interrupt.h>
 
 void show_temperature(int16_t temp) {
-	display_number(temp);
+	display_temperature(temp);
 	printf("%i\r\n", temp);
 }
 
