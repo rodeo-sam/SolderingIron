@@ -36,19 +36,18 @@ typedef enum {
   SIGN_M=0, // not possible with this display
   SIGN_N=(DISP_BL|DISP_MID|DISP_BR),
   SIGN_O=(DISP_BL|DISP_MID|DISP_BR|DISP_BOT),
-  SIGN_P=(DISP_BL|DISP_TOP|DISP_UL|DISP_MID|DISP_UR|),
+  SIGN_P=(DISP_BL|DISP_UP|DISP_UL|DISP_MID|DISP_UR),
   SIGN_Q=0, // not possible with this display
-  SIGN_R=0, // not possible with this display
+  SIGN_R=(DISP_BL|DISP_MID),
   SIGN_S=SIGN_5,
-  SIGN_T=(DISP_BL|DISP_BOT|DISP_MID|BOTUL),
+  SIGN_T=(DISP_BL|DISP_BOT|DISP_MID|DISP_UL),
   SIGN_U=(DISP_BOT|DISP_UL|DISP_UR|DISP_BL|DISP_BR),
   SIGN_V=0, // not possible with this display
   SIGN_W=0, // not possible with this display
   SIGN_X=0, // not possible with this display
-  SIGN_Y(DISP_UR|DISP_BR|DISP_UL|DISP_MID|DISP_BOT),
+  SIGN_Y=(DISP_UR|DISP_BR|DISP_UL|DISP_MID|DISP_BOT),
   SIGN_Z=0, // not possible with this display
 	SIGN_DOT=(DISP_DOT),
-	SIGN_R=(DISP_BL|DISP_MID),
 	SIGN_MINUS=(DISP_MID),
 	SIGN_NONE=0
 } sign_t;
