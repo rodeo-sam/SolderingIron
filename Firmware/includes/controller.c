@@ -53,7 +53,7 @@ void control_init(void)
 	TIMSK0 |= (1 << OCIE0A) ;
 	tip_init(&new_temperature_ready_callback);
 	tip_start_conversion();
-	DDRD |= (1<< PD4) | (1<< PD5);
+	DDRD |= (1<< PD4);
 	w = config.default_temp;
 	timer0_init();
 	printf("controller booted\r\n");
