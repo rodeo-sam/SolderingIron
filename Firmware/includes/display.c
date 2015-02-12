@@ -53,7 +53,6 @@ typedef enum {
 } sign_t;
 
 static uint8_t framebuffer[3];
-next_time_t display_timer;
 //extern uint16_t g_temperature;
 
 
@@ -189,13 +188,7 @@ void display_update() {
 
 	if (led_idx++ >2) led_idx = 0;
 }
-void display_updater(void)
-{
-	if(timer_past(&display_timer)){ 
-		timer_set(&display_timer); 
-		display_update();
-	}
-}
+
 // setting up custom characters on the seven segment displays
 static void display_custom(uint8_t led_idx, uint8_t segments) {
 	framebuffer[led_idx] = (uint8_t) segments;
