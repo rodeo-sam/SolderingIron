@@ -5,7 +5,7 @@
 #include "timing.h"
 
 
-#define DISPLAY_REFRESH_INTERVAL 1 // 0.5ms 
+#define DISPLAY_REFRESH_INTERVAL 60 // 0.5ms 
 
 static uint16_t i2bcd(uint16_t i);
 static void display_custom(uint8_t led_idx, uint8_t segments);
