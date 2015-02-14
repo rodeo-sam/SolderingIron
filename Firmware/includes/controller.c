@@ -27,7 +27,7 @@
 
 #define TIP_CHECK_INTERVAL 10
 
-#define MAXESUM 10   // maximum of error integration most not be too high because the tip heats very fast.
+#define MAXESUM 10 //*Ta ms  // maximum of error integration most not be too high because the tip heats very fast.
 #define MINESUM (-1*MAXESUM)
 
 volatile int16_t w = 0;
