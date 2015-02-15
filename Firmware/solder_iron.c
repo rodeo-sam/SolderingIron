@@ -17,6 +17,8 @@
 #include "adc.h"
 #include "temperature.h"
 #include "uart.h"
+#include "timing.h"
+#include "buttons.h"
 
 
 void on_watchdog_reset(void);
@@ -33,22 +35,68 @@ void wdt_init(void)
     return;
 }
 /*******************end of very important block***************************/
+int16_t temperature = 0;
+void plus(void)
+{
+  if (temperature != TEMP_MAX) {
+  	temperature++;
+	display_temperature(temperature);
+  }
+}
+
+void minus(void)
+{
+  if (temperature != TEMP_MIN) {
+    temperature--;
+	display_temperature(temperature);
+  }
+}
+
 
 int main(void)
 {
-	wdt_disable();
+	int16_t old_temp = 0;
 	on_watchdog_reset();
 	wdt_enable(WDTO_500MS);
 	config_load();
 	display_init();
 	clock_init();
+	buttons_init(&plus, &minus, 0, 0);
+
+	next_time_t new_temp_timer;
+	timer_init(&new_temp_timer,1,0,0); // 1s
+	timer_prepare();
+	next_time_t temp_timer;
+	timer_init(&temp_timer,0,32,0); // 0.25s
+	timer_prepare();
+	timer_set(&temp_timer);
+
+	temperature = config.default_temp;
+	
 	//control_init();  //leave this as a comment until we want to heat things up
 
 
-
+	uint8_t temp_to_show = 0;
 	display_number(100);
 	while(1)
 	{
+
+		if (old_temp != temperature){
+			old_temp = temperature;
+			control_set_temp(temperature);
+			timer_set(&new_temp_timer);
+			temp_to_show = 1;
+		}
+		if(timer_past(&new_temp_timer)){
+			temp_to_show = 0;
+			timer_set(&temp_timer);
+		}
+		if(temp_to_show == 0){
+			if(timer_past(&temp_timer)){
+				timer_set(&temp_timer);
+				display_temperature(tip_get_temp());
+			}
+		}
 		
 		wdt_reset(); //still alive
 	}
