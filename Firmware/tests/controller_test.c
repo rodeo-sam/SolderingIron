@@ -7,9 +7,10 @@
 
 #include <util/delay.h>
 #include "display.h"
-#include "../config.h"
 #include <avr/io.h>
 #include <avr/interrupt.h>
+
+#include "config.h"
 #include "buttons.h"
 #include "controller.h"
 #include "uart.h"
@@ -17,6 +18,7 @@
 #include "clock.h"
 #include "timing.h"
 #include "tip.h"
+#include "eeprom-config.h"
 
 static int16_t count = 250;
 void plus(void)
@@ -47,14 +49,13 @@ int main(void)
 	printf("hallo\r\n");
 
 	next_time_t timer;
-	timer_init(&timer,0,20,0); // 1s
+	timer_init(&timer,1,0,0); // 1s
 	timer_prepare();
 	timer_set(&timer);
 
 	int16_t countt = count;
 	while(1)
 	{
-		display_updater();
 		generate_random();
 		if(count != countt){
 			display_number(count);
@@ -64,7 +65,7 @@ int main(void)
 		if(timer_past(&timer)){ //every 1s
 			timer_set(&timer); 
 			display_temperature(tip_get_temp());
-			printf("soll %d, temp: %d\r\n",count,tip_get_temp());
+			printf("soll %d, temp: %d tip: %d\r\n",count,tip_get_temp(),tip_state());
 		}
 	}
 }

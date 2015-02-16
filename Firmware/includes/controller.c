@@ -25,7 +25,9 @@
 #define Ta 100 //ms  //controll cycle time
 #define Trand ((Ta*32)/255)
 
-#define MAXESUM 10   // maximum of error integration most not be too high because the tip heats very fast.
+#define TIP_CHECK_INTERVAL 10
+
+#define MAXESUM 10 //*Ta ms  // maximum of error integration most not be too high because the tip heats very fast.
 #define MINESUM (-1*MAXESUM)
 
 volatile int16_t w = 0;
@@ -33,6 +35,10 @@ volatile int16_t w = 0;
 volatile int16_t esum = 0;
 volatile int16_t eold = 0;
 volatile int16_t y_buffer = 255;
+volatile int16_t temp_no_power = 0;
+volatile int16_t temp_power = 0;
+volatile uint8_t tip = 0;
+volatile uint8_t no_tip_count = 0;
 void new_temperature_ready_callback(int16_t);
 
 void control_set_temp(int16_t temp)
@@ -47,7 +53,7 @@ void control_init(void)
 	TIMSK0 |= (1 << OCIE0A) ;
 	tip_init(&new_temperature_ready_callback);
 	tip_start_conversion();
-	DDRD |= (1<< PD4) ;
+	DDRD |= (1<< PD4);
 	w = config.default_temp;
 	timer0_init();
 	printf("controller booted\r\n");
@@ -85,14 +91,32 @@ void control(int16_t temp)
 		y = 0;
 	}
 
-	y_buffer = y;
+	if (tip == 0){ 
+		y_buffer = 0; //do not heat if no tip is connected
+ 		no_tip_count++;
+		if (no_tip_count > TIP_CHECK_INTERVAL){ //check if tip is connected now
+			tip = 1;
+			no_tip_count = 0;
+			y_buffer = y;
+		}
+	}else{
+		y_buffer = y;
+	}
 }
 
 uint16_t pwm_count =0;
 uint8_t compb_state = 0;
+volatile uint8_t measurement_state = 0;
+volatile uint8_t overflow = 0;
 void new_temperature_ready_callback(int16_t temp){
-	control(temp); //calculating a new y
-	compb_state=1; //temperature is measured
+	if (measurement_state == 0){
+		control(temp); //calculating a new y
+		compb_state = 1; //temperature is measured
+		temp_no_power = temp;
+	} else {
+		temp_power = temp;
+		tip = tip_present(temp_power, temp_no_power);
+	} 
 }
 
 ISR(TIMER0_COMPA_vect) {
@@ -103,19 +127,27 @@ ISR(TIMER0_COMPA_vect) {
 	}else if((pwm_count == 1) && (y_buffer == 0)){
 		PORTD &= ~(1 << PD4); // just to be sure the power is of
 		compb_state = 0;
+		measurement_state = 0;
 		tip_start_conversion(); // measure the temperature if as soon as possible if the duty cycle is zero
 	} else if((pwm_count == 0) && !compb_state ){
 		pwm_count = 0; // wait for temperature measurement
 		t = 1; //make sure pwm_count is not increased (clean overflow)
 	} else {
-		if(pwm_count == y_buffer){ 
+		if(pwm_count == y_buffer ){ 
 			PORTD &= ~(1 << PD4); //clear pin if duty cycle is over
+			if (overflow){ //tip detection
+				overflow = 0;
+				measurement_state = 1;
+				tip_start_conversion(); // measure direcly after tip is powered down for tip detection
+			}
 		}else if((pwm_count == y_buffer + 2)){ 
+			measurement_state = 0;
 			tip_start_conversion(); //start temperature measurement after waiting (2) for the offset voltage, caused by powering the tip, has faded 
 		}
 	}
 	if((compb_state == 1) && (pwm_count >= 255)){
 		pwm_count = 0; //emulate a timer overflow
+		overflow = 1;
 		t = 1; //make sure pwm_count is not increased (clean overflow)
 	}
 	if(!t){ // do not increase pwm_count if the timer just overflew
