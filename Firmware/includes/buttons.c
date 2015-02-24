@@ -50,18 +50,26 @@ void buttons_init(void (*p_callback)(void), void (*m_callback)(void), void (*t_c
 	// globally enable interrupts
 	sei();
 }
-
+volatile uint8_t plus_edge = 0;
 ISR(PLUS_INTERRUPT_VECT)
 {
 	if (!third_pending){
-		if (pin != MINUS_PIN || (PIND & (1 << MINUS_PIN))) {
+		if (plus_edge == 1){
 			if(plus_callback != NULL) {
 				plus_callback();
 			}
+			plus_edge = 0;
+			EICRA &= ~(1 << ISC00); //disable rising edge interrupt
+			EIFR |= (1 <<INTF0);
+		} else
+		if (pin != MINUS_PIN || (PIND & (1 << MINUS_PIN)) && (plus_edge == 0)) {
+			plus_edge = 1;
 			OCR1A = TCNT1 + 15000; // pause of 0.5 second
 			TIFR1 |= (1<<OCF1A); // clear interrupt flag
 			TIMSK1 |= (1<<OCIE1A); // enable timer compare match interrupt
 			pin = PLUS_PIN;
+			EICRA |= (1 << ISC00); //rising edge generates interrupt
+			EIFR |= (1 << INTF1) | (1 <<INTF0);
 		} else if ((pin == MINUS_PIN) && (!(PIND & (1 << MINUS_PIN)))){
 			pin += PLUS_PIN; 
 			OCR1A = TCNT1 + 65000; // pause of 2 second
@@ -84,17 +92,26 @@ ISR(PLUS_INTERRUPT_VECT)
 }
 
 
+volatile uint8_t minus_edge = 0;
 ISR(MINUS_INTERRUPT_VECT)
 {
 	if (!third_pending){
-		if (pin != PLUS_PIN || (PIND & (1 << PLUS_PIN))) {
+		if (minus_edge == 1){
 			if(minus_callback != NULL) {
 				minus_callback();
 			}
+			minus_edge = 0;
+			EICRA &= ~(1 << ISC10); //disable rising edge interrupt
+			EIFR |= (1 << INTF1) ;
+		} else
+		if (pin != PLUS_PIN || (PIND & (1 << PLUS_PIN))) {
+			minus_edge = 1;
 			OCR1A = TCNT1 + 15000; // pause of 0.5 second
 			TIFR1 |= (1<<OCF1A); // clear interrupt flag
 			TIMSK1 |= (1<<OCIE1A); // enable timer compare match interrupt
 			pin = MINUS_PIN;
+			EICRA |= (1 << ISC10) ; //rising edge generates interrupt
+			EIFR |= (1 << INTF1) ;
 		} else if ((pin == PLUS_PIN) && (!(PIND & (1 << PLUS_PIN)))){
 			pin += MINUS_PIN; 
 			OCR1A = TCNT1 + 65000; // pause of 2 second
