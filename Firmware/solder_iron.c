@@ -19,9 +19,11 @@
 #include "uart.h"
 #include "timing.h"
 #include "buttons.h"
+#include "menu.h"
 
 
 void on_watchdog_reset(void);
+void from_menu(void);
 /******************VERY IMPORTANT********************************************
  * this code block is necessary to prevent the processor to run into watchdog-reset-lifelock 
  * do NOT delete this block
@@ -36,6 +38,8 @@ void wdt_init(void)
 }
 /*******************end of very important block***************************/
 int16_t temperature = 0;
+int16_t temperature_save = 0;
+
 void plus(void)
 {
   if (temperature != TEMP_MAX) {
@@ -52,7 +56,24 @@ void minus(void)
   }
 }
 
+void back_to_default(void)
+{
+	temperature = config.default_temp;
+}
 
+void goto_menu(void)
+{
+	temperature_save = temperature; 
+	control_set_temp(0);
+	menu_init(&from_menu);
+}
+void from_menu(void)
+{
+	buttons_init(&plus, &minus, &back_to_default, &goto_menu);
+	temperature = temperature_save;
+	control_set_temp(temperature);
+
+}
 int main(void)
 {
 	int16_t old_temp = 0;
@@ -61,7 +82,7 @@ int main(void)
 	config_load();
 	display_init();
 	clock_init();
-	buttons_init(&plus, &minus, 0, 0);
+	buttons_init(&plus, &minus, &back_to_default, &goto_menu);
 
 	next_time_t new_temp_timer;
 	timer_init(&new_temp_timer,1,0,0); // 1s
@@ -81,24 +102,26 @@ int main(void)
 	while(1)
 	{
 
-		if (old_temp != temperature){
-			old_temp = temperature;
-			control_set_temp(temperature);
-			timer_set(&new_temp_timer);
-			temp_to_show = 1;
-		}
-		if(timer_past(&new_temp_timer)){
-			temp_to_show = 0;
-			timer_set(&temp_timer);
-		}
-		if(temp_to_show == 0){
-			if(timer_past(&temp_timer)){
+		if (!in_menu){
+			if (old_temp != temperature){
+				old_temp = temperature;
+				control_set_temp(temperature);
+				timer_set(&new_temp_timer);
+				temp_to_show = 1;
+			}
+			if(timer_past(&new_temp_timer)){
+				temp_to_show = 0;
 				timer_set(&temp_timer);
-				display_temperature(tip_get_temp());
+			}
+			if(temp_to_show == 0){
+				if(timer_past(&temp_timer)){
+					timer_set(&temp_timer);
+					display_temperature(tip_get_temp());
+				}
 			}
 		}
-		
 		wdt_reset(); //still alive
+		
 	}
 }
 
