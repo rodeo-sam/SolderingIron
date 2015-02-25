@@ -3,6 +3,7 @@
  *
  * Created: Do 29. Jan 14:23:00 CET 2015
  * Author: Karsten Hinz <k.hinz tu-bs.de>
+ * Author: Georg von Zengen <oni303@gmail.com>
  */ 
 
 #include <util/delay.h>
@@ -20,6 +21,9 @@
 #include "timing.h"
 #include "buttons.h"
 #include "menu.h"
+#include "tip.h"
+#include "clock.h"
+#include "controller.h"
 
 
 void on_watchdog_reset(void);
@@ -42,38 +46,43 @@ int16_t temperature_save = 0;
 
 void plus(void)
 {
+  temperature = tip_setted_temp();
   if (temperature != TEMP_MAX) {
   	temperature++;
 	display_temperature(temperature);
+	tip_set_temp(temperature);
   }
 }
 
 void minus(void)
 {
+  temperature = tip_setted_temp();
   if (temperature != TEMP_MIN) {
     temperature--;
 	display_temperature(temperature);
+	tip_set_temp(temperature);
   }
 }
 
 void back_to_default(void)
 {
 	temperature = config.default_temp;
+	tip_set_temp(temperature);
+	display_temperature(temperature);
 }
 
 void goto_menu(void)
 {
-	temperature_save = temperature; 
 	control_set_temp(0);
 	menu_init(&from_menu);
 }
 void from_menu(void)
 {
 	buttons_init(&plus, &minus, &back_to_default, &goto_menu);
-	temperature = temperature_save;
-	control_set_temp(temperature);
+	control_set_temp(tip_setted_temp());
 
 }
+
 int main(void)
 {
 	int16_t old_temp = 0;
@@ -93,6 +102,8 @@ int main(void)
 	timer_set(&temp_timer);
 
 	temperature = config.default_temp;
+	tip_set_temp(temperature);
+	control_set_temp(temperature);
 	
 	//control_init();  //leave this as a comment until we want to heat things up
 
@@ -170,3 +181,7 @@ void on_watchdog_reset(void)
 	}
 }
 
+void set_temperatur(int16_t temp)
+{
+	temperature_save = temp;
+}
