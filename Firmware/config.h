@@ -1,6 +1,7 @@
 #pragma once
 
-#define HW_VERSION 1
+// #define HW_VERSION 1
+#define HW_VERSION 12 // current hardware version
 
 // the temperature the system is supposed to not exceed
 #define TEMP_MAX 420
