@@ -18136,7 +18136,7 @@ Ingenieurbüro ing-rb, mail@ing-rb.de&lt;/p&gt;</description>
 <part name="GND19" library="supply1" deviceset="GND" device=""/>
 <part name="P+8" library="supply1" deviceset="VCC" device=""/>
 <part name="LED2" library="led" deviceset="LED" device="CHIP-LED0805" value="GN"/>
-<part name="LED2-R1" library="rcl" deviceset="R-EU_" device="R0603" value="280"/>
+<part name="LED2-R1" library="rcl" deviceset="R-EU_" device="R0603" value="300"/>
 <part name="GND20" library="supply1" deviceset="GND" device=""/>
 <part name="P+9" library="supply1" deviceset="VCC" device=""/>
 <part name="OPAMP-R1" library="rcl" deviceset="R-EU_" device="R0603" value="10k"/>
@@ -18192,6 +18192,10 @@ Ingenieurbüro ing-rb, mail@ing-rb.de&lt;/p&gt;</description>
 <part name="SAFETY_2" library="testpad" deviceset="TP" device="B1,27"/>
 <part name="SAFETY_3" library="testpad" deviceset="TP" device="B1,27"/>
 <part name="D2" library="_hhn_diodes_smd" deviceset="LL4148" device=""/>
+<part name="SAFETY-R10" library="rcl" deviceset="R-EU_" device="R0603" value="0 n.m."/>
+<part name="LED3" library="led" deviceset="LED" device="CHIP-LED0805" value="GN"/>
+<part name="SAFETY-R11" library="rcl" deviceset="R-EU_" device="R0603" value="300"/>
+<part name="GND29" library="supply1" deviceset="GND" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -18369,10 +18373,10 @@ measurement
 <instance part="SAFETY_C2" gate="G$1" x="297.18" y="210.82" rot="R90"/>
 <instance part="OPAMP-C4" gate="G$1" x="33.02" y="83.82" rot="R90"/>
 <instance part="GND1" gate="1" x="30.48" y="78.74"/>
-<instance part="J2" gate="-1" x="241.3" y="162.56"/>
-<instance part="J2" gate="-2" x="233.68" y="165.1"/>
-<instance part="J2" gate="-3" x="254" y="165.1" rot="R180"/>
-<instance part="GND28" gate="1" x="256.54" y="162.56"/>
+<instance part="J2" gate="-1" x="251.46" y="162.56"/>
+<instance part="J2" gate="-2" x="243.84" y="165.1"/>
+<instance part="J2" gate="-3" x="284.48" y="165.1" rot="R180"/>
+<instance part="GND28" gate="1" x="289.56" y="162.56"/>
 <instance part="LOET" gate="G$1" x="256.54" y="139.7"/>
 <instance part="PWR_ENABLE" gate="G$1" x="152.4" y="213.36"/>
 <instance part="TEMP_RAW" gate="G$1" x="73.66" y="68.58"/>
@@ -18380,6 +18384,10 @@ measurement
 <instance part="SAFETY_2" gate="G$1" x="320.04" y="246.38"/>
 <instance part="SAFETY_3" gate="G$1" x="350.52" y="248.92"/>
 <instance part="D2" gate="G$1" x="294.64" y="241.3"/>
+<instance part="SAFETY-R10" gate="G$1" x="378.46" y="241.3" rot="R270"/>
+<instance part="LED3" gate="G$1" x="370.84" y="243.84"/>
+<instance part="SAFETY-R11" gate="G$1" x="370.84" y="231.14" rot="R270"/>
+<instance part="GND29" gate="1" x="370.84" y="218.44"/>
 </instances>
 <busses>
 </busses>
@@ -18678,6 +18686,12 @@ measurement
 <segment>
 <pinref part="J2" gate="-3" pin="S"/>
 <pinref part="GND28" gate="1" pin="GND"/>
+<wire x1="289.56" y1="165.1" x2="287.02" y2="165.1" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="SAFETY-R11" gate="G$1" pin="2"/>
+<pinref part="GND29" gate="1" pin="GND"/>
+<wire x1="370.84" y1="220.98" x2="370.84" y2="226.06" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$1" class="0">
@@ -18787,11 +18801,12 @@ measurement
 </segment>
 <segment>
 <label x="261.62" y="137.16" size="1.778" layer="95" xref="yes"/>
-<pinref part="IC2" gate="G$1" pin="PD4(XCK/T0)"/>
-<wire x1="203.2" y1="137.16" x2="256.54" y2="137.16" width="0.1524" layer="91"/>
 <pinref part="LOET" gate="G$1" pin="TP"/>
 <wire x1="256.54" y1="137.16" x2="261.62" y2="137.16" width="0.1524" layer="91"/>
+<wire x1="256.54" y1="137.16" x2="256.54" y2="134.62" width="0.1524" layer="91"/>
 <junction x="256.54" y="137.16"/>
+<pinref part="IC2" gate="G$1" pin="PD5(T1)"/>
+<wire x1="256.54" y1="134.62" x2="203.2" y2="134.62" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="MOSI" class="0">
@@ -19025,9 +19040,9 @@ measurement
 <label x="134.62" y="55.88" size="1.778" layer="95" rot="R270" xref="yes"/>
 </segment>
 <segment>
-<pinref part="IC2" gate="G$1" pin="PD5(T1)"/>
-<wire x1="203.2" y1="134.62" x2="215.9" y2="134.62" width="0.1524" layer="91"/>
-<label x="215.9" y="134.62" size="1.778" layer="95" xref="yes"/>
+<pinref part="IC2" gate="G$1" pin="PD4(XCK/T0)"/>
+<wire x1="210.82" y1="137.16" x2="203.2" y2="137.16" width="0.1524" layer="91"/>
+<label x="210.82" y="137.16" size="1.778" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="AVCC" class="0">
@@ -19304,10 +19319,16 @@ measurement
 <wire x1="347.98" y1="241.3" x2="350.52" y2="241.3" width="0.1524" layer="91"/>
 <pinref part="IC1" gate="B" pin="OUT"/>
 <wire x1="350.52" y1="241.3" x2="350.52" y2="246.38" width="0.1524" layer="91"/>
-<wire x1="350.52" y1="246.38" x2="365.76" y2="246.38" width="0.1524" layer="91"/>
+<wire x1="350.52" y1="246.38" x2="370.84" y2="246.38" width="0.1524" layer="91"/>
 <junction x="350.52" y="246.38"/>
-<label x="365.76" y="246.38" size="1.778" layer="95" xref="yes"/>
+<label x="383.54" y="246.38" size="1.778" layer="95" xref="yes"/>
 <pinref part="SAFETY_3" gate="G$1" pin="TP"/>
+<pinref part="SAFETY-R10" gate="G$1" pin="1"/>
+<wire x1="370.84" y1="246.38" x2="378.46" y2="246.38" width="0.1524" layer="91"/>
+<wire x1="378.46" y1="246.38" x2="383.54" y2="246.38" width="0.1524" layer="91"/>
+<junction x="378.46" y="246.38"/>
+<pinref part="LED3" gate="G$1" pin="A"/>
+<junction x="370.84" y="246.38"/>
 </segment>
 </net>
 <net name="N$6" class="0">
@@ -19436,14 +19457,26 @@ measurement
 <segment>
 <pinref part="IC2" gate="G$1" pin="PC3(ADC3)"/>
 <pinref part="J2" gate="-1" pin="S"/>
-<wire x1="238.76" y1="162.56" x2="203.2" y2="162.56" width="0.1524" layer="91"/>
+<wire x1="248.92" y1="162.56" x2="203.2" y2="162.56" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="PC2" class="0">
 <segment>
 <pinref part="IC2" gate="G$1" pin="PC2(ADC2)"/>
 <pinref part="J2" gate="-2" pin="S"/>
-<wire x1="231.14" y1="165.1" x2="203.2" y2="165.1" width="0.1524" layer="91"/>
+<wire x1="241.3" y1="165.1" x2="203.2" y2="165.1" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="SAFETY-R10" gate="G$1" pin="2"/>
+<wire x1="378.46" y1="223.52" x2="378.46" y2="236.22" width="0.1524" layer="91"/>
+<label x="378.46" y="223.52" size="1.778" layer="95" rot="R270" xref="yes"/>
+</segment>
+</net>
+<net name="N$2" class="0">
+<segment>
+<pinref part="LED3" gate="G$1" pin="C"/>
+<pinref part="SAFETY-R11" gate="G$1" pin="1"/>
+<wire x1="370.84" y1="236.22" x2="370.84" y2="238.76" width="0.1524" layer="91"/>
 </segment>
 </net>
 </nets>
