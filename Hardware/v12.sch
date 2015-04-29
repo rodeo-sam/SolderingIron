@@ -18136,7 +18136,7 @@ Ingenieurbüro ing-rb, mail@ing-rb.de&lt;/p&gt;</description>
 <part name="GND19" library="supply1" deviceset="GND" device=""/>
 <part name="P+8" library="supply1" deviceset="VCC" device=""/>
 <part name="LED2" library="led" deviceset="LED" device="CHIP-LED0805" value="GN"/>
-<part name="LED2-R1" library="rcl" deviceset="R-EU_" device="R0603" value="300"/>
+<part name="LED2-R1" library="rcl" deviceset="R-EU_" device="R0603" value="330"/>
 <part name="GND20" library="supply1" deviceset="GND" device=""/>
 <part name="P+9" library="supply1" deviceset="VCC" device=""/>
 <part name="OPAMP-R1" library="rcl" deviceset="R-EU_" device="R0603" value="10k"/>
@@ -18146,13 +18146,13 @@ Ingenieurbüro ing-rb, mail@ing-rb.de&lt;/p&gt;</description>
 <part name="DIS2" library="display-hp" deviceset="SC39-11SRWA" device=""/>
 <part name="DIS1" library="display-hp" deviceset="SC39-11SRWA" device=""/>
 <part name="DIS3" library="display-hp" deviceset="SC39-11SRWA" device=""/>
-<part name="DISP-R7" library="rcl" deviceset="R-EU_" device="R0603" value="300"/>
-<part name="DISP-R6" library="rcl" deviceset="R-EU_" device="R0603" value="300"/>
-<part name="DISP-R5" library="rcl" deviceset="R-EU_" device="R0603" value="300"/>
-<part name="DISP-R4" library="rcl" deviceset="R-EU_" device="R0603" value="300"/>
-<part name="DISP-R3" library="rcl" deviceset="R-EU_" device="R0603" value="300"/>
-<part name="DISP-R2" library="rcl" deviceset="R-EU_" device="R0603" value="300"/>
-<part name="DISP-R1" library="rcl" deviceset="R-EU_" device="R0603" value="300"/>
+<part name="DISP-R7" library="rcl" deviceset="R-EU_" device="R0603" value="330"/>
+<part name="DISP-R6" library="rcl" deviceset="R-EU_" device="R0603" value="330"/>
+<part name="DISP-R5" library="rcl" deviceset="R-EU_" device="R0603" value="330"/>
+<part name="DISP-R4" library="rcl" deviceset="R-EU_" device="R0603" value="330"/>
+<part name="DISP-R3" library="rcl" deviceset="R-EU_" device="R0603" value="330"/>
+<part name="DISP-R2" library="rcl" deviceset="R-EU_" device="R0603" value="330"/>
+<part name="DISP-R1" library="rcl" deviceset="R-EU_" device="R0603" value="330"/>
 <part name="DISP-R8\" library="rcl" deviceset="R-EU_" device="R0603" value="300"/>
 <part name="PWR-Q2" library="transistor-small-signal" deviceset="BSS123" device="" value="IRLML2502"/>
 <part name="IC4" library="burr-brown" deviceset="OPA336" device="U"/>
