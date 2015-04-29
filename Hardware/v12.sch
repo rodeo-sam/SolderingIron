@@ -18185,12 +18185,12 @@ Ingenieurbüro ing-rb, mail@ing-rb.de&lt;/p&gt;</description>
 <part name="GND1" library="supply1" deviceset="GND" device=""/>
 <part name="J2" library="con-molex" deviceset="22-?-03" device="27-2031"/>
 <part name="GND28" library="supply1" deviceset="GND" device=""/>
-<part name="TP1" library="testpad" deviceset="TP" device="B1,27"/>
-<part name="TP2" library="testpad" deviceset="TP" device="B1,27"/>
-<part name="TP4" library="testpad" deviceset="TP" device="B1,27"/>
-<part name="TP5" library="testpad" deviceset="TP" device="B1,27"/>
-<part name="TP6" library="testpad" deviceset="TP" device="B1,27"/>
-<part name="TP7" library="testpad" deviceset="TP" device="B1,27"/>
+<part name="LOET" library="testpad" deviceset="TP" device="B1,27"/>
+<part name="PWR_ENABLE" library="testpad" deviceset="TP" device="B1,27"/>
+<part name="TEMP_RAW" library="testpad" deviceset="TP" device="B1,27"/>
+<part name="SAFETY_1" library="testpad" deviceset="TP" device="B1,27"/>
+<part name="SAFETY_2" library="testpad" deviceset="TP" device="B1,27"/>
+<part name="SAFETY_3" library="testpad" deviceset="TP" device="B1,27"/>
 <part name="D2" library="_hhn_diodes_smd" deviceset="LL4148" device=""/>
 </parts>
 <sheets>
@@ -18373,12 +18373,12 @@ measurement
 <instance part="J2" gate="-2" x="233.68" y="165.1"/>
 <instance part="J2" gate="-3" x="254" y="165.1" rot="R180"/>
 <instance part="GND28" gate="1" x="256.54" y="162.56"/>
-<instance part="TP1" gate="G$1" x="256.54" y="139.7"/>
-<instance part="TP2" gate="G$1" x="152.4" y="213.36"/>
-<instance part="TP4" gate="G$1" x="73.66" y="68.58"/>
-<instance part="TP5" gate="G$1" x="292.1" y="243.84"/>
-<instance part="TP6" gate="G$1" x="320.04" y="246.38"/>
-<instance part="TP7" gate="G$1" x="350.52" y="248.92"/>
+<instance part="LOET" gate="G$1" x="256.54" y="139.7"/>
+<instance part="PWR_ENABLE" gate="G$1" x="152.4" y="213.36"/>
+<instance part="TEMP_RAW" gate="G$1" x="73.66" y="68.58"/>
+<instance part="SAFETY_1" gate="G$1" x="292.1" y="243.84"/>
+<instance part="SAFETY_2" gate="G$1" x="320.04" y="246.38"/>
+<instance part="SAFETY_3" gate="G$1" x="350.52" y="248.92"/>
 <instance part="D2" gate="G$1" x="294.64" y="241.3"/>
 </instances>
 <busses>
@@ -18777,7 +18777,7 @@ measurement
 <label x="347.98" y="33.02" size="1.778" layer="95" rot="R180" xref="yes"/>
 </segment>
 </net>
-<net name="LOETKOLBEN_0" class="0">
+<net name="LOETKOLBEN" class="0">
 <segment>
 <pinref part="PWR-R1" gate="G$1" pin="2"/>
 <wire x1="139.7" y1="210.82" x2="116.84" y2="210.82" width="0.1524" layer="91"/>
@@ -18789,7 +18789,7 @@ measurement
 <label x="261.62" y="137.16" size="1.778" layer="95" xref="yes"/>
 <pinref part="IC2" gate="G$1" pin="PD4(XCK/T0)"/>
 <wire x1="203.2" y1="137.16" x2="256.54" y2="137.16" width="0.1524" layer="91"/>
-<pinref part="TP1" gate="G$1" pin="TP"/>
+<pinref part="LOET" gate="G$1" pin="TP"/>
 <wire x1="256.54" y1="137.16" x2="261.62" y2="137.16" width="0.1524" layer="91"/>
 <junction x="256.54" y="137.16"/>
 </segment>
@@ -19080,7 +19080,7 @@ measurement
 <pinref part="PWR-Q2" gate="G$1" pin="D"/>
 <wire x1="152.4" y1="210.82" x2="149.86" y2="210.82" width="0.1524" layer="91"/>
 <junction x="152.4" y="210.82"/>
-<pinref part="TP2" gate="G$1" pin="TP"/>
+<pinref part="PWR_ENABLE" gate="G$1" pin="TP"/>
 </segment>
 </net>
 <net name="N$22" class="0">
@@ -19136,7 +19136,7 @@ measurement
 <junction x="73.66" y="66.04"/>
 <pinref part="OPAMP-R3" gate="G$1" pin="1"/>
 <pinref part="IC4" gate="G$1" pin="OUT"/>
-<pinref part="TP4" gate="G$1" pin="TP"/>
+<pinref part="TEMP_RAW" gate="G$1" pin="TP"/>
 </segment>
 </net>
 <net name="N$24" class="0">
@@ -19307,7 +19307,7 @@ measurement
 <wire x1="350.52" y1="246.38" x2="365.76" y2="246.38" width="0.1524" layer="91"/>
 <junction x="350.52" y="246.38"/>
 <label x="365.76" y="246.38" size="1.778" layer="95" xref="yes"/>
-<pinref part="TP7" gate="G$1" pin="TP"/>
+<pinref part="SAFETY_3" gate="G$1" pin="TP"/>
 </segment>
 </net>
 <net name="N$6" class="0">
@@ -19330,7 +19330,7 @@ measurement
 <pinref part="SAFETY-R1" gate="G$1" pin="1"/>
 <wire x1="287.02" y1="233.68" x2="292.1" y2="233.68" width="0.1524" layer="91"/>
 <junction x="292.1" y="241.3"/>
-<pinref part="TP5" gate="G$1" pin="TP"/>
+<pinref part="SAFETY_1" gate="G$1" pin="TP"/>
 <pinref part="D2" gate="G$1" pin="A"/>
 </segment>
 </net>
@@ -19355,7 +19355,7 @@ measurement
 <junction x="320.04" y="243.84"/>
 <pinref part="IC1" gate="B" pin="-IN"/>
 <wire x1="320.04" y1="243.84" x2="335.28" y2="243.84" width="0.1524" layer="91"/>
-<pinref part="TP6" gate="G$1" pin="TP"/>
+<pinref part="SAFETY_2" gate="G$1" pin="TP"/>
 <pinref part="D2" gate="G$1" pin="C"/>
 </segment>
 </net>
@@ -19378,21 +19378,21 @@ measurement
 <junction x="363.22" y="220.98"/>
 </segment>
 </net>
-<net name="N$2" class="0">
+<net name="SDA" class="0">
 <segment>
 <pinref part="IC2" gate="G$1" pin="PC4(ADC4/SDA)"/>
 <pinref part="I2C" gate="-1" pin="S"/>
 <wire x1="259.08" y1="160.02" x2="203.2" y2="160.02" width="0.1524" layer="91"/>
 </segment>
 </net>
-<net name="N$4" class="0">
+<net name="SCL" class="0">
 <segment>
 <pinref part="IC2" gate="G$1" pin="PC5(ADC5/SCL)"/>
 <pinref part="I2C" gate="-2" pin="S"/>
 <wire x1="259.08" y1="157.48" x2="203.2" y2="157.48" width="0.1524" layer="91"/>
 </segment>
 </net>
-<net name="N$9" class="0">
+<net name="RX" class="0">
 <segment>
 <pinref part="IC2" gate="G$1" pin="PD0(RXD)"/>
 <pinref part="UART" gate="-2" pin="S"/>
@@ -19401,7 +19401,7 @@ measurement
 <wire x1="231.14" y1="147.32" x2="203.2" y2="147.32" width="0.1524" layer="91"/>
 </segment>
 </net>
-<net name="N$10" class="0">
+<net name="TX" class="0">
 <segment>
 <pinref part="IC2" gate="G$1" pin="PD1(TXD)"/>
 <pinref part="UART" gate="-1" pin="S"/>
@@ -19432,14 +19432,14 @@ measurement
 <label x="218.44" y="121.92" size="1.778" layer="95" xref="yes"/>
 </segment>
 </net>
-<net name="N$3" class="0">
+<net name="PC3" class="0">
 <segment>
 <pinref part="IC2" gate="G$1" pin="PC3(ADC3)"/>
 <pinref part="J2" gate="-1" pin="S"/>
 <wire x1="238.76" y1="162.56" x2="203.2" y2="162.56" width="0.1524" layer="91"/>
 </segment>
 </net>
-<net name="N$13" class="0">
+<net name="PC2" class="0">
 <segment>
 <pinref part="IC2" gate="G$1" pin="PC2(ADC2)"/>
 <pinref part="J2" gate="-2" pin="S"/>
