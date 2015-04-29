@@ -40,7 +40,7 @@
 	#if (HW_VERSION == 1)
 	#define LED_DDR   DDRD
 	#define LED_PORT  PORTD
-	#define LED0      (1<<PD5) // the lcd on the left
+	#define LED0      (1<<PD4) // the lcd on the left
 	#define LED1      (1<<PD6) // the lcd in the middle
 	#define LED2      (1<<PD7) // the lcd on the right
 
@@ -58,7 +58,7 @@
 	#define SENS0     PC0 // ADC0
 	#define HALL      PC1 // ADC1
 
-	#define PWR0      PD4
+	#define PWR0      PD5
 	
 //	#define BUTTON_UP (1<<PD2) // INT0
 //	#define BUTTON_DN (1<<PD3) // INT1
