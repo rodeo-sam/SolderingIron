@@ -18153,7 +18153,7 @@ Ingenieurbüro ing-rb, mail@ing-rb.de&lt;/p&gt;</description>
 <part name="R8" library="rcl" deviceset="R-EU_" device="R0603" value="330"/>
 <part name="R3" library="rcl" deviceset="R-EU_" device="R0603" value="330"/>
 <part name="R1" library="rcl" deviceset="R-EU_" device="R0603" value="330"/>
-<part name="R6" library="rcl" deviceset="R-EU_" device="R0603" value="300"/>
+<part name="R6" library="rcl" deviceset="R-EU_" device="R0603" value="330"/>
 <part name="PWR-Q2" library="transistor-small-signal" deviceset="BSS123" device="" value="IRLML2502"/>
 <part name="OPA" library="burr-brown" deviceset="OPA336" device="U"/>
 <part name="R35" library="rcl" deviceset="R-EU_" device="R0603" value="100k"/>
@@ -18194,7 +18194,7 @@ Ingenieurbüro ing-rb, mail@ing-rb.de&lt;/p&gt;</description>
 <part name="D1" library="_hhn_diodes_smd" deviceset="LL4148" device=""/>
 <part name="R32" library="rcl" deviceset="R-EU_" device="R0603" value="0 n.m."/>
 <part name="LED3" library="led" deviceset="LED" device="CHIP-LED0805" value="GN"/>
-<part name="R12" library="rcl" deviceset="R-EU_" device="R0603" value="300"/>
+<part name="R12" library="rcl" deviceset="R-EU_" device="R0603" value="330"/>
 <part name="GND29" library="supply1" deviceset="GND" device=""/>
 </parts>
 <sheets>
