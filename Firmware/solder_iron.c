@@ -88,6 +88,7 @@ int main(void)
 	int16_t old_temp = 0;
 	on_watchdog_reset();
 	wdt_enable(WDTO_500MS);
+	config_init();
 	config_load();
 	display_init();
 	clock_init();
