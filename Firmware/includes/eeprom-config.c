@@ -53,3 +53,14 @@ void config_init(void)
 		config_save();
 	}
 }
+
+void config_reset(void)
+{
+	config.pid_d = PID_D;
+	config.pid_i = PID_I;
+	config.pid_p = PID_P;
+	config.default_temp = DEFAULT_TEMP;
+	config.saved_temp[0] = SAVED_TEMP0;
+	config.saved_temp[1] = SAVED_TEMP1;
+	config_save();
+}
