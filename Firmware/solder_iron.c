@@ -92,6 +92,7 @@ int main(void)
 	display_init();
 	clock_init();
 	buttons_init(&plus, &minus, &back_to_default, &goto_menu);
+	uart_init(19200, one_stop_bit_e, no_parity_e);
 
 	next_time_t new_temp_timer;
 	timer_init(&new_temp_timer,1,0,0); // 1s
@@ -110,6 +111,7 @@ int main(void)
 
 	uint8_t temp_to_show = 0;
 	display_number(100);
+	printf("booted\r\n");
 	while(1)
 	{
 
