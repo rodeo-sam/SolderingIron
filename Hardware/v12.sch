@@ -18128,7 +18128,7 @@ Ingenieurbüro ing-rb, mail@ing-rb.de&lt;/p&gt;</description>
 <part name="C1" library="rcl" deviceset="C-EU" device="C0603" value="100n"/>
 <part name="C15" library="rcl" deviceset="C-EU" device="C0603" value="100n"/>
 <part name="PWR_INPUT" library="con-molex" deviceset="22-?-04" device="27-2041"/>
-<part name="C14" library="rcl" deviceset="CPOL-EU" device="E2-5" value="56u"/>
+<part name="C14" library="rcl" deviceset="CPOL-EU" device="E2-5" value="100u"/>
 <part name="C10" library="rcl" deviceset="C-EU" device="C0603" value="10n"/>
 <part name="GND17" library="supply1" deviceset="GND" device=""/>
 <part name="R33" library="rcl" deviceset="R-EU_" device="R0603" value="10k"/>
