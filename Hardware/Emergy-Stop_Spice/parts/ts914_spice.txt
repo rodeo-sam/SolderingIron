@@ -1,0 +1,83 @@
+* WARNING : please consider following remarks before usage
+*
+* 1) All models are a tradeoff between accuracy and complexity (ie. simulation 
+*    time).
+* 2) Macromodels are not a substitute to breadboarding, they rather confirm the
+*    validity of a design approach and help to select surrounding component values.
+*
+* 3) A macromodel emulates the NOMINAL performance of a TYPICAL device within 
+*    SPECIFIED OPERATING CONDITIONS (ie. temperature, supply voltage, etc.).
+*    Thus the macromodel is often not as exhaustive as the datasheet, its goal
+*    is to illustrate the main parameters of the product.
+*
+* 4) Data issued from macromodels used outside of its specified conditions
+*    (Vcc, Temperature, etc) or even worse: outside of the device operating 
+*    conditions (Vcc, Vicm, etc) are not reliable in any way.
+*
+** Standard Linear Ics Macromodels, 1993.
+** CONNECTIONS :
+* 1 INVERTING INPUT
+* 2 NON-INVERTING INPUT
+* 3 OUTPUT
+* 4 POSITIVE POWER SUPPLY
+* 5 NEGATIVE POWER SUPPLY
+*
+.SUBCKT LM324 2 1 4 5 3  
+*************************************************
+.MODEL MDTH D IS=1E-8 KF=6.564344E-14 CJO=10F 
+CIP 2 5 1.000000E-12
+CIN 1 5 1.000000E-12
+EIP 10 5 2 5 1
+EIN 16 5 1 5 1
+RIP 10 11 6.500000E+00
+RIN 15 16 6.500000E+00
+RIS 11 15 7.322092E+00
+DIP 11 12 MDTH 400E-12
+DIN 15 14 MDTH 400E-12
+VOFP 12 13 DC 0.000000E+00
+VOFN 13 14 DC 0
+IPOL 13 5 4.000000E-05
+CPS 11 15 2.498970E-08
+DINN 17 13 MDTH 400E-12
+VIN 17 5 0.000000e+00
+DINR 15 18 MDTH 400E-12
+VIP 4 18 0.000000E+00
+FCP 4 5 VOFP 5.750000E+00
+FCN 5 4 VOFN 5.750000E+00
+* AMPLIFYING STAGE
+FIP 5 19 VOFP 4.400000E+02
+FIN 5 19 VOFN 4.400000E+02
+RG1 19 5 4.904961E+05
+RG2 19 4 4.904961E+05
+CC 19 29 2.200000E-08
+HZTP 30 29 VOFP 1.8E+03
+HZTN 5 30 VOFN 1.8E+03
+DOPM 19 22 MDTH 400E-12
+DONM 21 19 MDTH 400E-12
+HOPM 22 28 VOUT 3800
+VIPM 28 4 230
+HONM 21 27 VOUT 3800
+VINM 5 27 230
+EOUT 26 23 19 5 1
+VOUT 23 5 0
+ROUT 26 3 82
+COUT 3 5 1.000000E-12
+DOP 19 68 MDTH 400E-12
+VOP 4 25 1.724
+HSCP 68 25 VSCP1 0.8E+8
+DON 69 19 MDTH 400E-12
+VON 24 5 1.7419107
+HSCN 24 69 VSCN1 0.8E+8
+VSCTHP 60 61 0.0875 
+DSCP1 61 63 MDTH 400E-12
+VSCP1 63 64 0
+ISCP 64 0 1.000000E-8
+DSCP2 0 64 MDTH 400E-12
+DSCN2 0 74 MDTH 400E-12
+ISCN 74 0 1.000000E-8
+VSCN1 73 74 0
+DSCN1 71 73 MDTH 400E-12
+VSCTHN 71 70 -0.55
+ESCP 60 0 2 1 500
+ESCN 70 0 2 1 -2000
+.ENDS 
