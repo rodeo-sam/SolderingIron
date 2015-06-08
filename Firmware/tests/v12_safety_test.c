@@ -28,6 +28,6 @@ int main(void)
 		_delay_ms(50);
 	}
 	
-	// now a voltage above 4.2 volts at test point TPTEMP should trigger safety once again
+	// now a voltage above 3.9 volts at test point TPTEMP should trigger safety once again
 	// if not please adjust resistors accordingly
 }
