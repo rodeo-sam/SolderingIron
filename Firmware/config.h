@@ -14,6 +14,8 @@
 
 // default power on temperature
 #define DEFAULT_TEMP 300
+#define SAVED_TEMP0 350
+#define SAVED_TEMP1 250
 
 //PID-Controller values
 #define PID_P 170 

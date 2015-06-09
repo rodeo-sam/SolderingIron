@@ -3,6 +3,7 @@
  *
  * Created: Do 29. Jan 14:23:00 CET 2015
  * Author: Karsten Hinz <k.hinz tu-bs.de>
+ * Author: Georg von Zengen <oni303@gmail.com>
  */ 
 
 #include <util/delay.h>
@@ -17,9 +18,16 @@
 #include "adc.h"
 #include "temperature.h"
 #include "uart.h"
+#include "timing.h"
+#include "buttons.h"
+#include "menu.h"
+#include "tip.h"
+#include "clock.h"
+#include "controller.h"
 
 
 void on_watchdog_reset(void);
+void from_menu(void);
 /******************VERY IMPORTANT********************************************
  * this code block is necessary to prevent the processor to run into watchdog-reset-lifelock 
  * do NOT delete this block
@@ -33,24 +41,101 @@ void wdt_init(void)
     return;
 }
 /*******************end of very important block***************************/
+int16_t temperature = 0;
+int16_t temperature_save = 0;
+
+void plus(void)
+{
+  temperature = tip_setted_temp();
+  if (temperature != TEMP_MAX) {
+  	temperature++;
+	display_temperature(temperature);
+	tip_set_temp(temperature);
+  }
+}
+
+void minus(void)
+{
+  temperature = tip_setted_temp();
+  if (temperature != TEMP_MIN) {
+    temperature--;
+	display_temperature(temperature);
+	tip_set_temp(temperature);
+  }
+}
+
+void back_to_default(void)
+{
+	temperature = config.default_temp;
+	tip_set_temp(temperature);
+	display_temperature(temperature);
+}
+
+void goto_menu(void)
+{
+	control_set_temp(0);
+	menu_init(&from_menu);
+}
+void from_menu(void)
+{
+	buttons_init(&plus, &minus, &back_to_default, &goto_menu);
+	control_set_temp(tip_setted_temp());
+
+}
 
 int main(void)
 {
-	wdt_disable();
+	int16_t old_temp = 0;
 	on_watchdog_reset();
 	wdt_enable(WDTO_500MS);
+	config_init();
 	config_load();
 	display_init();
 	clock_init();
+	buttons_init(&plus, &minus, &back_to_default, &goto_menu);
+	uart_init(19200, one_stop_bit_e, no_parity_e);
+
+	next_time_t new_temp_timer;
+	timer_init(&new_temp_timer,1,0,0); // 1s
+	timer_prepare();
+	next_time_t temp_timer;
+	timer_init(&temp_timer,0,32,0); // 0.25s
+	timer_prepare();
+	timer_set(&temp_timer);
+
+	temperature = config.default_temp;
+	tip_set_temp(temperature);
+	control_set_temp(temperature);
+	
 	//control_init();  //leave this as a comment until we want to heat things up
 
 
-
+	uint8_t temp_to_show = 0;
 	display_number(100);
+	printf("booted\r\n");
 	while(1)
 	{
-		
+
+		if (!in_menu){
+			if (old_temp != temperature){
+				old_temp = temperature;
+				control_set_temp(temperature);
+				timer_set(&new_temp_timer);
+				temp_to_show = 1;
+			}
+			if(timer_past(&new_temp_timer)){
+				temp_to_show = 0;
+				timer_set(&temp_timer);
+			}
+			if(temp_to_show == 0){
+				if(timer_past(&temp_timer)){
+					timer_set(&temp_timer);
+					display_temperature(tip_get_temp());
+				}
+			}
+		}
 		wdt_reset(); //still alive
+		
 	}
 }
 
@@ -99,3 +184,7 @@ void on_watchdog_reset(void)
 	}
 }
 
+void set_temperatur(int16_t temp)
+{
+	temperature_save = temp;
+}
