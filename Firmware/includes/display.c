@@ -106,7 +106,13 @@ void display_number(int16_t number) {
 	}
 
 	// get bcd digits of the absolut value
-	uint16_t bcd = i2bcd( number * ((number <0)?-1:1) );
+
+  uint16_t bcd = 0;
+  if (number < 0) {
+    bcd = i2bcd(number*-1);
+  } else {
+    bcd = i2bcd(number);
+  }
 
 	digits[0] = bcd & 0x0f;
 	digits[1] = (bcd>>4) & 0x0f;
@@ -147,7 +153,17 @@ void display_update() {
 
 	LED_PORT &= ~(LED0|LED1|LED2); //all off
 	DISP_PORT = framebuffer[led_idx];
-	LED_PORT |= (1<<3+led_idx);
+  switch(led_idx) {
+  case(0):
+    LED_PORT |= LED0;
+    break;
+  case(1):
+    LED_PORT |= LED1;
+    break;
+  case(2):
+    LED_PORT |= LED2;
+    break;
+  }
 
 	if (led_idx++ >2) led_idx = 0;
 }
