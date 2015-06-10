@@ -1,0 +1,64 @@
+Circuit: * C:\users\jb\My Documents\GITs\SolderingIron-GIT\Hardware\Emergy-Stop_Spice\Emergency_Stop.asc
+
+Limiting rise time of source vpwm to 0.0001
+Limiting fall time of source vpwm to 0.0001
+Limiting rise time of source v_thermo to 0.4
+Limiting fall time of source v_thermo to 0.4
+Instance "m:m3:2": Length shorter than recommended for a level 1 MOSFET.
+Instance "m:m1:2": Length shorter than recommended for a level 1 MOSFET.
+Early termination of direct N-R iteration.
+Direct Newton iteration failed to find .op point.  (Use ".option noopiter" to skip.)
+Starting Gmin stepping
+Gmin = 10
+vernier = 0.5
+Gmin = 1.86414
+vernier = 0.666667
+vernier = 0.333333
+Gmin = 0.676495
+vernier = 0.166667
+vernier = 0.0833333
+Gmin = 0.530788
+vernier = 0.111111
+vernier = 0.0555555
+vernier = 0.0277778
+vernier = 0.0138889
+Gmin = 0.502408
+vernier = 0.00694444
+vernier = 0.00347222
+vernier = 0.00173611
+vernier = 0.000868055
+vernier = 0.000434028
+Gmin = 0
+Gmin stepping succeeded in finding the operating point.
+
+.step t=0.000699451
+.step t=0.00165259
+.step t=0.00260573
+.step t=0.00355887
+.step t=0.00451202
+.step t=0.00546516
+.step t=0.0064183
+.step t=0.00737144
+.step t=0.00832458
+.step t=0.00927772
+.step t=0.0102309
+
+Date: Mon Jun 08 16:37:33 2015
+Total elapsed time: 59.828 seconds.
+
+tnom = 27
+temp = 27
+method = modified trap
+totiter = 27469
+traniter = 25687
+tranpoints = 10296
+accept = 8333
+rejected = 1963
+matrix size = 140
+fillins = 1066
+solver = Normal
+Thread vector: 30.4/19.9[3] 7.8/5.7[3] 7.2/5.6[3] 3.6/2.7[3]  2592/500
+Matrix Compiler1: 115 KB object code size  39.2/18.1/[9.2]
+Matrix Compiler2: 28,7 KB object code size  7.8/6.0/[3.7]
+
+
