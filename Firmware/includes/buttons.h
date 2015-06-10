@@ -11,10 +11,10 @@
 #define BUTTON_PORT PORTD
 #define BUTTON_PORT_DDR DDRD
 #define BUTTON_PIN PIND
-#define PLUS_PIN PD3
-#define MINUS_PIN PD2
-#define PLUS_INTERRUPT_VECT INT1_vect
-#define MINUS_INTERRUPT_VECT INT0_vect
+#define PLUS_PIN PD2
+#define MINUS_PIN PD3
+#define PLUS_INTERRUPT_VECT INT0_vect
+#define MINUS_INTERRUPT_VECT INT1_vect
 
 extern void (*plus_callback)(void);
 extern void (*minus_callback)(void);
