@@ -52,6 +52,7 @@ typedef enum {
 	SIGN_Z=0, // not possible with this display
 	SIGN_DOT=(DISP_DOT),
 	SIGN_MINUS=(DISP_MID),
+	SIGN_EXCLAMATION=(DISP_UR|DISP_DOT),
 	SIGN_NONE=0
 } sign_t;
 
