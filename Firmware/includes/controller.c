@@ -20,6 +20,7 @@
 #include "timer0.h"
 #include "uart.h"
 
+#include "pinout.h"
 #include "config.h"
 
 #define Ta 100 //ms  //controll cycle time
@@ -53,7 +54,7 @@ void control_init(void)
 	TIMSK0 |= (1 << OCIE0A) ;
 	tip_init(&new_temperature_ready_callback);
 	tip_start_conversion();
-	DDRD |= (1<< PD4);
+	PWR0_DDR |= (1<< PWR0);
 	w = config.default_temp;
 	timer0_init();
 	printf("controller booted\r\n");
@@ -123,9 +124,9 @@ ISR(TIMER0_COMPA_vect) {
 	uint8_t t = 0;
 	if((pwm_count == 0) && compb_state && (y_buffer > 2) ){
 		compb_state = 0;     
-		PORTD |= (1 << PD4);  //set pin high on timer overflow it the temperature is already measured and the duty cycle is over 2 (noise reduction)
+		PWR0_PORT |= (1 << PWR0);  //set pin high on timer overflow if the temperature is already measured and the duty cycle is over 2 (noise reduction)
 	}else if((pwm_count == 1) && (y_buffer == 0)){
-		PORTD &= ~(1 << PD4); // just to be sure the power is of
+		PWR0_PORT &= ~(1 << PWR0); // just to be sure the power is off
 		compb_state = 0;
 		measurement_state = 0;
 		tip_start_conversion(); // measure the temperature if as soon as possible if the duty cycle is zero
@@ -134,7 +135,7 @@ ISR(TIMER0_COMPA_vect) {
 		t = 1; //make sure pwm_count is not increased (clean overflow)
 	} else {
 		if(pwm_count == y_buffer ){ 
-			PORTD &= ~(1 << PD4); //clear pin if duty cycle is over
+			PWR0_PORT &= ~(1 << PWR0); //clear pin if duty cycle is over
 			if (overflow){ //tip detection
 				overflow = 0;
 				measurement_state = 1;
