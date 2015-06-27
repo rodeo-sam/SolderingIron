@@ -111,7 +111,9 @@ int main(void)
 
 
 	uint8_t temp_to_show = 0;
-	display_number(100);
+	display_sign(2, SIGN_H);
+	display_sign(1, SIGN_I);
+	display_sign(0, SIGN_EXCLAMATION);
 	printf("booted\r\n");
 	while(1)
 	{
