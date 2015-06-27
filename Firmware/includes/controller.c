@@ -143,9 +143,9 @@ ISR(TIMER0_COMPA_vect) {
 //				measurement_state = 1;
 //				tip_start_conversion(); // measure direcly after tip is powered down for tip detection
 //			}
-		}else if((pwm_count == y_buffer + 2)){ 
+		}else if((pwm_count == y_buffer + 50)){
 			measurement_state = 0;
-			tip_start_conversion(); //start temperature measurement after waiting (2) for the offset voltage, caused by powering the tip, has faded 
+			tip_start_conversion(); //start temperature measurement after waiting (50) for the offset voltage, caused by powering the tip, has faded
 		}
 	}
 	if((compb_state == 1) && (pwm_count >= 255)){
