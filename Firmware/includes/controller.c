@@ -38,8 +38,8 @@ volatile int16_t eold = 0;
 volatile int16_t y_buffer = 255;
 volatile int16_t temp_no_power = 0;
 volatile int16_t temp_power = 0;
-volatile uint8_t tip = 0;
-volatile uint8_t no_tip_count = 0;
+//volatile uint8_t tip = 0;
+//volatile uint8_t no_tip_count = 0;
 void new_temperature_ready_callback(int16_t);
 
 void control_set_temp(int16_t temp)
@@ -92,17 +92,19 @@ void control(int16_t temp)
 		y = 0;
 	}
 
-	if (tip == 0){ 
-		y_buffer = 0; //do not heat if no tip is connected
- 		no_tip_count++;
-		if (no_tip_count > TIP_CHECK_INTERVAL){ //check if tip is connected now
-			tip = 1;
-			no_tip_count = 0;
-			y_buffer = y;
-		}
-	}else{
-		y_buffer = y;
-	}
+//	if (tip == 0){
+//		y_buffer = 0; //do not heat if no tip is connected
+// 		no_tip_count++;
+//		if (no_tip_count > TIP_CHECK_INTERVAL){ //check if tip is connected now
+//			tip = 1;
+//			no_tip_count = 0;
+//			y_buffer = y;
+//		}
+//	}else{
+//		y_buffer = y;
+//	}
+
+	y_buffer = y;
 }
 
 uint16_t pwm_count =0;
@@ -116,8 +118,8 @@ void new_temperature_ready_callback(int16_t temp){
 		temp_no_power = temp;
 	} else {
 		temp_power = temp;
-		tip = tip_present(temp_power, temp_no_power);
-	} 
+		//tip = tip_present(temp_power, temp_no_power);
+	}
 }
 
 ISR(TIMER0_COMPA_vect) {
@@ -136,11 +138,11 @@ ISR(TIMER0_COMPA_vect) {
 	} else {
 		if(pwm_count == y_buffer ){ 
 			PWR0_PORT &= ~(1 << PWR0); //clear pin if duty cycle is over
-			if (overflow){ //tip detection
-				overflow = 0;
-				measurement_state = 1;
-				tip_start_conversion(); // measure direcly after tip is powered down for tip detection
-			}
+//			if (overflow){ //tip detection
+//				overflow = 0;
+//				measurement_state = 1;
+//				tip_start_conversion(); // measure direcly after tip is powered down for tip detection
+//			}
 		}else if((pwm_count == y_buffer + 2)){ 
 			measurement_state = 0;
 			tip_start_conversion(); //start temperature measurement after waiting (2) for the offset voltage, caused by powering the tip, has faded 
