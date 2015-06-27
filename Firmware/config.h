@@ -4,7 +4,7 @@
 #define HW_VERSION 12 // current hardware version
 
 // the temperature the system is supposed to not exceed
-#define TEMP_MAX 420
+#define TEMP_MAX 380
 
 // temperature that should be held when resting
 #define TEMP_REST 150

@@ -28,8 +28,10 @@ void tip_init(void(*callback)(int16_t))
 static void tip_conversion_complete_callback(uint16_t adc)
 {
 	//TODO use lookup table
-	accum temperature = 13.3081k + adc*0.5943k;
+	accum temperature = 49.9424k + adc*0.4433k;
 	tip_temperature = (int16_t) temperature;
+	tip_temperature += 40; // hacked temperature offset
+
 	new_temperature_ready_callback(tip_temperature);
 }
 
