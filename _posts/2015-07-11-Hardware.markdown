@@ -39,7 +39,9 @@ The circuit was designed using LTSpice and tested with the real hardware after s
 You can of course connect a variety of additional equipment to your version of this soldering iron.
 The TWI bus is put onto pinheader, just like UART and two more GPIOs/ADCs (PC2, PC3).
 
-![View on Pin Header]({{ site.imageurl }}/pcb_pin_header.png)
+[Overview](PinheaderOverview)
+
+![View on Pin Header]({{ site.imageurl }}/pcb_bottom_layer.png)
 
 ## TEMPERATURE MEASUREMENT
 
