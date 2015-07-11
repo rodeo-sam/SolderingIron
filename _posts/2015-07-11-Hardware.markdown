@@ -55,14 +55,26 @@ The amplification factor is set to 511 and this way we can use most of the range
 The first version featured a three digit seven segment display from AliExpress with a common cathode, which took care of the segments internal wiring.
 That saved us a lot of effort in terms of routing wires underneath the display.
 In the latest version we decided to use standard single digit seven segment displays, because we are a little afraid that those three digit displays may not always be available or are harder to order for some users.
-The display is wired to the AVR's PORT B and the n-FETs controlling the cathode of each digit are controlled with PD4, PD6 and PD7.
+The display is wired to the AVRs PORT B and the n-FETs controlling the cathode of each digit are controlled with PD4, PD6 and PD7.
 
 ## BUTTONS
 
-What would be a soldering iron without buttons?! Since we wired our Buttons to PD2 and PD3, which are interrupt pins, 
+What would be a soldering iron without buttons?!
+Since we wired our Buttons to PD2 and PD3, which are interrupt pins, we avoided polling the state of the buttons.
+We managed to implement a menu, which offers temperature adjustment and saving/calling of favorite temperatures.
+To avoid bouncing of the button we added small capacitors and reduced the amount of code dealing with this issue.
 
-[Software](Software)
-[Wires](Wires)
-[Misc](Misc)
+## HALL-SENSOR
+
+In this project we tried to imitate the behavior of the original Weller WD 1M, which costs a little over 200 &euro;.
+One of its features is a soldering iron rest detection, which lets the the iron cool and idle at a set temperature (e.g. 200&deg;C).
+When the soldering iron is resting in its holder a hall sensor is detecting a small magnet embedded in the holder.
+With integrating a hall sensor into the handle we are able to do this, too.
+
+
+To learn more on how the soldering iron is working click a link below:
+- [Software](Software)
+- [Wires](Wires)
+- [Misc](Misc)
 
 [back to Frontpage](Frontpage)
