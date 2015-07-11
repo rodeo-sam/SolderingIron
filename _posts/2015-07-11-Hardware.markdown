@@ -4,7 +4,7 @@ title:  "Hardware Details"
 date:   2015-07-11 12:00:00
 ---
 
-## SAFETY CIRCUIT
+## GENERAL
 
 We started out with designing a fairly simple circuit consisting of an AVR ATmega328P a series of FETs, capacitors and a LM324.
 It all was designed to be as cheap and easy to get as possible.
@@ -16,6 +16,9 @@ The LM324 was too unreliable in terms of measuring the same temperature with dif
 It just varied too much.
 So we upgraded to an OPA336U.
 The LM324 still stayed on the board and came in handy in another way.
+
+## SAFETY CIRCUIT
+
 Modern hardware like your smartphone cannot be physically broken by installing some software.
 At worst you can make it unusable by bricking your device but you usually cannot make it go up in smoke.
 We tried to achieve the same thing with this soldering Iron.
@@ -45,5 +48,19 @@ The amplification factor is set to 511 and this way we can use most of the range
 
 ![View on Pin Header]({{ site.imageurl }}/layout_opamp.png)
 
+## DISPLAY
 
-[back](2015-07-11-Frontpage)
+The first version featured a three digit seven segment display from AliExpress with a common cathode, which took care of the segments internal wiring.
+That saved us a lot of effort in terms of routing wires underneath the display.
+In the latest version we decided to use standard single digit seven segment displays, because we are a little afraid that those three digit displays may not always be available or are harder to order for some users.
+The display is wired to the AVR's PORT B and the n-FETs controlling the cathode of each digit are controlled with PD4, PD6 and PD7.
+
+## BUTTONS
+
+What would be a soldering iron without buttons?! Since we wired our Buttons to PD2 and PD3, which are interrupt pins, 
+
+[Software](Software)
+[Wires](Wires)
+[Misc](Misc)
+
+[back to Frontpage](Frontpage)
