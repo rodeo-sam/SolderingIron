@@ -1,0 +1,29 @@
+---
+layout: default
+title:  "Hardware Details"
+date:   2015-07-11 12:00:00
+---
+
+
+
+We started out with designing a fairly simple circuit consisting of an AVR ATmega328P a series of FETs, capacitors and a LM324.
+It all was designed to be as cheap and easy to get as possible.
+Pretty soon a three digit display got attached, a voltage regulator was patched in and buttons were added.
+That was basically the first version of this soldering iron.
+
+But we were not very happy with the results.
+The LM324 was too unreliable in terms of measuring the same temperature with different LM324.
+It just varied too much.
+So we upgraded to an OPA336U.
+The LM324 still stayed on the board and came in handy in another way.
+Modern hardware like your smartphone cannot be physically broken by installing some software.
+At worst you can make it unusable by bricking your device but you usually cannot make it go up in smoke.
+We tried to achieve the same thing with this soldering Iron.
+But doing this with a piece of hardware which is supposed to get hot is a lot harder.
+So we built two protection circuits to prevent to soldering tip from dying.
+- Over temperature protection: When the tips temperature exceeds about 380\U+2103 to 390\U+2103
+
+- [back][frontpage]
+
+
+[frontpage]: http://www.google.de
