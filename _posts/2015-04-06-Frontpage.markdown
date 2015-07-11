@@ -16,12 +16,13 @@ He made us think about a Version with some more features and without the necessi
 Our soldering iron features:
 
 - AVR controller
-- Fast heatup (2-3s from 20C to 350C) and stable temperature via pid controller
+- Fast heatup (2-3s from 20&deg;C to 350&deg;C) and stable temperature via pid controller
 - Safety circuit to protect the hardware in any case
 - Open Hardware / Software
 - Different Temperature scales available (recompiling necessary)
+- Very small pcb dimensions (5cm x 5xm)
 
-
+![View on PCB Layout]({{ site.imageurl }}/pcb_view_v12.png)
 
 For further information please check out the detail pages:
 
