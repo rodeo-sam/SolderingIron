@@ -4,7 +4,7 @@ title:  "Hardware Details"
 date:   2015-07-11 12:00:00
 ---
 
-
+## SAFETY CIRCUIT
 
 We started out with designing a fairly simple circuit consisting of an AVR ATmega328P a series of FETs, capacitors and a LM324.
 It all was designed to be as cheap and easy to get as possible.
@@ -22,7 +22,29 @@ We tried to achieve the same thing with this soldering Iron.
 But doing this with a piece of hardware which is supposed to get hot is a lot harder.
 So we built two protection circuits to prevent to soldering tip from dying.
 
-- Over temperature protection: When the tips temperature exceeds about 380&deg;C to 390&deg;C
+- Over temperature protection: When the tips temperature exceeds about 380&deg;C to 390&deg;C. This safety circuit also features a hysteresis so it lets the tip cool back down. It also indicates with a LED that this circuit was triggered.
+- Over duty cycle protection: When you write your own software and screw things up so the AVR gets stuck and does not stop heating the circuit detects a 100% duty cycling and cuts power before the soldering tip gets too hot. This will also be indicated with a LED.
+
+If one of those two features triggers the power to the tip will be cut.
+The 5V logic will stay on and the AVR can detect the safety features triggering when R32 is mounted (we recommend a 1 kOhm resistor).
+The circuit was designed using LTSpice and tested with the real hardware after simulation showed promising results.
+
+![View on Safety Circuit]({{ site.imageurl }}/layout_safety_circuit.png)
+
+## PIN HEADER
+
+You can of course connect a variety of additional equipment to your version of this soldering iron.
+The TWI bus is put onto pinheader, just like UART and two more GPIOs/ADCs (PC2, PC3).
+
+![View on Pin Header]({{ site.imageurl }}/pcb_pin_header.png)
+
+## TEMPERATURE MEASUREMENT
+
+As mentioned before we use an OPA336U for measuring the temperature of the soldering tip.
+The amplification factor is set to 511 and this way we can use most of the range of this rail-to-rail OpAmp.
+
+![View on Pin Header]({{ site.imageurl }}/layout_opamp.png)
+
 
 - [back][frontpage]
 
