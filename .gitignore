@@ -1,1 +1,12 @@
 _site
+*.s#*
+*.b#*
+*.hex
+*.elf
+*.o
+*.c~
+*.h~
+*.o.d
+*.bin
+*.yml~
+*.md~
