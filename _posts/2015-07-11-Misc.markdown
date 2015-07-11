@@ -4,7 +4,14 @@ title:  "Misc"
 date:   2015-07-11 12:00:00
 ---
 
+## MISC
 
+During the process of designing and building we realized that we all had different ideas of what our soldering iron should look like in the end.
+One of us stuffed the soldering tip and its connector into a merchandise pen.
+We purchased different power supplies and used a 3D printer to make our own handles.
+Here are some impressions of what the first working soldering irons look like.
+
+(Pictures coming soon)
 
 
 To learn more on how the soldering iron is working click a link below:

@@ -4,6 +4,21 @@ title:  "Software Details"
 date:   2015-07-11 12:00:00
 ---
 
+## GENERAL
+
+## TIMER UTILIZATION
+
+## PID CONTROLLER
+
+In order to heat the soldering tip we used a standard pid controller and played around with the parameters to get them right.
+Since the speed at which the temperature of the tip changes is (compared to our controller) incredibly slow we did not have issues of an oscillating temperature.
+Right now we are sampling the tips temperature with 10Hz and adjusting the controller at the same pace.
+This seemed sufficient so far.
+
+## EEPROM
+
+## DISPLAY UPDATE
+
 
 
 
