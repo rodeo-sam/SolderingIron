@@ -21,7 +21,7 @@ At worst you can make it unusable by bricking your device but you usually cannot
 We tried to achieve the same thing with this soldering Iron.
 But doing this with a piece of hardware which is supposed to get hot is a lot harder.
 So we built two protection circuits to prevent to soldering tip from dying.
-- Over temperature protection: When the tips temperature exceeds about 380\U+2103 to 390\U+2103
+- Over temperature protection: When the tips temperature exceeds about 380[U+2103] to 390U+2103
 
 - [back][frontpage]
 
