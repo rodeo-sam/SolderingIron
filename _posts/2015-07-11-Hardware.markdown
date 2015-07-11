@@ -46,7 +46,4 @@ The amplification factor is set to 511 and this way we can use most of the range
 ![View on Pin Header]({{ site.imageurl }}/layout_opamp.png)
 
 
-- [back][frontpage]
-
-
-[frontpage]: 2015-07-06-Frontpage.markdown
+[back](2015-07-11-Frontpage)
