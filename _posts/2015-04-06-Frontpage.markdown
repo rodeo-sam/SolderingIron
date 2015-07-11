@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: default
 title:  "The Open Source Soldering Iron"
 date:   2014-07-11 12:00:00
 ---
@@ -32,7 +32,7 @@ For further information please check out the detail pages:
 
 
 [arduino_shield]: http://www.martin-kumm.de/wiki/doku.php?id=Projects:SMD_Solderstation
-[hardware]: www.google.de
-[software]: www.google.de
-[wires]: www.google.de
-[misc]: www.google.de
+[hardware]: http://www.google.de
+[software]: http://www.google.de
+[wires]: http://www.google.de
+[misc]: http://www.google.de
