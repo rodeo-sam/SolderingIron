@@ -17,7 +17,7 @@
 static volatile int16_t tip_temperature = 25; //off on startup
 static void (*new_temperature_ready_callback)(int16_t);
 
-static volatile uint8_t tip = 0;
+//uint8_t tip_connected = 0;
 static int16_t setted_temperature = 0;
 void tip_init(void(*callback)(int16_t))
 {
@@ -28,8 +28,10 @@ void tip_init(void(*callback)(int16_t))
 static void tip_conversion_complete_callback(uint16_t adc)
 {
 	//TODO use lookup table
-	accum temperature = 13.3081k + adc*0.5943k;
+	accum temperature = 49.9424k + adc*0.4433k;
 	tip_temperature = (int16_t) temperature;
+	tip_temperature += 40; // hacked temperature offset
+
 	new_temperature_ready_callback(tip_temperature);
 }
 
@@ -45,18 +47,18 @@ int16_t tip_setted_temp(void)
 {
 	return setted_temperature;
 }
-uint8_t tip_present(int16_t powered, int16_t nopowered)
-{
-	tip = 0;
-	if (powered - nopowered > 10){
-		tip = 1;
-	}
-	return tip;
-}
-uint8_t tip_state(void)
-{
-	return tip;
-}
+//uint8_t tip_present(int16_t powered, int16_t nopowered)
+//{
+//	tip_connected = 0;
+//	if (powered - nopowered > 10){
+//		tip_connected = 1;
+//	}
+//	return tip_connected;
+//}
+//uint8_t tip_state(void)
+//{
+//	return tip_connected;
+//}
 	
 
 void tip_start_conversion(void)

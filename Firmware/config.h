@@ -4,7 +4,7 @@
 #define HW_VERSION 12 // current hardware version
 
 // the temperature the system is supposed to not exceed
-#define TEMP_MAX 420
+#define TEMP_MAX 380
 
 // temperature that should be held when resting
 #define TEMP_REST 150
@@ -18,9 +18,9 @@
 #define SAVED_TEMP1 250
 
 //PID-Controller values
-#define PID_P 170 
-#define PID_I 4 
-#define PID_D 100 
+#define PID_P 350
+#define PID_I 2
+#define PID_D 10
 
 // threshold at which the hall sensor is supposed to trigger
 // if set to 0 rest detection will be disabled

@@ -24,6 +24,8 @@
 	#define SENS0     PC0 // ADC0
 	#define HALL      PC1 // ADC1
 
+	#define PWR0_DDR  DDRD
+	#define PWR0_PORT PORTD
 	#define PWR0      PD4
 
 //	#define BUTTON_UP (1<<PD2) // INT0
@@ -58,6 +60,8 @@
 	#define SENS0     PC0 // ADC0
 	#define HALL      PC1 // ADC1
 
+	#define PWR0_DDR  DDRD
+	#define PWR0_PORT PORTD
 	#define PWR0      PD5
 
 	

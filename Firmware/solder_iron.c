@@ -90,6 +90,7 @@ int main(void)
 	wdt_enable(WDTO_500MS);
 	config_init();
 	config_load();
+	config_reset();	// make sure to use default settings for now
 	display_init();
 	clock_init();
 	buttons_init(&plus, &minus, &back_to_default, &goto_menu);
@@ -107,11 +108,13 @@ int main(void)
 	tip_set_temp(temperature);
 	control_set_temp(temperature);
 	
-	//control_init();  //leave this as a comment until we want to heat things up
+	control_init();  // this heats things up!
 
 
 	uint8_t temp_to_show = 0;
-	display_number(100);
+	display_sign(2, SIGN_H);
+	display_sign(1, SIGN_I);
+	display_sign(0, SIGN_EXCLAMATION);
 	printf("booted\r\n");
 	while(1)
 	{
