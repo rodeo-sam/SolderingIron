@@ -49,4 +49,4 @@ The amplification factor is set to 511 and this way we can use most of the range
 - [back][frontpage]
 
 
-[frontpage]: http://www.google.de
+[frontpage]: 2015-07-06-Frontpage.markdown
