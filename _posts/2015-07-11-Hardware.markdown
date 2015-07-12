@@ -28,11 +28,7 @@ So we built two protection circuits to prevent to soldering tip from dying.
 - Over temperature protection: When the tips temperature exceeds about 380&deg;C to 390&deg;C. This safety circuit also features a hysteresis so it lets the tip cool back down. It also indicates with a LED that this circuit was triggered.
 - Over duty cycle protection: When you write your own software and screw things up so the AVR gets stuck and does not stop heating the circuit detects a 100% duty cycling and cuts power before the soldering tip gets too hot. This will also be indicated with a LED.
 
-If one of those two features triggers the power to the tip will be cut.
-The 5V logic will stay on and the AVR can detect the safety features triggering when R32 is mounted (we recommend a 1 kOhm resistor).
-The circuit was designed using LTSpice and tested with the real hardware after simulation showed promising results.
-
-![View on Safety Circuit]({{ site.imageurl }}/layout_safety_circuit.png)
+Click [here](safety-circuit) if you want to learn how it works in detail.
 
 ## PIN HEADER
 
