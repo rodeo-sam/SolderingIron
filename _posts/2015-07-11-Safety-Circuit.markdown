@@ -32,9 +32,17 @@ We wanted to not let this happen to anyone (since a tip died during testing in o
 So we used some analog magic and created a circuit, that protects you from overheating your soldering tip.
 This also includes no software necessary to operate the circuit or in other words: You cannot (should not) turn it off.
 
-It is done in four different stages, we would like to go over.
-- Amplification: Since the thermocouples voltage is too low to work with we used an OPA336U to amplify the voltage by 511. This makes it easy for the MCU to measure it.
--
+It is done in three different stages, we would like to go over.
+- First Stage - Amplification: Since the thermocouples voltage is too low to work with we used an OPA336U to amplify the voltage by 511. This makes it easy for the MCU to measure it.
+- Second Stage - Inversion: We used an LM324 to implement this and all further stages. This second stage is a inverting amplifier for the already amplified thermocouple voltage. It is connected to an LL4148 diode and capacitor with a pull down. This arrangement does basically this: Anytime the thermocouple voltage drops (this means the tip is not heated) the inverting amplifier will charge the capacitor. The diode only prevents fast discharging over the amplifier. So if the thermocouples voltage stays high for an extended period of time (meaning you keep heating the soldering tip) the capacitor will discharge fully. This will also happen if you let the tip get too hot. Because then the amplifier will not load the capacitor since the voltage it sees is too high.
+- Third Stage - Schmitt Trigger: The last part consists of another amplifier used as a inverting Schmitt trigger. As input it uses the stored charge of the mentioned capacitor (meaning its voltage) and the output is connected to a FET, which can cut the power going into the soldering tip. It also features a LED so you can check if you screwed things up.
+
+As you can see you have almost no way of killing your soldering tip by writing bad software.
+This comes of course with some drawbacks.
+For example you cannot exceed temperatures of about 390&deg;C with your tip although you might want to and your tip could take it.
+Since every feature you cannot turn off should be considered a bug we added a pin header for a jumper so you can have the option to turn this safety circuit off.
+
+In the picture below you see the individual stages.
 
 ![View on Safety Circuit]({{ site.imageurl }}/layout_safety_circuit.png)
 
