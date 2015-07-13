@@ -1,7 +1,7 @@
 ---
 layout: default
 title:  "Hardware Details"
-date:   2015-07-11 12:00:00
+date:   2015-07-12 12:00:00
 ---
 
 ## GENERAL
