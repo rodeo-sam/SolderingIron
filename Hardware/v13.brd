@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE eagle SYSTEM "eagle.dtd">
-<eagle version="6.5.0">
+<eagle version="7.2.0">
 <drawing>
 <settings>
 <setting alwaysvectorfont="no"/>
@@ -82,8 +82,8 @@
 <wire x1="16.221075" y1="43.380025" x2="16.221075" y2="44.98975" width="0.254" layer="26"/>
 <wire x1="14.404975" y1="43.17365" x2="16.0147" y2="43.17365" width="0.254" layer="26"/>
 <text x="44.49445" y="2.9718" size="1.143" layer="26" font="vector" ratio="15" rot="MR0">1</text>
-<text x="16.8402" y="4.498975" size="1.143" layer="25" font="vector" ratio="15" rot="R180">30.04.2015
-v1.2</text>
+<text x="16.8402" y="4.498975" size="1.143" layer="25" font="vector" ratio="15" rot="R180">13.07.2015
+v1.3</text>
 </plain>
 <libraries>
 <library name="rcl">
@@ -2062,6 +2062,9 @@ design rules under a new name.</description>
 <autorouter>
 <pass name="Default">
 <param name="RoutingGrid" value="50mil"/>
+<param name="AutoGrid" value="1"/>
+<param name="Efforts" value="0"/>
+<param name="TopRouterVariant" value="1"/>
 <param name="tpViaShape" value="round"/>
 <param name="PrefDir.1" value="|"/>
 <param name="PrefDir.2" value="0"/>
