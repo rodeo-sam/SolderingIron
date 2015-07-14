@@ -24,6 +24,7 @@
 #include "tip.h"
 #include "clock.h"
 #include "controller.h"
+#include "rotary_encoder.h"
 
 
 void on_watchdog_reset(void);
@@ -94,6 +95,9 @@ int main(void)
 	display_init();
 	clock_init();
 	buttons_init(&plus, &minus, &back_to_default, &goto_menu);
+#ifdef ROTARY_ENCODER
+	encode_init(&plus, &minus, &back_to_default, &goto_menu);
+#endif
 	uart_init(19200, one_stop_bit_e, no_parity_e);
 
 	next_time_t new_temp_timer;
@@ -137,6 +141,11 @@ int main(void)
 				}
 			}
 		}
+
+#ifdef ROTARY_ENCODER
+		check_rotary_timer();
+#endif
+
 		wdt_reset(); //still alive
 		
 	}
