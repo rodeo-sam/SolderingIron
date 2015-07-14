@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE eagle SYSTEM "eagle.dtd">
-<eagle version="6.5.0">
+<eagle version="7.2.0">
 <drawing>
 <settings>
 <setting alwaysvectorfont="no"/>
@@ -18254,12 +18254,11 @@ Ingenieurbüro ing-rb, mail@ing-rb.de&lt;/p&gt;</description>
 <part name="R28" library="rcl" deviceset="R-EU_" device="R0603" value="200k"/>
 <part name="R24" library="rcl" deviceset="R-EU_" device="R0603" value="100k"/>
 <part name="R27" library="rcl" deviceset="R-EU_" device="R0603" value="11k"/>
-<part name="R25" library="rcl" deviceset="R-EU_" device="R0603" value="6.2k"/>
+<part name="R25" library="rcl" deviceset="R-EU_" device="R0603" value="6k2"/>
 <part name="GND23" library="supply1" deviceset="GND" device=""/>
 <part name="P+12" library="supply1" deviceset="VCC" device=""/>
 <part name="GND24" library="supply1" deviceset="GND" device=""/>
 <part name="GND25" library="supply1" deviceset="GND" device=""/>
-<part name="I2C" library="con-molex" deviceset="22-?-03" device="27-2031"/>
 <part name="GND3" library="supply1" deviceset="GND" device=""/>
 <part name="GND26" library="supply1" deviceset="GND" device=""/>
 <part name="R9" library="rcl" deviceset="R-EU_" device="R0603" value="10k"/>
@@ -18290,6 +18289,11 @@ Ingenieurbüro ing-rb, mail@ing-rb.de&lt;/p&gt;</description>
 <part name="GND33" library="supply1" deviceset="GND" device=""/>
 <part name="GND34" library="supply1" deviceset="GND" device=""/>
 <part name="SAFETY" library="pinhead" deviceset="PINHD-1X2" device=""/>
+<part name="R36" library="rcl" deviceset="R-EU_" device="R0603" value="4k7"/>
+<part name="R37" library="rcl" deviceset="R-EU_" device="R0603" value="4k7"/>
+<part name="P+2" library="supply1" deviceset="VCC" device=""/>
+<part name="I2C" library="con-molex" deviceset="22-?-04" device="27-2041"/>
+<part name="P+8" library="supply1" deviceset="VCC" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -18339,6 +18343,11 @@ Ingenieurbüro ing-rb, mail@ing-rb.de&lt;/p&gt;</description>
 <wire x1="607.06" y1="50.8" x2="607.06" y2="139.7" width="0.1524" layer="97"/>
 <text x="609.6" y="53.34" size="3.81" layer="97">Pin Header</text>
 <text x="114.3" y="66.04" size="3.81" layer="97">LM324 for the safety circuit</text>
+<wire x1="1003.3" y1="86.36" x2="1066.8" y2="86.36" width="0.1524" layer="97"/>
+<wire x1="1003.3" y1="43.18" x2="1003.3" y2="86.36" width="0.1524" layer="97"/>
+<wire x1="1066.8" y1="86.36" x2="1066.8" y2="43.18" width="0.1524" layer="97"/>
+<wire x1="1066.8" y1="43.18" x2="1003.3" y2="43.18" width="0.1524" layer="97"/>
+<text x="1005.84" y="45.72" size="3.81" layer="97">(optional) Pull-Ups</text>
 </plain>
 <instances>
 <instance part="P+1" gate="VCC" x="40.64" y="134.62"/>
@@ -18447,9 +18456,6 @@ Ingenieurbüro ing-rb, mail@ing-rb.de&lt;/p&gt;</description>
 <instance part="P+12" gate="VCC" x="281.94" y="106.68"/>
 <instance part="GND24" gate="1" x="523.24" y="20.32"/>
 <instance part="GND25" gate="1" x="480.06" y="20.32"/>
-<instance part="I2C" gate="-1" x="678.18" y="129.54"/>
-<instance part="I2C" gate="-2" x="678.18" y="124.46"/>
-<instance part="I2C" gate="-3" x="678.18" y="119.38"/>
 <instance part="GND3" gate="1" x="673.1" y="116.84"/>
 <instance part="GND26" gate="1" x="50.8" y="88.9"/>
 <instance part="R9" gate="G$1" x="906.78" y="43.18" rot="R90"/>
@@ -18490,6 +18496,14 @@ Ingenieurbüro ing-rb, mail@ing-rb.de&lt;/p&gt;</description>
 <instance part="GND33" gate="1" x="226.06" y="104.14"/>
 <instance part="GND34" gate="1" x="38.1" y="88.9"/>
 <instance part="SAFETY" gate="G$1" x="314.96" y="121.92" rot="R90"/>
+<instance part="R36" gate="G$1" x="1033.78" y="76.2" rot="R180"/>
+<instance part="R37" gate="G$1" x="1033.78" y="66.04" rot="R180"/>
+<instance part="P+2" gate="VCC" x="1016" y="81.28"/>
+<instance part="I2C" gate="-1" x="678.18" y="134.62"/>
+<instance part="I2C" gate="-2" x="678.18" y="129.54"/>
+<instance part="I2C" gate="-3" x="678.18" y="124.46"/>
+<instance part="I2C" gate="-4" x="678.18" y="119.38"/>
+<instance part="P+8" gate="VCC" x="673.1" y="137.16"/>
 </instances>
 <busses>
 </busses>
@@ -18582,6 +18596,21 @@ Ingenieurbüro ing-rb, mail@ing-rb.de&lt;/p&gt;</description>
 <wire x1="116.84" y1="121.92" x2="129.54" y2="121.92" width="0.1524" layer="91"/>
 <junction x="129.54" y="121.92"/>
 <wire x1="129.54" y1="121.92" x2="129.54" y2="124.46" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="P+2" gate="VCC" pin="VCC"/>
+<wire x1="1016" y1="78.74" x2="1016" y2="76.2" width="0.1524" layer="91"/>
+<pinref part="R36" gate="G$1" pin="2"/>
+<wire x1="1016" y1="76.2" x2="1028.7" y2="76.2" width="0.1524" layer="91"/>
+<pinref part="R37" gate="G$1" pin="2"/>
+<wire x1="1028.7" y1="66.04" x2="1016" y2="66.04" width="0.1524" layer="91"/>
+<wire x1="1016" y1="66.04" x2="1016" y2="76.2" width="0.1524" layer="91"/>
+<junction x="1016" y="76.2"/>
+</segment>
+<segment>
+<pinref part="P+8" gate="VCC" pin="VCC"/>
+<pinref part="I2C" gate="-1" pin="S"/>
+<wire x1="673.1" y1="134.62" x2="675.64" y2="134.62" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="GND" class="0">
@@ -18784,9 +18813,9 @@ Ingenieurbüro ing-rb, mail@ing-rb.de&lt;/p&gt;</description>
 <pinref part="GND25" gate="1" pin="GND"/>
 </segment>
 <segment>
-<pinref part="I2C" gate="-3" pin="S"/>
 <pinref part="GND3" gate="1" pin="GND"/>
 <wire x1="675.64" y1="119.38" x2="673.1" y2="119.38" width="0.1524" layer="91"/>
+<pinref part="I2C" gate="-4" pin="S"/>
 </segment>
 <segment>
 <pinref part="OPA" gate="G$1" pin="V-"/>
@@ -19566,9 +19595,14 @@ Ingenieurbüro ing-rb, mail@ing-rb.de&lt;/p&gt;</description>
 <label x="815.34" y="101.6" size="1.778" layer="95" xref="yes"/>
 </segment>
 <segment>
-<pinref part="I2C" gate="-1" pin="S"/>
 <wire x1="670.56" y1="129.54" x2="675.64" y2="129.54" width="0.1524" layer="91"/>
 <label x="670.56" y="129.54" size="1.778" layer="95" rot="R180" xref="yes"/>
+<pinref part="I2C" gate="-2" pin="S"/>
+</segment>
+<segment>
+<pinref part="R36" gate="G$1" pin="1"/>
+<wire x1="1043.94" y1="76.2" x2="1038.86" y2="76.2" width="0.1524" layer="91"/>
+<label x="1043.94" y="76.2" size="1.778" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="SCL" class="0">
@@ -19578,9 +19612,14 @@ Ingenieurbüro ing-rb, mail@ing-rb.de&lt;/p&gt;</description>
 <label x="835.66" y="99.06" size="1.778" layer="95" xref="yes"/>
 </segment>
 <segment>
-<pinref part="I2C" gate="-2" pin="S"/>
 <wire x1="670.56" y1="124.46" x2="675.64" y2="124.46" width="0.1524" layer="91"/>
 <label x="670.56" y="124.46" size="1.778" layer="95" rot="R180" xref="yes"/>
+<pinref part="I2C" gate="-3" pin="S"/>
+</segment>
+<segment>
+<pinref part="R37" gate="G$1" pin="1"/>
+<wire x1="1043.94" y1="66.04" x2="1038.86" y2="66.04" width="0.1524" layer="91"/>
+<label x="1043.94" y="66.04" size="1.778" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="RX" class="0">
