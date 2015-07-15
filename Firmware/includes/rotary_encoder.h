@@ -10,6 +10,7 @@
 #include <avr/io.h>
 #include <stdio.h>
 #include "timing.h"
+#include "pinout.h"
 
 #define ROTARY_A (ROTARY_A_PIN & (1 << ROTARY_A_PIN_NR))
 #define ROTARY_B (ROTARY_B_PIN & (1 << ROTARY_B_PIN_NR))
