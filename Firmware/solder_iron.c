@@ -24,7 +24,10 @@
 #include "tip.h"
 #include "clock.h"
 #include "controller.h"
-#include "rotary_encoder.h"
+
+#ifdef ROTARY_ENCODER
+	#include "rotary_encoder.h"
+#endif
 
 
 void on_watchdog_reset(void);
@@ -80,6 +83,9 @@ void goto_menu(void)
 void from_menu(void)
 {
 	buttons_init(&plus, &minus, &back_to_default, &goto_menu);
+#ifdef ROTARY_ENCODER
+	encode_init(&plus, &minus, &back_to_default, &goto_menu);
+#endif
 	control_set_temp(tip_setted_temp());
 
 }
