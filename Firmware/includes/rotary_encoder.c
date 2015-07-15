@@ -6,6 +6,8 @@
  * Author: Keno Garlichs, <k.garlichs@tu-braunschweig.de>
  */
 
+#include "../config.h"
+
 // ifdef is necessary because the makefile includes all c-files and this file
 // is not needed unless ROTARY_ENCODER is defined
 #ifdef ROTARY_ENCODER
