@@ -5,6 +5,11 @@
  *
  * Author: Keno Garlichs, <k.garlichs@tu-braunschweig.de>
  */
+
+// ifdef is necessary because the makefile includes all c-files and this file
+// is not needed unless ROTARY_ENCODER is defined
+#ifdef ROTARY_ENCODER
+
 #include "rotary_encoder.h"
 
 // Encoder was rotated clockwise
@@ -128,3 +133,4 @@ void check_rotary_timer(void) {
 		rotary_callback();
 	}
 }
+#endif
