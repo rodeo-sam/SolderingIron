@@ -1,10 +1,10 @@
 /*
-* @file: rotary_encoder.c
-*
-* Reads rotary encoder every 2ms and calls plus/minus/button-callbacks
-*
-* Author: Keno Garlichs, <k.garlichs@tu-braunschweig.de>              
-*/
+ * @file: rotary_encoder.c
+ *
+ * Reads rotary encoder every 2ms and calls plus/minus/button-callbacks.
+ *
+ * Author: Keno Garlichs, <k.garlichs@tu-braunschweig.de>
+ */
 #include "rotary_encoder.h"
 
 // Encoder was rotated clockwise
@@ -20,7 +20,7 @@ uint8_t state, prevstate = 0;
 uint8_t nextEncoderState[4] = {2, 0, 3, 1};
 uint8_t prevEncoderState[4] = {1, 3, 0, 2};
 
-next_time_t rotary_check_timer; 
+next_time_t rotary_check_timer;
 
 /*
  * @brief	Initializes required port pins,
@@ -45,11 +45,11 @@ void encode_init(void (*p_callback)(void), void (*m_callback)(void), void (*t_ca
 	ROTARY_A_PORT |= (1 << ROTARY_A_PIN_NR);
 	ROTARY_B_PORT |= (1 << ROTARY_B_PIN_NR);
 	ROTARY_BUTTON_PORT |= (1 << ROTARY_BUTTON_PIN_NR);
-   	
+
 	// Initialize poll timer
-   	timer_init(&rotary_check_timer, 0, 0, 1); 	// ~2ms
-   	timer_prepare();
-   	timer_set(&rotary_check_timer);
+	timer_init(&rotary_check_timer, 0, 0, 1); 	// ~2ms
+	timer_prepare();
+	timer_set(&rotary_check_timer);
 
 	// Set up functions to be called upon respective actions
 	plus_callback = p_callback;
@@ -74,7 +74,7 @@ void rotary_callback(void) {
 	if((state != prevstate) ) {
 		/* The rotary encoder we use gives four pulses per step
 		 * so we only count every fourth step */
-		if(skip_count++ == 3) {			
+		if(skip_count++ == 3) {
 			if (state == nextEncoderState[prevstate]) {
 				if(minus_callback != NULL) {
 					minus_callback();
@@ -87,9 +87,8 @@ void rotary_callback(void) {
 			}
 			skip_count = 0;
 		}
-
 		prevstate = state;
-  	}
+  }
 
 	// Now check the button
 	if(ROTARY_BUTTON_PRESSED) {
@@ -103,7 +102,7 @@ void rotary_callback(void) {
 			// Button was pressed for less than a second
 			if(third_callback != NULL) {
 				third_callback();
-			}	
+			}
 		}
 		else if((long_press_count >= 250) && (long_press_count > 0)) {
 			// Button was pressed for more than a second
