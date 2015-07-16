@@ -64,6 +64,23 @@
 	#define PWR0_PORT PORTD
 	#define PWR0      PD5
 
+	#ifdef ROTARY_ENCODER
+		#define ROTARY_A_PIN     PINC
+		#define ROTARY_B_PIN     PINC
+		#define ROTARY_BUTTON_PIN		PINC
+		
+		#define ROTARY_A_PIN_NR     PC2
+		#define ROTARY_B_PIN_NR     PC3
+		#define ROTARY_BUTTON_PIN_NR	PC4
+		
+		#define ROTARY_A_PORT     PORTC
+		#define ROTARY_B_PORT     PORTC
+		#define ROTARY_BUTTON_PORT		PORTC
+		
+		#define ROTARY_A_DDR     DDRC
+		#define ROTARY_B_DDR     DDRC
+		#define ROTARY_BUTTON_DDR		DDRC
+	#endif
 	
 //	#define BUTTON_UP (1<<PD2) // INT0
 //	#define BUTTON_DN (1<<PD3) // INT1

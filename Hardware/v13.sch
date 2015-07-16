@@ -18059,6 +18059,96 @@ Ingenieurbüro ing-rb, mail@ing-rb.de&lt;/p&gt;</description>
 </deviceset>
 </devicesets>
 </library>
+<library name="pinhead">
+<description>&lt;b&gt;Pin Header Connectors&lt;/b&gt;&lt;p&gt;
+&lt;author&gt;Created by librarian@cadsoft.de&lt;/author&gt;</description>
+<packages>
+<package name="1X02">
+<description>&lt;b&gt;PIN HEADER&lt;/b&gt;</description>
+<wire x1="-1.905" y1="1.27" x2="-0.635" y2="1.27" width="0.1524" layer="21"/>
+<wire x1="-0.635" y1="1.27" x2="0" y2="0.635" width="0.1524" layer="21"/>
+<wire x1="0" y1="0.635" x2="0" y2="-0.635" width="0.1524" layer="21"/>
+<wire x1="0" y1="-0.635" x2="-0.635" y2="-1.27" width="0.1524" layer="21"/>
+<wire x1="-2.54" y1="0.635" x2="-2.54" y2="-0.635" width="0.1524" layer="21"/>
+<wire x1="-1.905" y1="1.27" x2="-2.54" y2="0.635" width="0.1524" layer="21"/>
+<wire x1="-2.54" y1="-0.635" x2="-1.905" y2="-1.27" width="0.1524" layer="21"/>
+<wire x1="-0.635" y1="-1.27" x2="-1.905" y2="-1.27" width="0.1524" layer="21"/>
+<wire x1="0" y1="0.635" x2="0.635" y2="1.27" width="0.1524" layer="21"/>
+<wire x1="0.635" y1="1.27" x2="1.905" y2="1.27" width="0.1524" layer="21"/>
+<wire x1="1.905" y1="1.27" x2="2.54" y2="0.635" width="0.1524" layer="21"/>
+<wire x1="2.54" y1="0.635" x2="2.54" y2="-0.635" width="0.1524" layer="21"/>
+<wire x1="2.54" y1="-0.635" x2="1.905" y2="-1.27" width="0.1524" layer="21"/>
+<wire x1="1.905" y1="-1.27" x2="0.635" y2="-1.27" width="0.1524" layer="21"/>
+<wire x1="0.635" y1="-1.27" x2="0" y2="-0.635" width="0.1524" layer="21"/>
+<pad name="1" x="-1.27" y="0" drill="1.016" shape="long" rot="R90"/>
+<pad name="2" x="1.27" y="0" drill="1.016" shape="long" rot="R90"/>
+<text x="-2.6162" y="1.8288" size="1.27" layer="25" ratio="10">&gt;NAME</text>
+<text x="-2.54" y="-3.175" size="1.27" layer="27">&gt;VALUE</text>
+<rectangle x1="-1.524" y1="-0.254" x2="-1.016" y2="0.254" layer="51"/>
+<rectangle x1="1.016" y1="-0.254" x2="1.524" y2="0.254" layer="51"/>
+</package>
+<package name="1X02/90">
+<description>&lt;b&gt;PIN HEADER&lt;/b&gt;</description>
+<wire x1="-2.54" y1="-1.905" x2="0" y2="-1.905" width="0.1524" layer="21"/>
+<wire x1="0" y1="-1.905" x2="0" y2="0.635" width="0.1524" layer="21"/>
+<wire x1="0" y1="0.635" x2="-2.54" y2="0.635" width="0.1524" layer="21"/>
+<wire x1="-2.54" y1="0.635" x2="-2.54" y2="-1.905" width="0.1524" layer="21"/>
+<wire x1="-1.27" y1="6.985" x2="-1.27" y2="1.27" width="0.762" layer="21"/>
+<wire x1="0" y1="-1.905" x2="2.54" y2="-1.905" width="0.1524" layer="21"/>
+<wire x1="2.54" y1="-1.905" x2="2.54" y2="0.635" width="0.1524" layer="21"/>
+<wire x1="2.54" y1="0.635" x2="0" y2="0.635" width="0.1524" layer="21"/>
+<wire x1="1.27" y1="6.985" x2="1.27" y2="1.27" width="0.762" layer="21"/>
+<pad name="1" x="-1.27" y="-3.81" drill="1.016" shape="long" rot="R90"/>
+<pad name="2" x="1.27" y="-3.81" drill="1.016" shape="long" rot="R90"/>
+<text x="-3.175" y="-3.81" size="1.27" layer="25" ratio="10" rot="R90">&gt;NAME</text>
+<text x="4.445" y="-3.81" size="1.27" layer="27" rot="R90">&gt;VALUE</text>
+<rectangle x1="-1.651" y1="0.635" x2="-0.889" y2="1.143" layer="21"/>
+<rectangle x1="0.889" y1="0.635" x2="1.651" y2="1.143" layer="21"/>
+<rectangle x1="-1.651" y1="-2.921" x2="-0.889" y2="-1.905" layer="21"/>
+<rectangle x1="0.889" y1="-2.921" x2="1.651" y2="-1.905" layer="21"/>
+</package>
+</packages>
+<symbols>
+<symbol name="PINHD2">
+<wire x1="-6.35" y1="-2.54" x2="1.27" y2="-2.54" width="0.4064" layer="94"/>
+<wire x1="1.27" y1="-2.54" x2="1.27" y2="5.08" width="0.4064" layer="94"/>
+<wire x1="1.27" y1="5.08" x2="-6.35" y2="5.08" width="0.4064" layer="94"/>
+<wire x1="-6.35" y1="5.08" x2="-6.35" y2="-2.54" width="0.4064" layer="94"/>
+<text x="-6.35" y="5.715" size="1.778" layer="95">&gt;NAME</text>
+<text x="-6.35" y="-5.08" size="1.778" layer="96">&gt;VALUE</text>
+<pin name="1" x="-2.54" y="2.54" visible="pad" length="short" direction="pas" function="dot"/>
+<pin name="2" x="-2.54" y="0" visible="pad" length="short" direction="pas" function="dot"/>
+</symbol>
+</symbols>
+<devicesets>
+<deviceset name="PINHD-1X2" prefix="JP" uservalue="yes">
+<description>&lt;b&gt;PIN HEADER&lt;/b&gt;</description>
+<gates>
+<gate name="G$1" symbol="PINHD2" x="0" y="0"/>
+</gates>
+<devices>
+<device name="" package="1X02">
+<connects>
+<connect gate="G$1" pin="1" pad="1"/>
+<connect gate="G$1" pin="2" pad="2"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+<device name="/90" package="1X02/90">
+<connects>
+<connect gate="G$1" pin="1" pad="1"/>
+<connect gate="G$1" pin="2" pad="2"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
+</devicesets>
+</library>
 </libraries>
 <attributes>
 </attributes>
@@ -18164,12 +18254,11 @@ Ingenieurbüro ing-rb, mail@ing-rb.de&lt;/p&gt;</description>
 <part name="R28" library="rcl" deviceset="R-EU_" device="R0603" value="200k"/>
 <part name="R24" library="rcl" deviceset="R-EU_" device="R0603" value="100k"/>
 <part name="R27" library="rcl" deviceset="R-EU_" device="R0603" value="11k"/>
-<part name="R25" library="rcl" deviceset="R-EU_" device="R0603" value="6.2k"/>
+<part name="R25" library="rcl" deviceset="R-EU_" device="R0603" value="6k2"/>
 <part name="GND23" library="supply1" deviceset="GND" device=""/>
 <part name="P+12" library="supply1" deviceset="VCC" device=""/>
 <part name="GND24" library="supply1" deviceset="GND" device=""/>
 <part name="GND25" library="supply1" deviceset="GND" device=""/>
-<part name="I2C" library="con-molex" deviceset="22-?-03" device="27-2031"/>
 <part name="GND3" library="supply1" deviceset="GND" device=""/>
 <part name="GND26" library="supply1" deviceset="GND" device=""/>
 <part name="R9" library="rcl" deviceset="R-EU_" device="R0603" value="10k"/>
@@ -18199,6 +18288,12 @@ Ingenieurbüro ing-rb, mail@ing-rb.de&lt;/p&gt;</description>
 <part name="GND32" library="supply1" deviceset="GND" device=""/>
 <part name="GND33" library="supply1" deviceset="GND" device=""/>
 <part name="GND34" library="supply1" deviceset="GND" device=""/>
+<part name="SAFETY" library="pinhead" deviceset="PINHD-1X2" device=""/>
+<part name="R36" library="rcl" deviceset="R-EU_" device="R0603" value="4k7"/>
+<part name="R37" library="rcl" deviceset="R-EU_" device="R0603" value="4k7"/>
+<part name="P+2" library="supply1" deviceset="VCC" device=""/>
+<part name="I2C" library="con-molex" deviceset="22-?-04" device="27-2041"/>
+<part name="P+8" library="supply1" deviceset="VCC" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -18248,6 +18343,11 @@ Ingenieurbüro ing-rb, mail@ing-rb.de&lt;/p&gt;</description>
 <wire x1="607.06" y1="50.8" x2="607.06" y2="139.7" width="0.1524" layer="97"/>
 <text x="609.6" y="53.34" size="3.81" layer="97">Pin Header</text>
 <text x="114.3" y="66.04" size="3.81" layer="97">LM324 for the safety circuit</text>
+<wire x1="1003.3" y1="86.36" x2="1066.8" y2="86.36" width="0.1524" layer="97"/>
+<wire x1="1003.3" y1="43.18" x2="1003.3" y2="86.36" width="0.1524" layer="97"/>
+<wire x1="1066.8" y1="86.36" x2="1066.8" y2="43.18" width="0.1524" layer="97"/>
+<wire x1="1066.8" y1="43.18" x2="1003.3" y2="43.18" width="0.1524" layer="97"/>
+<text x="1005.84" y="45.72" size="3.81" layer="97">(optional) Pull-Ups</text>
 </plain>
 <instances>
 <instance part="P+1" gate="VCC" x="40.64" y="134.62"/>
@@ -18356,9 +18456,6 @@ Ingenieurbüro ing-rb, mail@ing-rb.de&lt;/p&gt;</description>
 <instance part="P+12" gate="VCC" x="281.94" y="106.68"/>
 <instance part="GND24" gate="1" x="523.24" y="20.32"/>
 <instance part="GND25" gate="1" x="480.06" y="20.32"/>
-<instance part="I2C" gate="-1" x="678.18" y="129.54"/>
-<instance part="I2C" gate="-2" x="678.18" y="124.46"/>
-<instance part="I2C" gate="-3" x="678.18" y="119.38"/>
 <instance part="GND3" gate="1" x="673.1" y="116.84"/>
 <instance part="GND26" gate="1" x="50.8" y="88.9"/>
 <instance part="R9" gate="G$1" x="906.78" y="43.18" rot="R90"/>
@@ -18387,7 +18484,7 @@ Ingenieurbüro ing-rb, mail@ing-rb.de&lt;/p&gt;</description>
 <instance part="TPS2" gate="G$1" x="238.76" y="121.92"/>
 <instance part="TPS3" gate="G$1" x="271.78" y="124.46"/>
 <instance part="D1" gate="G$1" x="213.36" y="116.84"/>
-<instance part="R32" gate="G$1" x="307.34" y="114.3" rot="R270"/>
+<instance part="R32" gate="G$1" x="302.26" y="114.3" rot="R270"/>
 <instance part="LED3" gate="G$1" x="292.1" y="114.3"/>
 <instance part="R12" gate="G$1" x="292.1" y="101.6" rot="R270"/>
 <instance part="GND29" gate="1" x="292.1" y="91.44"/>
@@ -18398,6 +18495,15 @@ Ingenieurbüro ing-rb, mail@ing-rb.de&lt;/p&gt;</description>
 <instance part="GND32" gate="1" x="916.94" y="33.02"/>
 <instance part="GND33" gate="1" x="226.06" y="104.14"/>
 <instance part="GND34" gate="1" x="38.1" y="88.9"/>
+<instance part="SAFETY" gate="G$1" x="314.96" y="121.92" rot="R90"/>
+<instance part="R36" gate="G$1" x="1033.78" y="76.2" rot="R180"/>
+<instance part="R37" gate="G$1" x="1033.78" y="66.04" rot="R180"/>
+<instance part="P+2" gate="VCC" x="1016" y="81.28"/>
+<instance part="I2C" gate="-1" x="678.18" y="134.62"/>
+<instance part="I2C" gate="-2" x="678.18" y="129.54"/>
+<instance part="I2C" gate="-3" x="678.18" y="124.46"/>
+<instance part="I2C" gate="-4" x="678.18" y="119.38"/>
+<instance part="P+8" gate="VCC" x="673.1" y="137.16"/>
 </instances>
 <busses>
 </busses>
@@ -18490,6 +18596,21 @@ Ingenieurbüro ing-rb, mail@ing-rb.de&lt;/p&gt;</description>
 <wire x1="116.84" y1="121.92" x2="129.54" y2="121.92" width="0.1524" layer="91"/>
 <junction x="129.54" y="121.92"/>
 <wire x1="129.54" y1="121.92" x2="129.54" y2="124.46" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="P+2" gate="VCC" pin="VCC"/>
+<wire x1="1016" y1="78.74" x2="1016" y2="76.2" width="0.1524" layer="91"/>
+<pinref part="R36" gate="G$1" pin="2"/>
+<wire x1="1016" y1="76.2" x2="1028.7" y2="76.2" width="0.1524" layer="91"/>
+<pinref part="R37" gate="G$1" pin="2"/>
+<wire x1="1028.7" y1="66.04" x2="1016" y2="66.04" width="0.1524" layer="91"/>
+<wire x1="1016" y1="66.04" x2="1016" y2="76.2" width="0.1524" layer="91"/>
+<junction x="1016" y="76.2"/>
+</segment>
+<segment>
+<pinref part="P+8" gate="VCC" pin="VCC"/>
+<pinref part="I2C" gate="-1" pin="S"/>
+<wire x1="673.1" y1="134.62" x2="675.64" y2="134.62" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="GND" class="0">
@@ -18692,9 +18813,9 @@ Ingenieurbüro ing-rb, mail@ing-rb.de&lt;/p&gt;</description>
 <pinref part="GND25" gate="1" pin="GND"/>
 </segment>
 <segment>
-<pinref part="I2C" gate="-3" pin="S"/>
 <pinref part="GND3" gate="1" pin="GND"/>
 <wire x1="675.64" y1="119.38" x2="673.1" y2="119.38" width="0.1524" layer="91"/>
+<pinref part="I2C" gate="-4" pin="S"/>
 </segment>
 <segment>
 <pinref part="OPA" gate="G$1" pin="V-"/>
@@ -19369,20 +19490,26 @@ Ingenieurbüro ing-rb, mail@ing-rb.de&lt;/p&gt;</description>
 <segment>
 <pinref part="R28" gate="G$1" pin="2"/>
 <pinref part="LM324" gate="B" pin="OUT"/>
-<label x="314.96" y="119.38" size="1.778" layer="95" xref="yes"/>
+<label x="317.5" y="119.38" size="1.778" layer="95" xref="yes"/>
 <pinref part="TPS3" gate="G$1" pin="TP"/>
 <pinref part="R32" gate="G$1" pin="1"/>
-<wire x1="307.34" y1="119.38" x2="314.96" y2="119.38" width="0.1524" layer="91"/>
-<junction x="307.34" y="119.38"/>
+<wire x1="302.26" y1="119.38" x2="312.42" y2="119.38" width="0.1524" layer="91"/>
+<junction x="302.26" y="119.38"/>
 <pinref part="LED3" gate="G$1" pin="A"/>
+<wire x1="312.42" y1="119.38" x2="314.96" y2="119.38" width="0.1524" layer="91"/>
+<wire x1="314.96" y1="119.38" x2="317.5" y2="119.38" width="0.1524" layer="91"/>
 <wire x1="266.7" y1="119.38" x2="271.78" y2="119.38" width="0.1524" layer="91"/>
 <wire x1="271.78" y1="119.38" x2="271.78" y2="116.84" width="0.1524" layer="91"/>
 <wire x1="271.78" y1="121.92" x2="271.78" y2="119.38" width="0.1524" layer="91"/>
 <junction x="271.78" y="119.38"/>
 <wire x1="271.78" y1="119.38" x2="292.1" y2="119.38" width="0.1524" layer="91"/>
 <wire x1="292.1" y1="119.38" x2="292.1" y2="116.84" width="0.1524" layer="91"/>
-<wire x1="292.1" y1="119.38" x2="307.34" y2="119.38" width="0.1524" layer="91"/>
+<wire x1="292.1" y1="119.38" x2="302.26" y2="119.38" width="0.1524" layer="91"/>
 <junction x="292.1" y="119.38"/>
+<pinref part="SAFETY" gate="G$1" pin="1"/>
+<junction x="312.42" y="119.38"/>
+<pinref part="SAFETY" gate="G$1" pin="2"/>
+<junction x="314.96" y="119.38"/>
 </segment>
 </net>
 <net name="N$6" class="0">
@@ -19468,9 +19595,14 @@ Ingenieurbüro ing-rb, mail@ing-rb.de&lt;/p&gt;</description>
 <label x="815.34" y="101.6" size="1.778" layer="95" xref="yes"/>
 </segment>
 <segment>
-<pinref part="I2C" gate="-1" pin="S"/>
 <wire x1="670.56" y1="129.54" x2="675.64" y2="129.54" width="0.1524" layer="91"/>
 <label x="670.56" y="129.54" size="1.778" layer="95" rot="R180" xref="yes"/>
+<pinref part="I2C" gate="-2" pin="S"/>
+</segment>
+<segment>
+<pinref part="R36" gate="G$1" pin="1"/>
+<wire x1="1043.94" y1="76.2" x2="1038.86" y2="76.2" width="0.1524" layer="91"/>
+<label x="1043.94" y="76.2" size="1.778" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="SCL" class="0">
@@ -19480,9 +19612,14 @@ Ingenieurbüro ing-rb, mail@ing-rb.de&lt;/p&gt;</description>
 <label x="835.66" y="99.06" size="1.778" layer="95" xref="yes"/>
 </segment>
 <segment>
-<pinref part="I2C" gate="-2" pin="S"/>
 <wire x1="670.56" y1="124.46" x2="675.64" y2="124.46" width="0.1524" layer="91"/>
 <label x="670.56" y="124.46" size="1.778" layer="95" rot="R180" xref="yes"/>
+<pinref part="I2C" gate="-3" pin="S"/>
+</segment>
+<segment>
+<pinref part="R37" gate="G$1" pin="1"/>
+<wire x1="1043.94" y1="66.04" x2="1038.86" y2="66.04" width="0.1524" layer="91"/>
+<label x="1043.94" y="66.04" size="1.778" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="RX" class="0">
@@ -19553,8 +19690,8 @@ Ingenieurbüro ing-rb, mail@ing-rb.de&lt;/p&gt;</description>
 </segment>
 <segment>
 <pinref part="R32" gate="G$1" pin="2"/>
-<wire x1="307.34" y1="106.68" x2="307.34" y2="109.22" width="0.1524" layer="91"/>
-<label x="307.34" y="106.68" size="1.778" layer="95" rot="R270" xref="yes"/>
+<wire x1="302.26" y1="106.68" x2="302.26" y2="109.22" width="0.1524" layer="91"/>
+<label x="302.26" y="106.68" size="1.778" layer="95" rot="R270" xref="yes"/>
 </segment>
 <segment>
 <pinref part="J2" gate="-2" pin="S"/>

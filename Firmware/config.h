@@ -3,6 +3,9 @@
 // #define HW_VERSION 1
 #define HW_VERSION 12 // current hardware version
 
+// Uncomment to use rotary encoder instead of button for temperature setting
+//#define ROTARY_ENCODER 1
+
 // the temperature the system is supposed to not exceed
 #define TEMP_MAX 380
 
