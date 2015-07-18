@@ -47,7 +47,7 @@ static void down(void)
 static void enter(void)
 {
 	config_save();
-	tip_set_temp(*temp);
+	tip_setTargetTemp(*temp);
 	eeprom_menu_exit();
 }
 void eeprom_menu_init(void(*exit)(void))

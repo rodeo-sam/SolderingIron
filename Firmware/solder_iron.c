@@ -50,34 +50,34 @@ int16_t temperature_save = 0;
 
 void plus(void)
 {
-  temperature = tip_setted_temp();
+  temperature = tip_getTargetTemp();
   if (temperature != TEMP_MAX) {
   	temperature++;
 	display_temperature(temperature);
-	tip_set_temp(temperature);
+	tip_setTargetTemp(temperature);
   }
 }
 
 void minus(void)
 {
-  temperature = tip_setted_temp();
+  temperature = tip_getTargetTemp();
   if (temperature != TEMP_MIN) {
     temperature--;
 	display_temperature(temperature);
-	tip_set_temp(temperature);
+	tip_setTargetTemp(temperature);
   }
 }
 
 void back_to_default(void)
 {
 	temperature = config.default_temp;
-	tip_set_temp(temperature);
+	tip_setTargetTemp(temperature);
 	display_temperature(temperature);
 }
 
 void goto_menu(void)
 {
-	control_set_temp(0);
+	tip_disable();
 	menu_init(&from_menu);
 }
 void from_menu(void)
@@ -86,7 +86,7 @@ void from_menu(void)
 #ifdef ROTARY_ENCODER
 	encode_init(&plus, &minus, &back_to_default, &goto_menu);
 #endif
-	control_set_temp(tip_setted_temp());
+	tip_enable();
 
 }
 
@@ -115,9 +115,8 @@ int main(void)
 	timer_set(&temp_timer);
 
 	temperature = config.default_temp;
-	tip_set_temp(temperature);
-	control_set_temp(temperature);
-	
+	tip_setTargetTemp(temperature);
+	tip_enable();
 	control_init();  // this heats things up!
 
 
@@ -132,7 +131,7 @@ int main(void)
 		if (!in_menu){
 			if (old_temp != temperature){
 				old_temp = temperature;
-				control_set_temp(temperature);
+				tip_setTargetTemp(temperature);
 				timer_set(&new_temp_timer);
 				temp_to_show = 1;
 			}
@@ -143,7 +142,21 @@ int main(void)
 			if(temp_to_show == 0){
 				if(timer_past(&temp_timer)){
 					timer_set(&temp_timer);
-					display_temperature(tip_get_temp());
+					switch (tip_getState()) {
+					case TIP_CONNECTED:
+						display_temperature(tip_getTemp());
+						break;
+					case TIP_DISCONNECTED:
+						display_sign(2, SIGN_MINUS);
+						display_sign(1, SIGN_MINUS);
+						display_sign(0, SIGN_MINUS);
+						break;
+					case TIP_BROKEN:
+						display_sign(2, SIGN_T);
+						display_sign(1, SIGN_I);
+						display_sign(0, SIGN_P);
+						break;
+					}
 				}
 			}
 		}

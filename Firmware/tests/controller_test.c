@@ -64,8 +64,8 @@ int main(void)
 		}
 		if(timer_past(&timer)){ //every 1s
 			timer_set(&timer); 
-			display_temperature(tip_get_temp());
-			printf("soll %d, temp: %d tip: %d\r\n",count,tip_get_temp(),tip_state());
+			display_temperature(tip_getTemp());
+			printf("soll %d, temp: %d tip: %d\r\n",count,tip_getTemp(),tip_state());
 		}
 	}
 }

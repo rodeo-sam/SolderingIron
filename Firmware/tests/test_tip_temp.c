@@ -32,7 +32,7 @@ int main(void)
 	sei();
 	printf_P(PSTR("\r\nSolder Tip Temperature test\r\n "));
 
-	tip_start_conversion();
+	tip_startConversion();
 
 
 	while(1)

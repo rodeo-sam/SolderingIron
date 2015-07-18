@@ -63,7 +63,7 @@ void display_name_as_name(void *name)
 }
 void menu_set_temp(void)
 {
-	tip_set_temp(*((int16_t*)curr_menu[in_menu - 1].data));
+	tip_setTargetTemp(*((int16_t*)curr_menu[in_menu - 1].data));
 	
 	menu_exit();
 }
