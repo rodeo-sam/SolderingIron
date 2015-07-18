@@ -10,6 +10,7 @@
 #include <avr/interrupt.h>
 #include <stdlib.h>
 #include "buttons.h"
+#include "config.h"
 
 
 uint8_t pin = 0;

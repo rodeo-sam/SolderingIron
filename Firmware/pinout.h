@@ -1,7 +1,5 @@
 #pragma once
 
-#include "../config.h"
-
 #if (HW_VERSION == 1)
 	#define LED_DDR   DDRC
 	#define LED_PORT  PORTC
@@ -64,6 +62,15 @@
 	#define PWR0_PORT PORTD
 	#define PWR0      PD5
 
+	#define BUTTON_PORT PORTD
+	#define BUTTON_PORT_DDR DDRD
+	#define BUTTON_PIN PIND
+	#define PLUS_PIN PD2
+	#define MINUS_PIN PD3
+
+	#define PLUS_INTERRUPT_VECT INT0_vect
+	#define MINUS_INTERRUPT_VECT INT1_vect
+
 	#ifdef ROTARY_ENCODER
 		#define ROTARY_A_PIN     PINC
 		#define ROTARY_B_PIN     PINC
@@ -82,8 +89,6 @@
 		#define ROTARY_BUTTON_DDR		DDRC
 	#endif
 	
-//	#define BUTTON_UP (1<<PD2) // INT0
-//	#define BUTTON_DN (1<<PD3) // INT1
 
 // not used
 //	#define J11       ADC7

@@ -39,3 +39,5 @@
 //#define TEMP_REAMUR
 //#define TEMP_NEWTON
 //#define TEMP_ROMER
+
+#include "pinout.h"
