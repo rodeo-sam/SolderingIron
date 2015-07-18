@@ -73,7 +73,7 @@ void tip_start_conversion(void)
 	adc_configuration_t conf = {
 		.channel = CH_ADC0,
 		.reference = REF_VCC,
-		.trigger = TRGR_MANUEL,
+		.trigger = TRGR_MANUAL,
 	};
 	adc_init(conf);
 	adc_set_conversion_complete_callback(tip_conversion_complete_callback);

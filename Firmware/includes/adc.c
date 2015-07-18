@@ -60,7 +60,7 @@ void adc_init(adc_configuration_t conf)	{
 		// set interrupt
 		ADCSRA |= (1<< ADIE);
 
-	} else if (conf.trigger == TRGR_MANUEL) {
+	} else if (conf.trigger == TRGR_MANUAL) {
 		// disable auto trigger
 		ADCSRA &= ~(1<<ADATE);
 		// enable interrupt

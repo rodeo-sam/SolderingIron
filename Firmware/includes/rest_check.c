@@ -46,7 +46,7 @@ static void rest_check_start_conversion(void) {
     adc_configuration_t conf = {
       .channel = CH_ADC7,
       .reference = REF_VCC,
-      .trigger = TRGR_MANUEL,
+      .trigger = TRGR_MANUAL,
     };
     adc_init(conf);
 
