@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE eagle SYSTEM "eagle.dtd">
-<eagle version="7.3.0">
+<eagle version="7.2.0">
 <drawing>
 <settings>
 <setting alwaysvectorfont="no"/>
@@ -18344,6 +18344,10 @@ DIN A3, landscape with location and doc. field</description>
 <part name="I2C" library="con-molex" deviceset="22-?-04" device="27-2041"/>
 <part name="P+8" library="supply1" deviceset="VCC" device=""/>
 <part name="FRAME2" library="frames" deviceset="A3L-LOC" device=""/>
+<part name="R39" library="rcl" deviceset="R-EU_" device="R0603" value="10k"/>
+<part name="R40" library="rcl" deviceset="R-EU_" device="R0603" value="10k"/>
+<part name="P+14" library="supply1" deviceset="VCC" device=""/>
+<part name="GND35" library="supply1" deviceset="GND" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -18551,6 +18555,12 @@ DIN A3, landscape with location and doc. field</description>
 <instance part="I2C" gate="-4" x="292.1" y="233.68"/>
 <instance part="P+8" gate="VCC" x="287.02" y="251.46"/>
 <instance part="FRAME2" gate="G$1" x="0" y="0"/>
+<instance part="LM324" gate="C" x="86.36" y="116.84" rot="MR0"/>
+<instance part="LM324" gate="D" x="111.76" y="116.84"/>
+<instance part="R39" gate="G$1" x="99.06" y="121.92" rot="R270"/>
+<instance part="R40" gate="G$1" x="99.06" y="111.76" rot="R270"/>
+<instance part="P+14" gate="VCC" x="99.06" y="129.54"/>
+<instance part="GND35" gate="1" x="99.06" y="104.14"/>
 </instances>
 <busses>
 </busses>
@@ -18659,6 +18669,10 @@ DIN A3, landscape with location and doc. field</description>
 <pinref part="P+8" gate="VCC" pin="VCC"/>
 <pinref part="I2C" gate="-1" pin="S"/>
 <wire x1="287.02" y1="248.92" x2="289.56" y2="248.92" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="R39" gate="G$1" pin="1"/>
+<pinref part="P+14" gate="VCC" pin="VCC"/>
 </segment>
 </net>
 <net name="GND" class="0">
@@ -18893,6 +18907,10 @@ DIN A3, landscape with location and doc. field</description>
 <pinref part="R12" gate="G$1" pin="2"/>
 <pinref part="GND29" gate="1" pin="GND"/>
 <wire x1="152.4" y1="132.08" x2="152.4" y2="134.62" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="R40" gate="G$1" pin="2"/>
+<pinref part="GND35" gate="1" pin="GND"/>
 </segment>
 </net>
 <net name="N$1" class="0">
@@ -19752,6 +19770,25 @@ DIN A3, landscape with location and doc. field</description>
 <pinref part="LED3" gate="G$1" pin="C"/>
 <pinref part="R12" gate="G$1" pin="1"/>
 <wire x1="152.4" y1="144.78" x2="152.4" y2="147.32" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$4" class="0">
+<segment>
+<pinref part="LM324" gate="C" pin="+IN"/>
+<pinref part="LM324" gate="C" pin="-IN"/>
+<wire x1="93.98" y1="119.38" x2="93.98" y2="116.84" width="0.1524" layer="91"/>
+<pinref part="R40" gate="G$1" pin="1"/>
+<pinref part="R39" gate="G$1" pin="2"/>
+<wire x1="93.98" y1="116.84" x2="93.98" y2="114.3" width="0.1524" layer="91"/>
+<wire x1="93.98" y1="116.84" x2="99.06" y2="116.84" width="0.1524" layer="91"/>
+<junction x="93.98" y="116.84"/>
+<junction x="99.06" y="116.84"/>
+<pinref part="LM324" gate="D" pin="+IN"/>
+<wire x1="99.06" y1="116.84" x2="104.14" y2="116.84" width="0.1524" layer="91"/>
+<wire x1="104.14" y1="116.84" x2="104.14" y2="119.38" width="0.1524" layer="91"/>
+<pinref part="LM324" gate="D" pin="-IN"/>
+<wire x1="104.14" y1="116.84" x2="104.14" y2="114.3" width="0.1524" layer="91"/>
+<junction x="104.14" y="116.84"/>
 </segment>
 </net>
 </nets>
