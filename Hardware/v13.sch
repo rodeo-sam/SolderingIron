@@ -18293,7 +18293,7 @@ DIN A3, landscape with location and doc. field</description>
 <part name="OPA" library="burr-brown" deviceset="OPA336" device="U"/>
 <part name="R35" library="rcl" deviceset="R-EU_" device="R0603" value="100k"/>
 <part name="R30" library="rcl" deviceset="R-EU_" device="R0603" value="100k"/>
-<part name="R31" library="rcl" deviceset="R-EU_" device="R0603" value="20k"/>
+<part name="R31" library="rcl" deviceset="R-EU_" device="R0603" value="10k"/>
 <part name="R29" library="rcl" deviceset="R-EU_" device="R0603" value="68k"/>
 <part name="GND16" library="supply1" deviceset="GND" device=""/>
 <part name="P+11" library="supply1" deviceset="VCC" device=""/>
@@ -18338,8 +18338,8 @@ DIN A3, landscape with location and doc. field</description>
 <part name="GND33" library="supply1" deviceset="GND" device=""/>
 <part name="GND34" library="supply1" deviceset="GND" device=""/>
 <part name="SAFETY" library="pinhead" deviceset="PINHD-1X2" device=""/>
-<part name="R36" library="rcl" deviceset="R-EU_" device="R0603" value="4k7"/>
-<part name="R37" library="rcl" deviceset="R-EU_" device="R0603" value="4k7"/>
+<part name="R36" library="rcl" deviceset="R-EU_" device="R0603" value="10k"/>
+<part name="R37" library="rcl" deviceset="R-EU_" device="R0603" value="10k"/>
 <part name="P+2" library="supply1" deviceset="VCC" device=""/>
 <part name="I2C" library="con-molex" deviceset="22-?-04" device="27-2041"/>
 <part name="P+8" library="supply1" deviceset="VCC" device=""/>
@@ -18491,7 +18491,7 @@ DIN A3, landscape with location and doc. field</description>
 <instance part="LM324" gate="A" x="50.8" y="154.94"/>
 <instance part="R35" gate="G$1" x="50.8" y="144.78" rot="R180"/>
 <instance part="R30" gate="G$1" x="33.02" y="144.78" rot="R270"/>
-<instance part="R31" gate="G$1" x="22.86" y="152.4" rot="R180"/>
+<instance part="R31" gate="G$1" x="20.32" y="152.4" rot="R180"/>
 <instance part="R29" gate="G$1" x="33.02" y="162.56" rot="R270"/>
 <instance part="GND16" gate="1" x="33.02" y="134.62"/>
 <instance part="P+11" gate="VCC" x="33.02" y="172.72"/>
@@ -18941,8 +18941,8 @@ DIN A3, landscape with location and doc. field</description>
 </segment>
 <segment>
 <pinref part="R31" gate="G$1" pin="2"/>
-<wire x1="17.78" y1="152.4" x2="15.24" y2="152.4" width="0.1524" layer="91"/>
-<label x="15.24" y="152.4" size="1.778" layer="95" rot="R90" xref="yes"/>
+<wire x1="15.24" y1="152.4" x2="12.7" y2="152.4" width="0.1524" layer="91"/>
+<label x="12.7" y="152.4" size="1.778" layer="95" rot="R90" xref="yes"/>
 </segment>
 </net>
 <net name="SENSOR0" class="0">
@@ -19578,18 +19578,6 @@ DIN A3, landscape with location and doc. field</description>
 <junction x="175.26" y="157.48"/>
 </segment>
 </net>
-<net name="N$6" class="0">
-<segment>
-<pinref part="R31" gate="G$1" pin="1"/>
-<pinref part="LM324" gate="A" pin="-IN"/>
-<wire x1="27.94" y1="152.4" x2="38.1" y2="152.4" width="0.1524" layer="91"/>
-<wire x1="38.1" y1="152.4" x2="43.18" y2="152.4" width="0.1524" layer="91"/>
-<wire x1="38.1" y1="152.4" x2="38.1" y2="144.78" width="0.1524" layer="91"/>
-<junction x="38.1" y="152.4"/>
-<pinref part="R35" gate="G$1" pin="2"/>
-<wire x1="38.1" y1="144.78" x2="45.72" y2="144.78" width="0.1524" layer="91"/>
-</segment>
-</net>
 <net name="N$7" class="0">
 <segment>
 <wire x1="66.04" y1="144.78" x2="66.04" y2="154.94" width="0.1524" layer="91"/>
@@ -19789,6 +19777,18 @@ DIN A3, landscape with location and doc. field</description>
 <pinref part="LM324" gate="D" pin="-IN"/>
 <wire x1="104.14" y1="116.84" x2="104.14" y2="114.3" width="0.1524" layer="91"/>
 <junction x="104.14" y="116.84"/>
+</segment>
+</net>
+<net name="N$3" class="0">
+<segment>
+<pinref part="R31" gate="G$1" pin="1"/>
+<pinref part="LM324" gate="A" pin="-IN"/>
+<wire x1="38.1" y1="152.4" x2="43.18" y2="152.4" width="0.1524" layer="91"/>
+<wire x1="38.1" y1="152.4" x2="38.1" y2="144.78" width="0.1524" layer="91"/>
+<pinref part="R35" gate="G$1" pin="2"/>
+<wire x1="38.1" y1="144.78" x2="45.72" y2="144.78" width="0.1524" layer="91"/>
+<wire x1="25.4" y1="152.4" x2="38.1" y2="152.4" width="0.1524" layer="91"/>
+<junction x="38.1" y="152.4"/>
 </segment>
 </net>
 </nets>
