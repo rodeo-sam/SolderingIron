@@ -3,8 +3,8 @@
  *
  * Created: Do 29. Jan 14:23:00 CET 2015
  * Author: Karsten Hinz <k.hinz tu-bs.de>
- * Author: Georg von Zengen <oni303@gmail.com>
- */ 
+ *         Georg von Zengen <oni303@gmail.com>
+ */
 
 #include <util/delay.h>
 #include <avr/eeprom.h>
@@ -24,6 +24,7 @@
 #include "tip.h"
 #include "clock.h"
 #include "controller.h"
+#include "grip.h"
 
 #ifdef ROTARY_ENCODER
 	#include "rotary_encoder.h"
@@ -33,7 +34,7 @@
 void on_watchdog_reset(void);
 void from_menu(void);
 /******************VERY IMPORTANT********************************************
- * this code block is necessary to prevent the processor to run into watchdog-reset-lifelock 
+ * this code block is necessary to prevent the processor to run into watchdog-reset-lifelock
  * do NOT delete this block
 ****************************************************************************/
 void wdt_init(void) __attribute__((naked)) __attribute__((section(".init3")));
@@ -119,6 +120,7 @@ int main(void)
 	tip_enable();
 	control_init();  // this heats things up!
 
+	grip_init();
 
 	uint8_t temp_to_show = 0;
 	display_sign(2, SIGN_H);
@@ -127,13 +129,17 @@ int main(void)
 	printf("booted\r\n");
 	while(1)
 	{
-
 		if (!in_menu){
 			if (old_temp != temperature){
 				old_temp = temperature;
-				tip_setTargetTemp(temperature);
+
 				timer_set(&new_temp_timer);
 				temp_to_show = 1;
+			}
+			if (grip_getState()) {
+				tip_setTargetTemp(temperature);
+			} else {
+				tip_setTargetTemp(TEMP_REST);
 			}
 			if(timer_past(&new_temp_timer)){
 				temp_to_show = 0;
@@ -166,14 +172,14 @@ int main(void)
 #endif
 
 		wdt_reset(); //still alive
-		
+
 	}
 }
 
 
 /*******************************************
 This function holds the soldering station
-from heating and forces the user to power 
+from heating and forces the user to power
 cycle it
 *******************************************/
 void on_watchdog_reset(void)
@@ -197,19 +203,19 @@ void on_watchdog_reset(void)
 			_delay_ms(700);
 			display_sign(2,SIGN_T);
 			display_sign(1,SIGN_R);
-			display_sign(0,SIGN_N); 
+			display_sign(0,SIGN_N);
 			_delay_ms(700);
 			display_sign(2,SIGN_O);
 			display_sign(1,SIGN_F);
-			display_sign(0,SIGN_F); 
+			display_sign(0,SIGN_F);
 			_delay_ms(700);
 			display_sign(2,SIGN_A);
 			display_sign(1,SIGN_N);
-			display_sign(0,SIGN_D); 
+			display_sign(0,SIGN_D);
 			_delay_ms(700);
 			display_sign(2,0);
 			display_sign(1,SIGN_O);
-			display_sign(0,SIGN_N); 
+			display_sign(0,SIGN_N);
 			_delay_ms(700);
 		}
 	}
