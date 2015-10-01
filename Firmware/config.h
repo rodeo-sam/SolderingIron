@@ -6,6 +6,9 @@
 // Uncomment to use rotary encoder instead of button for temperature setting
 //#define ROTARY_ENCODER 1
 
+// Change if you want to disable resting.
+#define GRIP_ENABLE 1
+
 // the temperature the system is supposed to not exceed
 #define TEMP_MAX 380
 
@@ -13,7 +16,7 @@
 #define TEMP_REST 150
 
 // lowest temperature allowed
-#define TEMP_MIN 0 
+#define TEMP_MIN 0
 
 // default power on temperature
 #define DEFAULT_TEMP 300
