@@ -89,22 +89,17 @@ uint16_t adc_read_blocking() {
 }
 
 void adc_stop() {
-	// disable ADC
-	ADCSRA &= ~(1<<ADEN);
-	//clear interrupt request if one occuered
-	ADCSRA |= (1<<ADIF);
+	ADCSRA &= ~(1<<ADEN); // disable ADC
+	ADCSRA |= (1<<ADIF); // clear interrupt request if one occurred
 }
 
 void adc_trigger() {
-	// enable ADC
-	ADCSRA |= (1<<ADEN);
-	//start 
-	ADCSRA |= (1<<ADSC); 
+	ADCSRA |= (1<<ADEN); // enable ADC
+	ADCSRA |= (1<<ADSC); //start conversion
 }
 
 void adc_run() {
-	// enable ADC
-	ADCSRA |= (1<<ADEN);
+	ADCSRA |= (1<<ADEN); // enable ADC
 }
 
 void adc_set_conversion_complete_callback(void (*adc_callback)(uint16_t)) {
