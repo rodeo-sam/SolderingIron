@@ -15,6 +15,12 @@ void grip_init(void) {
 	PORTC |= (1 << PC1); // use pullup for PC1
 }
 
+/**
+ * Since internal pullup is enabled, this will be always true
+ * as long, as nothing is connected to the grip pin.
+ * This means you need to attach something, that pulls that pin to GND
+ * to trigger returning 0 here.
+ */
 uint8_t grip_getState(void) {
 	if (PINC & (1 << PC1) && GRIP_ENABLE) {
 		return 1;
