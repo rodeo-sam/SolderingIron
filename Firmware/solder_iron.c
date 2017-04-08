@@ -24,6 +24,7 @@
 #include "tip.h"
 #include "clock.h"
 #include "controller.h"
+
 #include "grip.h"
 
 #ifdef ROTARY_ENCODER
@@ -136,11 +137,13 @@ int main(void)
 				timer_set(&new_temp_timer);
 				temp_to_show = 1;
 			}
-			if (grip_getState()) {
+
+			if (grip_getState()) { // will be true, if nothing is connected to grip pin
 				tip_setTargetTemp(temperature);
 			} else {
 				tip_setTargetTemp(TEMP_REST);
 			}
+
 			if(timer_past(&new_temp_timer)){
 				temp_to_show = 0;
 				timer_set(&temp_timer);
