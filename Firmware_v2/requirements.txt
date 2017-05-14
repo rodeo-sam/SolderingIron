@@ -1,0 +1,61 @@
+functional:
+  (001) The system (HW+SW) shall heat the soldering tip to a set temperature.
+  (002) The system (HW+SW) shall be able to accept a new temperature to heat the tip to.
+  (003) The system (HW+SW) shall not overheat the tip at any time.
+  (015) The system (HW+SW) shall display the current temperature.
+  (016) The system (HW+SW) shall display the target temperature when the user is choosing a new temperature.
+  (023) The system (HW+SW) shall provide some sort of digital in- and output.
+  (030) The system (HW+SW) shall recognize when the tip is resting on its stand.
+  (031) The system (HW+SW) shall reduce the heat to a resting temperature when the tip is resting.
+
+non-functional:
+  (011) The system (HW+SW) needs a control unit (CU) to run software and interact with its environment.
+  (004) The system (HW+SW) needs a power control unit. (Satisfying (001))
+  (005) The system (HW+SW) needs an input to reset the temperature to a new value. (Satisfying (002))
+  (006) The system (HW+SW) needs to monitor the current temperature and adjust the power flow to the tip accordingly. (Satisfying (003))
+  (009) The system (HW+SW) needs to monitor the current temperature repeatedly in small intervals. (Satisfying (003))
+  (017) The system (HW+SW) needs some kind of display to show the temperature (Satisfying (015),(016))
+  (024) The system (HW+SW) needs to have an IO interface to talk to the CU. (Satisfying (023))
+  (027) The system (HW+SW) needs some kind of safety mechanism for the tip. (Satisfying (003))
+  (032) The system (HW+SW) needs to detect, when the tip is resting. (Satisfying (030))
+  (033) The system (HW+SW) needs to change the target temperature of the tip to a predefined temperature when the tip is resting. (Satisfying (031))
+  (036) The system (HW+SW) needs to set the target temperature back to the previous working temperature when the tip leaves the stand.
+  (049) Certain conditions apply regarding the systems outline.
+
+implementation:
+  (007) HW: There need to be two buttons. (Refining (005)) Reason: To change the temperature.
+  (052) SW: Each button press changes the temperature by 10 degrees centigrade.
+  (053) SW: After each button press, the button needs to be released to change the temperature by another 10 degrees.
+  (054) SW: After changing the temperature the display should show target temperature for 5 seconds before switching back to the current temperature.
+  (055) SW: The default target temperature after start-up is be 320 degrees centigrade.
+  (056) SW: The minimum target temperature is 120 degrees centigrade.
+  (008) HW: The power control of the tip needs to be realized with a pFET. (Refining (004)) Reason: GND needs to be connected to read the thermocouple voltage.
+  (010) HW: The pFET is controlled by an nFET. (Refining (8), Referring to (011)) Reason: A micro processor is not able to control a pFET at 12V without running on 12V.
+  (012) HW: To measure the tip's temperature there need to be an OpAmp (Refining (006)) Reason: The sensor is a thermocouple.
+  (013) HW: The OpAmp needs to have a amplification of around 680. (Refining (006))
+  (014) HW: The OpAmp needs to be accurate, so an OPA336U works. (Refining (006))
+  (018) HW: The control unit should be realized with an ATmega328P. (Refining (011)) Reason: Has enough IO and ADC on the chip.
+  (019) SW: The software should be built as a recurring loop at 50ms. (Refining (009)) Reason: A small value garantees smoothly displayed numbers in (029).
+  (020) HW: The display needs to be driven by the CU. (Satisfying (017))
+  (021) SW+HW: The button state need to be evaluated by the CU once each cycle. (Refining (007))
+  (022) SW: The software needs to read the tip temperature once per cycle. (Refining (006),(009))
+  (025) SW: The system will provide an UART interface (19200;8N1). (Refining (024))
+  (026) SW: The power control for the tip should be done with a PID control. (Refining (006)) Reason: To adapt to different load scenarios.
+  (028) SW: There needs to be a watchdog, which stops heating, if the tip would be overheated. (Refining (027))
+  (029) HW: The display needs to be multiplexed. (Refining (017)) Reason: To save port pins on the CU.
+  (034) HW: There need to be a switch, which triggers the standby state when the tip is resting. (Refining (032))
+  (035) SW: The target temperature for the tip should be set to 120 degree centigrade when resting. (Refining (033))
+  (037) SW: When leaving the resting state, the tip should be heated to the temperature defined before resting. (Refining (036))
+  (038) SW: The heating of the tip will be realized with a PWM. (Refining (006))
+  (039) HW: The primary power supply is 12V DC, 6A max.
+  (040) HW: All electronics aside from the tip run on 5V DC.
+  (041) HW: The board needs to be 5cm x 5cm in dimension and have holes (3.2mm diameter) at the corners with their center point 3cm from both sides. (Refining (049))
+  (042) HW: The PCB has to have rounded corners. (Refining (049))
+  (043) SW: The system states will work accordingly to diagram 1.
+  (044) SW: The start up procedure will work accordingly to diagram 2.
+  (045) SW: The process during each cycle will work accordingly diagram 3.
+  (046) SW: A watchdog will be triggered after 0.5 seconds if the CU experiences issues. (Refining (027))
+  (047) SW: If the temperature measurement shows a too high value (larger than 450 degree centigrade), the system will stop heating the tip. (Refining (027))
+  (048) SW: The user can only enter a target temperature of 400 degree centigrade. (Refining (027))
+  (050) HW: The two buttons will be 6x6mm switches at position x=41.77mm, y=28.5mm and x=41.77mm, y=21.5mm measured from lower left corner. (Refining (049))
+  (051) HW: The display must not be outside of the region between x=5.9mm, y=18.5mm and x=36.6mm, y=31.5mm. (Refining (049))
