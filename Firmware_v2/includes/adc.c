@@ -5,6 +5,7 @@
  * Author: Karsten Hinz <k.hinz tu-bs.de>
  * Adapted by: Johannes van Balen <johannes@van-balen.de>
  */
+#include "global_vars.h"
 
 #include <avr/io.h>
 #include "adc.h"
@@ -45,10 +46,9 @@ void adc_init(void)	{
   uart_transmit(buffer, 17);
 }
 
-/* This lets the system read only one value from the ADC, representing the current temperature. */
 uint16_t adc_read(void) {
-	ADCSRA |= (1<<ADSC); //start
-	while(ADCSRA & (1<<ADSC)); //wait unitl finish
+  ADCSRA |= (1<<ADSC); //start ADC
+  while(ADCSRA & (1<<ADSC)); //wait until finish
 	uint16_t raw = ADCL; //has to be read first
 	raw |= (ADCH << 8);
 	return raw;
