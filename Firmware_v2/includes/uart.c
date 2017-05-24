@@ -11,8 +11,10 @@ void uart_init(void) {
   uart_enabled = 1;
 
   // Set baud rate
-  UBRR0H = (unsigned char) (BAUD >> 8);
-  UBRR0L = (unsigned char) BAUD;
+  // 12 = 38400 Baud @ 8MHz
+  // 51 =  9600 Baud @ 8MHz
+  UBRR0H = (unsigned char) (12 >> 8);
+  UBRR0L = (unsigned char) 12;
 
   // enable RX and TX
   UCSR0B = (1 << TXEN0) | (1 << RXEN0);
