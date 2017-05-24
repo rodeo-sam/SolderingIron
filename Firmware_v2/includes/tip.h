@@ -9,10 +9,8 @@
 
 void tip_init(void);
 
-void tip_updateTemperature(void);
-
-uint8_t tip_powerOn(void); // returns 1 if powering on was successful or tip was already on
-uint8_t tip_powerOff(void); // returns 1 if powering off was successful or tip was already off
+void tip_powerOn(void);
+void tip_powerOff(void);
 
 void tip_disable(void);
 void tip_enable(void);
