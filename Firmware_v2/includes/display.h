@@ -5,10 +5,9 @@
  * Created: 2014-07-22 15:45:34
  * Author: Karsten Hinz <k.hinz tu-bs.de>
  */
- 
- #include <stdint.h>
- #include <avr/io.h>
- #include "config.h"
+
+#include <stdint.h>
+#include <avr/io.h>
 
 #pragma once
 
@@ -58,8 +57,6 @@ typedef enum {
 
 void display_init();
 void display_update();
-void display_digit(uint8_t led_idx, uint8_t digit);
-void display_sign(uint8_t led_idx, sign_t sign);
-void display_temperature(int16_t number);
-void display_number(int16_t number);
-void display_fixed_point(int16_t number, int8_t exp);
+void display_set_number(int16_t number);
+void display_show_bars(void);
+void display_show_tip(void);
