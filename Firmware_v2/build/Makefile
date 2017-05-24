@@ -56,7 +56,7 @@ CONFIG_REMOTE = 1
 # secondary pwm output
 CONFIG_SECONDARY_PWM = 1
 # default baudrate
-CONFIG_SERIAL_BAUDRATE = 38400
+CONFIG_SERIAL_BAUDRATE = 9600
 # check jumper for master mode
 CONFIG_MASTER_MODE = 1
 
